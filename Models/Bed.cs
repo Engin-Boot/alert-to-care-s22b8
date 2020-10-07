@@ -4,10 +4,10 @@ using System.Text;
 
 namespace Models
 {
-    class Bed
+    public class Bed
     {
 
-        public int id { get; set; }
+        public string id { get; set; }
         public bool isOccupied { get; set; }
     }
 }

@@ -9,5 +9,7 @@ namespace Models
        
         public Bed[] Beds {get; set; }
 
+        char Layout { get; set; }
+
     }
 }
