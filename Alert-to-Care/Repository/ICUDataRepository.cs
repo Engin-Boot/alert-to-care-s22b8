@@ -1,12 +1,14 @@
-﻿using Models;
+﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Alert_to_Care.Repository
 {
     public class ICUDataRepository:IICUData
     {
 
-        List<ICUModel> listOfICU=new List<ICUModel>();
+        List<Models.ICUModel> listOfICU=new List<Models.ICUModel>();
         static int ICUId=0;
 
         public ICUDataRepository()
@@ -15,21 +17,19 @@ namespace Alert_to_Care.Repository
 
         }
 
-        public List<ICUModel> GetAllICU()
+        public List<Models.ICUModel> GetAllICU()
         {
             return listOfICU;
         }
 
 
-        public void RegisterNewICU(UserInput userInput)
+        public void RegisterNewICU(Models.ICUModel newICU)
         {
-            ICUModel newICU = new ICUModel();
             newICU.id = ICUId++;
-            newICU.Beds = new Bed[newICU.NumberOfBeds];
-            newICU.NumberOfBeds = userInput.NumberOfBeds;
-            newICU.Layout = userInput.Layout;
+            newICU.Beds = new Models.Bed[newICU.NumberOfBeds];
+
             for(int i = 0; i < newICU.NumberOfBeds; i++)
-            {
+            { 
                 newICU.Beds[i].id = "ICU:" + newICU.id + "|Bed:" + i;
             }
             listOfICU.Add(newICU);
@@ -38,13 +38,7 @@ namespace Alert_to_Care.Repository
         }
         public Models.ICUModel ViewICU(int id)
         {
-            ICUModel iCUModel = new ICUModel();
-            for (int i = 0; i < listOfICU.Count; i++) {
-                if (listOfICU[i].id == id) {
-                    iCUModel = listOfICU[i];
-                }
-            }
-            return iCUModel;
+            return 
         }
     }
 }
