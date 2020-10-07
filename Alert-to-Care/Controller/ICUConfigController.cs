@@ -20,16 +20,16 @@ namespace Alert_to_Care.Controller
 
         // GET: api/<ICUConfigController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<ICUModel> Get()
         {
-            return new string[] { "value1", "value2" };
+            return icuDataRep.GetAllICU();
         }
 
         // GET api/<ICUConfigController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public ICUModel Get(int id)
         {
-            return "value";
+            return icuDataRep.ViewICU(id);
         }
 
         // POST api/<ICUConfigController>

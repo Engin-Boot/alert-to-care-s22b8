@@ -1,36 +1,53 @@
-﻿using System;
+﻿using Models;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Alert_to_Care.Repository
 {
-    public class ICUDataRepository:IICUData
+    public class ICUDataRepository : IICUData
     {
 
-        List<Models.ICUModel> listOfICU=new List<Models.ICUModel>();
-        static int ICUId=0;
+        List<ICUModel> listOfICU = new List<ICUModel>();
+        static int ICUId = 0;
 
         public ICUDataRepository()
         {
+            RegisterNewICU(new UserInput
+            {
+                NumberOfBeds = 4,
+                Layout = 'H'
+            });
+
+            RegisterNewICU(new UserInput
+            {
+                NumberOfBeds = 6,
+                Layout = 'L'
+            });
 
 
         }
 
-        public List<Models.ICUModel> GetAllICU()
+        public List<ICUModel> GetAllICU()
         {
             return listOfICU;
         }
 
 
-        public void RegisterNewICU(Models.ICUModel newICU)
+        public void RegisterNewICU(UserInput userInput)
         {
-            newICU.id = ICUId++;
-            newICU.Beds = new Models.Bed[newICU.NumberOfBeds];
+            ICUModel newICU = new ICUModel();
 
-            for(int i = 0; i < newICU.NumberOfBeds; i++)
-            { 
+
+            newICU.id = ICUId++;
+            newICU.Beds = new Bed[userInput.NumberOfBeds];
+            newICU.NumberOfBeds = userInput.NumberOfBeds;
+            newICU.Layout = userInput.Layout;
+
+
+            for (int i = 0; i < newICU.Beds.Length; i++)
+            {
+                newICU.Beds[i] = new Bed();
                 newICU.Beds[i].id = "ICU:" + newICU.id + "|Bed:" + i;
+                newICU.Beds[i].isOccupied = false;
             }
             listOfICU.Add(newICU);
 
@@ -38,7 +55,15 @@ namespace Alert_to_Care.Repository
         }
         public Models.ICUModel ViewICU(int id)
         {
-            return 
+            ICUModel iCUModel = new ICUModel();
+            for (int i = 0; i < listOfICU.Count; i++)
+            {
+                if (listOfICU[i].id == id)
+                {
+                    iCUModel = listOfICU[i];
+                }
+            }
+            return iCUModel;
         }
     }
 }
