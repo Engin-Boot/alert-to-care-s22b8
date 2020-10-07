@@ -1,15 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace Models
 {
-    public class ICUModel
+    public class UserInput
     {
-        public int id { get; set; }
         public int NumberOfBeds { get; set; }
-       
-        public Bed[] Beds {get; set; }
-
         public char Layout { get; set; }
-
     }
 }
