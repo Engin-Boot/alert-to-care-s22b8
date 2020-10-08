@@ -1,5 +1,6 @@
 ﻿using Models;
 using System.Collections.Generic;
+using System.Data.SQLite;
 
 namespace Alert_to_Care.Repository
 {
@@ -7,12 +8,15 @@ namespace Alert_to_Care.Repository
     {
         //public List<ICUModel> GetAllICU();
         //public void RegisterNewICU(UserInput newICU);
-
         //public ICUModel ViewICU(int id);
 
-        public ICUContext GetAllICU();
+        public List<ICUModel> GetAllICU();
         public void RegisterNewICU(UserInput newICU);
 
-        //public ICUModel ViewICU(int id);
+        public ICUModel ViewICU(int id);
+
+        public void DeleteICU(int id);
+
+        public void EmptyDB();
     }
 }

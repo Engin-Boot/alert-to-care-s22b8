@@ -84,3 +84,12 @@ C:\Users\320107420\source\repos\Alert-to-Care\Alert-to-Care\bin\Debug\netcoreapp
 C:\Users\320107420\source\repos\Alert-to-Care\Alert-to-Care\obj\Debug\netcoreapp3.1\Alert-to-Care.csproj.CoreCompileInputs.cache
 C:\Users\320107420\source\repos\Alert-to-Care\Alert-to-Care\obj\Debug\netcoreapp3.1\Alert-to-Care.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\320107420\source\repos\Alert-to-Care\Alert-to-Care\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\320107420\source\repos\Alert-to-Care\Alert-to-Care\bin\Debug\netcoreapp3.1\System.Data.SQLite.dll
+C:\Users\320107420\source\repos\Alert-to-Care\Alert-to-Care\bin\Debug\netcoreapp3.1\runtimes\linux-x64\native\netstandard2.0\SQLite.Interop.dll
+C:\Users\320107420\source\repos\Alert-to-Care\Alert-to-Care\bin\Debug\netcoreapp3.1\runtimes\linux-x64\native\netstandard2.1\SQLite.Interop.dll
+C:\Users\320107420\source\repos\Alert-to-Care\Alert-to-Care\bin\Debug\netcoreapp3.1\runtimes\osx-x64\native\netstandard2.0\SQLite.Interop.dll
+C:\Users\320107420\source\repos\Alert-to-Care\Alert-to-Care\bin\Debug\netcoreapp3.1\runtimes\osx-x64\native\netstandard2.1\SQLite.Interop.dll
+C:\Users\320107420\source\repos\Alert-to-Care\Alert-to-Care\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\netstandard2.0\SQLite.Interop.dll
+C:\Users\320107420\source\repos\Alert-to-Care\Alert-to-Care\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\netstandard2.1\SQLite.Interop.dll
+C:\Users\320107420\source\repos\Alert-to-Care\Alert-to-Care\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\netstandard2.0\SQLite.Interop.dll
+C:\Users\320107420\source\repos\Alert-to-Care\Alert-to-Care\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\netstandard2.1\SQLite.Interop.dll
