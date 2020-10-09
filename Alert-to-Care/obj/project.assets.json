@@ -1297,29 +1297,24 @@
       "Microsoft.EntityFrameworkCore.Sqlite >= 3.1.8",
       "Microsoft.EntityFrameworkCore.Tools >= 3.1.8",
       "Models >= 1.0.0",
-      "System.Data.SQLite.Core >= 1.0.113.1"
+      "System.Data.SQLite.Core >= *"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\320105541\\.nuget\\packages\\": {},
-    "C:\\Microsoft\\Xamarin\\NuGet\\": {}
+    "C:\\Users\\320107420\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\320105541\\OneDrive - Philips\\Desktop\\boot\\alert-to-care-s22b8\\Alert-to-Care\\Alert-to-Care.csproj",
+      "projectUniqueName": "C:\\Users\\320107420\\source\\repos\\Alert-to-Care\\Alert-to-Care\\Alert-to-Care.csproj",
       "projectName": "Alert-to-Care",
-      "projectPath": "C:\\Users\\320105541\\OneDrive - Philips\\Desktop\\boot\\alert-to-care-s22b8\\Alert-to-Care\\Alert-to-Care.csproj",
-      "packagesPath": "C:\\Users\\320105541\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\320105541\\OneDrive - Philips\\Desktop\\boot\\alert-to-care-s22b8\\Alert-to-Care\\obj\\",
+      "projectPath": "C:\\Users\\320107420\\source\\repos\\Alert-to-Care\\Alert-to-Care\\Alert-to-Care.csproj",
+      "packagesPath": "C:\\Users\\320107420\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\320107420\\source\\repos\\Alert-to-Care\\Alert-to-Care\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Microsoft\\Xamarin\\NuGet\\"
-      ],
       "configFilePaths": [
-        "C:\\Users\\320105541\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Users\\320107420\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
@@ -1331,8 +1326,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\Users\\320105541\\OneDrive - Philips\\Desktop\\boot\\alert-to-care-s22b8\\Models\\Models.csproj": {
-              "projectPath": "C:\\Users\\320105541\\OneDrive - Philips\\Desktop\\boot\\alert-to-care-s22b8\\Models\\Models.csproj"
+            "C:\\Users\\320107420\\source\\repos\\Alert-to-Care\\Models\\Models.csproj": {
+              "projectPath": "C:\\Users\\320107420\\source\\repos\\Alert-to-Care\\Models\\Models.csproj"
             }
           }
         }
@@ -1358,7 +1353,7 @@
           },
           "System.Data.SQLite.Core": {
             "target": "Package",
-            "version": "[1.0.113.1, )"
+            "version": "[*, )"
           }
         },
         "imports": [
@@ -1382,13 +1377,5 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problem reading the cache file C:\\Users\\320105541\\OneDrive - Philips\\Desktop\\boot\\alert-to-care-s22b8\\Alert-to-Care\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  }
 }
