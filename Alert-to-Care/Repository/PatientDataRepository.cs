@@ -13,7 +13,7 @@ namespace Alert_to_Care.Repository
         string cs = @"URI=file:C:\Users\320107420\source\repos\Alert-to-Care\Alert-to-Care\Patient.db";
         SQLiteConnection con;
 
-        PatientDataRepository()
+        public PatientDataRepository()
         {
             con = new SQLiteConnection(cs, true);
             con.Open();
@@ -70,20 +70,23 @@ namespace Alert_to_Care.Repository
             string stm = "SELECT * FROM ICU where Id=" + icuID;
             using var cmd1 = new SQLiteCommand(stm, con1);
             using SQLiteDataReader rdr1 = cmd1.ExecuteReader();
+            int occupancy = 0;
+            if (rdr1.Read())
+            {
+                //Checking capacity is full or not
+                int capacityOfICU = (int)Convert.ToInt64(rdr1["NumberOfBeds"]);
 
-            //Checking capacity is full or not
-            int capacityOfICU = (int)Convert.ToInt64(rdr1["NumberOfBeds"]);
+                stm = @"SELECT  COUNT(*) AS NumOfOccupants FROM patient Where IcuId=" + icuID;
+                using var cm = new SQLiteCommand(stm, con);
+                using SQLiteDataReader rdr = cm.ExecuteReader();
+                if(rdr.Read())
+                    occupancy = (int)Convert.ToInt64(rdr["NumOfOccupants"]);
 
-            stm = @"SELECT  COUNT(*) AS NumOfOccupants FROM patient HAVING IcuId=" + icuID;
-            using var cmd = new SQLiteCommand(stm, con);
-            using SQLiteDataReader rdr = cmd.ExecuteReader();
-            int occupancy = (int)Convert.ToInt64(rdr["NumOfOccupants"]);
-
-            if (occupancy >= capacityOfICU)
-                return false;
-
-
-            cmd.CommandText = @"INSERT INTO Patient(Name,Age,BloodGroup,Address,BedNumber,IcuId) VALUES('" + patient.Name + "','" + patient.Age + "','" + patient.BloodGroup + "','" + patient.Address + "','" + patient.BedNumber + "','" + patient.IcuId + "')";
+                if (occupancy >= capacityOfICU)
+                    return false;
+            }
+            using var cmd = new SQLiteCommand(con);
+            cmd.CommandText = @"INSERT INTO Patient(Name,Age,BloodGroup,Address,BedNumber,IcuId) VALUES('" + patient.Name + "','" + patient.Age + "','" + patient.BloodGroup + "','" + patient.Address + "','" + (occupancy+1) + "','" + patient.IcuId + "')";
             cmd.ExecuteNonQuery();
 
             return true;

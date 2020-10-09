@@ -15,7 +15,7 @@ namespace Alert_to_Care.Controller
     [ApiController]
     public class OccupancyManagementController : ControllerBase
     {
-        IPatientData patientRepo;
+        public IPatientData patientRepo;
 
         public OccupancyManagementController(IPatientData patientData)
         {
@@ -36,19 +36,27 @@ namespace Alert_to_Care.Controller
             return patientRepo.GetAllPatientsInTheICU(id);
         }
 
-        // POST api/<OccupancyManagementController>
-        [HttpPost]
-        public void Post([FromBody] string value)
+        // GET api/<OccupancyManagementController>/5
+        [HttpPost("{id}")]
+        public PatientModel Post(int id,[FromBody]int Pid)
         {
+            return patientRepo.GetPatient(id,Pid);
         }
 
-        // PUT api/<OccupancyManagementController>/5
-        [HttpPut("{id}")]
-        public bool Put(int id, [FromBody] PatientModel patient)
+        // POST api/<OccupancyManagementController>
+        [HttpPost("{id}")]
+        public bool Post(int id, [FromBody] PatientModel patient)
         {
             bool result = patientRepo.AddNewPatient(id, patient);
             return result;
 
+        }
+
+        // PUT api/<OccupancyManagementController>/5
+        [HttpPut("{id}")]
+        public void Put(int id, [FromBody] PatientModel patient)
+        {
+           
         }
 
         // DELETE api/<OccupancyManagementController>/5
