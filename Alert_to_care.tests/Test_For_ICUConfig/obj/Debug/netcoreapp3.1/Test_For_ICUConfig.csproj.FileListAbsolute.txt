@@ -95,3 +95,5 @@ C:\Users\320105541\source\repos\Alert_to_care.tests\Test_For_ICUConfig\obj\Debug
 C:\Users\320105541\source\repos\Alert_to_care.tests\Test_For_ICUConfig\obj\Debug\netcoreapp3.1\Test_For_ICUConfig.dll
 C:\Users\320105541\source\repos\Alert_to_care.tests\Test_For_ICUConfig\obj\Debug\netcoreapp3.1\Test_For_ICUConfig.pdb
 C:\Users\320105541\source\repos\Alert_to_care.tests\Test_For_ICUConfig\obj\Debug\netcoreapp3.1\Test_For_ICUConfig.genruntimeconfig.cache
+C:\Users\320107420\source\repos\Alert-to-Care\Alert_to_care.tests\Test_For_ICUConfig\obj\Debug\netcoreapp3.1\Test_For_ICUConfig.dll
+C:\Users\320107420\source\repos\Alert-to-Care\Alert_to_care.tests\Test_For_ICUConfig\obj\Debug\netcoreapp3.1\Test_For_ICUConfig.pdb
