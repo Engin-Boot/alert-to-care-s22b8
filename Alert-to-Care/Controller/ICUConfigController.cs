@@ -2,6 +2,7 @@
 using Models;
 using Microsoft.AspNetCore.Mvc;
 using Alert_to_Care.Repository;
+using System.Data.SQLite;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -20,19 +21,19 @@ namespace Alert_to_Care.Controller
 
         // GET: api/<ICUConfigController>
         [HttpGet]
-        public IEnumerable<ICUModel> Get()
+        public List<ICUModel> Get()
         {
             return icuDataRep.GetAllICU();
         }
 
-        // GET api/<ICUConfigController>/5
+        //GET api/<ICUConfigController>/5
         [HttpGet("{id}")]
         public ICUModel Get(int id)
         {
             return icuDataRep.ViewICU(id);
         }
 
-        // POST api/<ICUConfigController>
+        //POST api/<ICUConfigController>
         [HttpPost]
         public void Post([FromBody] UserInput value)
         {
@@ -49,6 +50,15 @@ namespace Alert_to_Care.Controller
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            icuDataRep.DeleteICU(id);
         }
+
+        [HttpDelete]
+        public void Delete()
+        {
+            icuDataRep.EmptyDB();
+        }
+
+
     }
 }
