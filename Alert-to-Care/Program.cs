@@ -21,6 +21,7 @@ namespace Alert_to_Care
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
+                    //webBuilder.UseUrls("http://localhost:54384/");
                 });
     }
 }

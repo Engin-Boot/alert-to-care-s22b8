@@ -35,7 +35,7 @@ namespace Alert_to_Care
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>
