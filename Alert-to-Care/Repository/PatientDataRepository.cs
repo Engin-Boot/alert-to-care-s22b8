@@ -71,22 +71,47 @@ namespace Alert_to_Care.Repository
             using var cmd1 = new SQLiteCommand(stm, con1);
             using SQLiteDataReader rdr1 = cmd1.ExecuteReader();
             int occupancy = 0;
+            int capacityOfICU = 0;
             if (rdr1.Read())
             {
                 //Checking capacity is full or not
-                int capacityOfICU = (int)Convert.ToInt64(rdr1["NumberOfBeds"]);
+                capacityOfICU = (int)Convert.ToInt64(rdr1["NumberOfBeds"]);
 
                 stm = @"SELECT  COUNT(*) AS NumOfOccupants FROM patient Where IcuId=" + icuID;
-                using var cm = new SQLiteCommand(stm, con);
-                using SQLiteDataReader rdr = cm.ExecuteReader();
-                if(rdr.Read())
-                    occupancy = (int)Convert.ToInt64(rdr["NumOfOccupants"]);
+                using var cmi = new SQLiteCommand(stm, con);
+                using SQLiteDataReader rdri = cmi.ExecuteReader();
+                if(rdri.Read())
+                    occupancy = (int)Convert.ToInt64(rdri["NumOfOccupants"]);
 
                 if (occupancy >= capacityOfICU)
                     return false;
             }
+            else
+            {
+                return false;
+            }
+            stm = @"SELECT  * FROM patient Where IcuId=" + icuID;
+            using var cm = new SQLiteCommand(stm, con);
+            using SQLiteDataReader rdr = cm.ExecuteReader();
+            Boolean[] beds = new Boolean[capacityOfICU+1];
+            int i = 1;
+            while (rdr.Read())
+            {
+                int pos = (int)Convert.ToInt64(rdr["BedNumber"]);
+                beds[pos] = true;
+            }
+            while (i <= capacityOfICU)
+            {
+                if(!beds[i])
+                {
+                    occupancy = i;
+                    break;
+                }
+                i++;
+            }
+
             using var cmd = new SQLiteCommand(con);
-            cmd.CommandText = @"INSERT INTO Patient(Name,Age,BloodGroup,Address,BedNumber,IcuId) VALUES('" + patient.Name + "','" + patient.Age + "','" + patient.BloodGroup + "','" + patient.Address + "','" + (occupancy+1) + "','" + patient.IcuId + "')";
+            cmd.CommandText = @"INSERT INTO Patient(Name,Age,BloodGroup,Address,BedNumber,IcuId) VALUES('" + patient.Name + "','" + patient.Age + "','" + patient.BloodGroup + "','" + patient.Address + "','" + occupancy + "','" + icuID + "')";
             cmd.ExecuteNonQuery();
 
             return true;
@@ -103,7 +128,7 @@ namespace Alert_to_Care.Repository
 
             while (rdr.Read())
             {
-
+                Console.WriteLine("Hi");
                 patientObject.Id = (int)Convert.ToInt64(rdr["Id"]);
                 patientObject.Name = Convert.ToString(rdr["Name"]);
                 patientObject.Age = (int)Convert.ToInt64(rdr["Age"]);
@@ -118,9 +143,9 @@ namespace Alert_to_Care.Repository
         }
 
 
-        public void DischargePatient(int icuID, int patientID)
+        public void DischargePatient(int patientID)
         {
-            string stm = @"DELETE FROM patient WHERE IcuId=" + icuID + " AND Id=" + patientID;
+            string stm = @"DELETE FROM patient WHERE Id=" + patientID;
 
             using var cmd = new SQLiteCommand(stm, con);
             cmd.ExecuteNonQuery();

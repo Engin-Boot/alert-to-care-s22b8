@@ -37,10 +37,10 @@ namespace Alert_to_Care.Controller
         }
 
         // GET api/<OccupancyManagementController>/5
-        [HttpPost("{id}")]
-        public PatientModel Post(int id,[FromBody]int Pid)
+        [HttpPost]
+        public PatientModel Post([FromBody] Pair pair)
         {
-            return patientRepo.GetPatient(id,Pid);
+            return patientRepo.GetPatient(pair.Id,pair.Pid);
         }
 
         // POST api/<OccupancyManagementController>
@@ -61,9 +61,9 @@ namespace Alert_to_Care.Controller
 
         // DELETE api/<OccupancyManagementController>/5
         [HttpDelete("{id}")]
-        public void Delete(int icuId,int patientID)
+        public void Delete(int id)
         {
-            patientRepo.DischargePatient(icuId, patientID);
+            patientRepo.DischargePatient(id);
         }
     }
 }

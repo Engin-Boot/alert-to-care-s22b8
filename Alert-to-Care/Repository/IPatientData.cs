@@ -16,7 +16,7 @@ namespace Alert_to_Care.Repository
         public PatientModel GetPatient(int icuID, int patientID);
 
 
-        public void DischargePatient(int icuID, int patientID);
+        public void DischargePatient(int patientID);
 
     }
 }
