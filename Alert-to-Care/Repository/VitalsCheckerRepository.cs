@@ -17,25 +17,34 @@ namespace Alert_to_Care.Repository
             //upper and lower limit of spo2
             upperLimit.Add(int.MaxValue);
             lowerLimit.Add(90);
-            //upper and lower linit of resprate
+            //upper and lower linit of resp rate
             upperLimit.Add(95);
             lowerLimit.Add(30);
         }
-        public void CheckVitals(List<PatientVitals> patientVitals)
+        public bool CheckVitals(List<PatientVitals> patientVitals)
         {
+            int fl = 0;
             for (int i = 0; i < patientVitals.Count; i++) {
                 if (patientVitals[i].Vitals[0] < lowerLimit[0] || patientVitals[i].Vitals[0] > upperLimit[0]) {
                     alerter.Alert($"{patientVitals[i].Id} crossed threshold of BPM ");
+                    fl--;
                 }
                 if (patientVitals[i].Vitals[1] < lowerLimit[1] || patientVitals[i].Vitals[1] > upperLimit[1])
                 {
                     alerter.Alert($"{patientVitals[i].Id} crossed threshold of sop2 ");
+                    fl--;
                 }
                 if (patientVitals[i].Vitals[2] < lowerLimit[2] || patientVitals[i].Vitals[2] > upperLimit[2])
                 {
                     alerter.Alert($"{patientVitals[i].Id} crossed threshold of resp rate");
+                    fl--;
                 }
+
+                
             }
+            if (fl == 0)
+                return true;
+            return false;
         }
 
     }

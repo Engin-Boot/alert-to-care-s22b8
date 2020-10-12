@@ -1,16 +1,16 @@
 {
   "version": 2,
-  "dgSpecHash": "aUvU1T4bhXWDFmC5bIL+DAt/iTIucDmAi3Q7zD0YRgy0DrtiBGhza9nga+wBAo1oLP/1bcAVVo0Fbh+5DOKTsA==",
+  "dgSpecHash": "RXBxubUjo3gLWxkUZ9+zCqj0jpim9U+gB/JOVzQwAOxVuvKMSZRvAOmfu34gFF/CllJA+peSqpvJTPPnEOcCbg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\320105541\\source\\repos\\Alert_to_care.tests\\Alert_to_care.tests\\Alert_to_care.tests.csproj",
+  "projectFilePath": "C:\\Users\\320107420\\source\\repos\\Alert-to-Care\\Alert_to_care.tests\\Alert_to_care.tests\\Alert_to_care.tests.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\320105541\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
-    "C:\\Users\\320105541\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
-    "C:\\Users\\320105541\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
-    "C:\\Users\\320105541\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
-    "C:\\Users\\320105541\\.nuget\\packages\\restsharp\\106.11.7\\restsharp.106.11.7.nupkg.sha512",
-    "C:\\Users\\320105541\\.nuget\\packages\\system.collections\\4.3.0\\system.collections.4.3.0.nupkg.sha512",
-    "C:\\Users\\320105541\\.nuget\\packages\\system.runtime\\4.3.0\\system.runtime.4.3.0.nupkg.sha512"
+    "C:\\Users\\320107420\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\320107420\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
+    "C:\\Users\\320107420\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
+    "C:\\Users\\320107420\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
+    "C:\\Users\\320107420\\.nuget\\packages\\restsharp\\106.11.7\\restsharp.106.11.7.nupkg.sha512",
+    "C:\\Users\\320107420\\.nuget\\packages\\system.collections\\4.3.0\\system.collections.4.3.0.nupkg.sha512",
+    "C:\\Users\\320107420\\.nuget\\packages\\system.runtime\\4.3.0\\system.runtime.4.3.0.nupkg.sha512"
   ],
   "logs": []
 }

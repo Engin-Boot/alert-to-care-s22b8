@@ -5469,29 +5469,26 @@
       "MSTest.TestAdapter >= 2.1.0",
       "MSTest.TestFramework >= 2.1.0",
       "Microsoft.NET.Test.Sdk >= 16.5.0",
+      "Newtonsoft.Json >= 12.0.3",
+      "RestSharp >= 106.11.7",
       "coverlet.collector >= 1.2.0"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\320105541\\.nuget\\packages\\": {},
-    "C:\\Microsoft\\Xamarin\\NuGet\\": {}
+    "C:\\Users\\320107420\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\320105541\\source\\repos\\Alert_to_care.tests\\Test_For_ICUConfig\\Test_For_ICUConfig.csproj",
+      "projectUniqueName": "C:\\Users\\320107420\\source\\repos\\Alert-to-Care\\Alert_to_care.tests\\Test_For_ICUConfig\\Test_For_ICUConfig.csproj",
       "projectName": "Test_For_ICUConfig",
-      "projectPath": "C:\\Users\\320105541\\source\\repos\\Alert_to_care.tests\\Test_For_ICUConfig\\Test_For_ICUConfig.csproj",
-      "packagesPath": "C:\\Users\\320105541\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\320105541\\source\\repos\\Alert_to_care.tests\\Test_For_ICUConfig\\obj\\",
+      "projectPath": "C:\\Users\\320107420\\source\\repos\\Alert-to-Care\\Alert_to_care.tests\\Test_For_ICUConfig\\Test_For_ICUConfig.csproj",
+      "packagesPath": "C:\\Users\\320107420\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\320107420\\source\\repos\\Alert-to-Care\\Alert_to_care.tests\\Test_For_ICUConfig\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Microsoft\\Xamarin\\NuGet\\"
-      ],
       "configFilePaths": [
-        "C:\\Users\\320105541\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Users\\320107420\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
@@ -5503,8 +5500,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\Users\\320105541\\source\\repos\\Alert_to_care.tests\\Alert_to_care.tests\\Alert_to_care.tests.csproj": {
-              "projectPath": "C:\\Users\\320105541\\source\\repos\\Alert_to_care.tests\\Alert_to_care.tests\\Alert_to_care.tests.csproj"
+            "C:\\Users\\320107420\\source\\repos\\Alert-to-Care\\Alert_to_care.tests\\Alert_to_care.tests\\Alert_to_care.tests.csproj": {
+              "projectPath": "C:\\Users\\320107420\\source\\repos\\Alert-to-Care\\Alert_to_care.tests\\Alert_to_care.tests\\Alert_to_care.tests.csproj"
             }
           }
         }
@@ -5529,6 +5526,14 @@
           "Microsoft.NET.Test.Sdk": {
             "target": "Package",
             "version": "[16.5.0, )"
+          },
+          "Newtonsoft.Json": {
+            "target": "Package",
+            "version": "[12.0.3, )"
+          },
+          "RestSharp": {
+            "target": "Package",
+            "version": "[106.11.7, )"
           },
           "coverlet.collector": {
             "target": "Package",
