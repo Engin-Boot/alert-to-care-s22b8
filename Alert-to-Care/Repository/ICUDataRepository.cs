@@ -1,8 +1,6 @@
 ﻿using Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using Microsoft.EntityFrameworkCore;
 using System.Data.SQLite;
 
 
@@ -134,21 +132,32 @@ namespace Alert_to_Care.Repository
 
         public void DeleteICU(int id)
         {
+            string com = @"SELECT COUNT(*) AS Count FROM ICU WHERE id=" + id;
+            using var check = new SQLiteCommand(com, con);
+            using SQLiteDataReader sQLiteDataReader = check.ExecuteReader();
+            var countOfIcu = 0;
+            if (sQLiteDataReader.Read())
+                countOfIcu = (int)Convert.ToInt64(sQLiteDataReader["Count"]);
+            if (countOfIcu == 0) {
+                throw new System.SystemException();
+            }
+
+
             string stm = @"DELETE FROM ICU WHERE id=" + id;
 
             using var cmd = new SQLiteCommand(stm, con);
             cmd.ExecuteNonQuery();
-            
-        }
 
-        public void EmptyDB()
-        {
-            string stm = @"DELETE FROM ICU ";
-
-            using var cmd = new SQLiteCommand(stm, con);
-            cmd.ExecuteNonQuery();
+            string cs2 = @"URI=file:C:\Users\320105541\OneDrive - Philips\Desktop\boot\alert-to-care-s22b8\Alert-to-Care\Patient.db";
+            SQLiteConnection con2 = new SQLiteConnection(cs2, true);
+            con2.Open();
+            string stm2 = @"DELETE FROM Patient where IcuId=" + id;
+            using var cmd2 = new SQLiteCommand(stm2, con2);
+            cmd2.ExecuteNonQuery();
 
         }
+
+       
 
 
     }

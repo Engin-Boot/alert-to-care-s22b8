@@ -16,8 +16,7 @@ namespace Alert_to_Care
         public static void Main(string[] args)
         {
 
-            
-
+           
             CreateHostBuilder(args).Build().Run();
 
         }

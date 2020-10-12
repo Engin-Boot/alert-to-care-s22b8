@@ -17,6 +17,5 @@ namespace Alert_to_Care.Repository
 
         public void DeleteICU(int id);
 
-        public void EmptyDB();
     }
 }
