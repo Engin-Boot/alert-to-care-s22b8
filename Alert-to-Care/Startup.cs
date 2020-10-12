@@ -27,7 +27,7 @@ namespace Alert_to_Care
             services.AddControllers();
             services.AddSingleton<Repository.IICUData, Repository.ICUDataRepository>();
             services.AddSingleton<Repository.IPatientData, Repository.PatientDataRepository>();
-
+            services.AddSingleton<Repository.IVitalsCheckerRepository, Repository.VitalsCheckerRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

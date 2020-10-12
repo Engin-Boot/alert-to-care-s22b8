@@ -14,11 +14,10 @@ namespace Alert_to_Care.Controller
     public class ICUConfigController : ControllerBase
     {
         public IICUData icuDataRep;
-        private object stud;
 
         public ICUConfigController(IICUData iCUData) 
         {
-            this.icuDataRep = iCUData;    
+            icuDataRep = iCUData;    
         }
 
         // GET: api/<ICUConfigController>

@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using Models;
 
 namespace Alert_to_Care.Repository
 {
-    public class IVitalsCheckerRepository
+    public interface IVitalsCheckerRepository
     {
+        public void CheckVitals(List<PatientVitals> patientVitals);
     }
 }

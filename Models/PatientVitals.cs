@@ -4,7 +4,10 @@ using System.Text;
 
 namespace Models
 {
-    class PatientVitals
+    public class PatientVitals
     {
+        public int Id { get; set; }
+        public List<int> Vitals { get; set; }
+
     }
 }

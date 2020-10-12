@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using Alert_to_Care.Repository;
 using Microsoft.AspNetCore.Mvc;
+using Models;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -12,36 +11,25 @@ namespace Alert_to_Care.Controller
     [ApiController]
     public class VitalsAlertController : ControllerBase
     {
-        // GET: api/<VitalsAlertController>
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
+        readonly IVitalsCheckerRepository vitalsChecker;
 
-        // GET api/<VitalsAlertController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        public VitalsAlertController(IVitalsCheckerRepository _vitalsChecker)
         {
-            return "value";
+            vitalsChecker = _vitalsChecker;
         }
+        
+
+       
 
         // POST api/<VitalsAlertController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void Post([FromBody] List<PatientVitals> allPatientVitals)
         {
+            vitalsChecker.CheckVitals(allPatientVitals);
         }
 
-        // PUT api/<VitalsAlertController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
+       
 
-        // DELETE api/<VitalsAlertController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+       
     }
 }
