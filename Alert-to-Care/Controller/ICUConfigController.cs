@@ -4,9 +4,6 @@ using Microsoft.AspNetCore.Mvc;
 using Alert_to_Care.Repository;
 using System.Data.SQLite;
 using System;
-using System.Net.Http;
-using static System.Net.WebRequestMethods;
-using System.Net;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
