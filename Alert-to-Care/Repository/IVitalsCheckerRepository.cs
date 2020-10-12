@@ -5,6 +5,6 @@ namespace Alert_to_Care.Repository
 {
     public interface IVitalsCheckerRepository
     {
-        public void CheckVitals(List<PatientVitals> patientVitals);
+        public bool CheckVitals(List<PatientVitals> patientVitals);
     }
 }

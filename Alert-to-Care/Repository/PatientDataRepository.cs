@@ -10,7 +10,7 @@ namespace Alert_to_Care.Repository
     public class PatientDataRepository : IPatientData
     {
 
-        string cs = @"URI=file:C:\Users\320105541\OneDrive - Philips\Desktop\boot\alert-to-care-s22b8\Alert-to-Care\Patient.db";
+        string cs = @"URI=file:C:\Users\320107420\source\repos\Alert-to-Care\Alert-to-Care\Patient.db";
         SQLiteConnection con;
 
         public PatientDataRepository()
@@ -62,7 +62,7 @@ namespace Alert_to_Care.Repository
         public bool AddNewPatient(int icuID, PatientDetailsInput patient)
         {
             //Connecting to ICU table to check the capacity
-            string cs1 = @"URI=file:C:\Users\320105541\OneDrive - Philips\Desktop\boot\alert-to-care-s22b8\Alert-to-Care\ICU.db";
+            string cs1 = @"URI=file:C:\Users\320107420\source\repos\Alert-to-Care\Alert-to-Care\ICU.db";
             SQLiteConnection con1;
             con1 = new SQLiteConnection(cs1, true);
             con1.Open();
