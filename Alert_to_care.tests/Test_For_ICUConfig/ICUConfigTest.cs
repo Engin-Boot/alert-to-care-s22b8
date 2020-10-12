@@ -4,7 +4,7 @@ using RestSharp.Extensions;
 namespace Test_For_ICUConfig
 {
     [TestClass]
-    public class UnitTest1
+    public class ICUConfigTest
     {
         [TestMethod]
         public void TestMethod0()
@@ -77,5 +77,23 @@ namespace Test_For_ICUConfig
             var response = occupancyMgmt.DeletePatient(15);
             Assert.AreEqual(true, response);
         }
+
+
+        [TestMethod]
+        public void PostVitalsToCheckWhenInRange()
+        {
+            Alert_to_care.tests.Repository.VitalsCheckRepository vitalsCheck = new Alert_to_care.tests.Repository.VitalsCheckRepository();
+            var response = vitalsCheck.CheckVitals(true);
+            Assert.AreEqual(true, response);
+        }
+
+        [TestMethod]
+        public void PostVitalsToCheckWhenNotInRange()
+        {
+            Alert_to_care.tests.Repository.VitalsCheckRepository vitalsCheck = new Alert_to_care.tests.Repository.VitalsCheckRepository();
+            var response = vitalsCheck.CheckVitals(false);
+            Assert.AreEqual(true, response);
+        }
+
     }
 }

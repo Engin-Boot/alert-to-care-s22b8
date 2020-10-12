@@ -7,3 +7,11 @@ C:\Users\320105541\source\repos\Alert_to_care.tests\Alert_to_care.tests\bin\Debu
 C:\Users\320105541\source\repos\Alert_to_care.tests\Alert_to_care.tests\obj\Debug\netstandard2.0\Alert_to_care.tests.dll
 C:\Users\320105541\source\repos\Alert_to_care.tests\Alert_to_care.tests\obj\Debug\netstandard2.0\Alert_to_care.tests.pdb
 C:\Users\320105541\source\repos\Alert_to_care.tests\Alert_to_care.tests\obj\Debug\netstandard2.0\Alert_to_care.tests.csproj.CoreCompileInputs.cache
+C:\Users\320107420\source\repos\Alert-to-Care\Alert_to_care.tests\Alert_to_care.tests\bin\Debug\netstandard2.0\Alert_to_care.tests.deps.json
+C:\Users\320107420\source\repos\Alert-to-Care\Alert_to_care.tests\Alert_to_care.tests\bin\Debug\netstandard2.0\Alert_to_care.tests.dll
+C:\Users\320107420\source\repos\Alert-to-Care\Alert_to_care.tests\Alert_to_care.tests\bin\Debug\netstandard2.0\Alert_to_care.tests.pdb
+C:\Users\320107420\source\repos\Alert-to-Care\Alert_to_care.tests\Alert_to_care.tests\obj\Debug\netstandard2.0\Alert_to_care.tests.AssemblyInfoInputs.cache
+C:\Users\320107420\source\repos\Alert-to-Care\Alert_to_care.tests\Alert_to_care.tests\obj\Debug\netstandard2.0\Alert_to_care.tests.AssemblyInfo.cs
+C:\Users\320107420\source\repos\Alert-to-Care\Alert_to_care.tests\Alert_to_care.tests\obj\Debug\netstandard2.0\Alert_to_care.tests.csproj.CoreCompileInputs.cache
+C:\Users\320107420\source\repos\Alert-to-Care\Alert_to_care.tests\Alert_to_care.tests\obj\Debug\netstandard2.0\Alert_to_care.tests.dll
+C:\Users\320107420\source\repos\Alert-to-Care\Alert_to_care.tests\Alert_to_care.tests\obj\Debug\netstandard2.0\Alert_to_care.tests.pdb
