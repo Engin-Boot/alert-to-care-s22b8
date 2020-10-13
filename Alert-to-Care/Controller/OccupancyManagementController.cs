@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Models;
 using Alert_to_Care.Repository;
 
+
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace Alert_to_Care.Controller
@@ -29,27 +30,48 @@ namespace Alert_to_Care.Controller
         //    return ;
         //}
 
+        //public HttpResponseMessage Get(int id)
+        //{
+        //    Student stud = GetStudentFromDB(id);
+
+        //    if (stud == null)
+        //    {
+        //        return Request.CreateResponse(HttpStatusCode.NotFound, id);
+        //    }
+
+        //    return Request.CreateResponse(HttpStatusCode.OK, stud);
+        //}
+
         // GET api/<OccupancyManagementController>/5
         [HttpGet("{id}")]
-        public List<PatientModel> Get(int id)
+        public IActionResult Get(int id)
         {
-            return patientRepo.GetAllPatientsInTheICU(id);
+            var allPatient=patientRepo.GetAllPatientsInTheICU(id);
+            if(allPatient!=null)
+                return Ok(allPatient);
+            return NotFound();
         }
 
         // GET api/<OccupancyManagementController>/<GetPatientById>/5
         [Route("[action]/{id}")]
         [HttpGet]
-        public PatientModel GetPatientById(int id)
+        public IActionResult GetPatientById(int id)
         {
-            return patientRepo.GetPatient(id);
+            var patient=patientRepo.GetPatient(id);
+            if (patient != null)
+                return Ok(patient);
+            return NotFound();
+
         }
 
         // POST api/<OccupancyManagementController>
         [HttpPost("{id}")]
-        public bool Post(int id, [FromBody] PatientDetailsInput patient)
+        public IActionResult Post(int id, [FromBody] PatientDetailsInput patient)
         {
             bool result = patientRepo.AddNewPatient(id, patient);
-            return result;
+            if (result)
+                return Ok();
+            return NotFound();
 
         }
 
@@ -62,9 +84,18 @@ namespace Alert_to_Care.Controller
 
         // DELETE api/<OccupancyManagementController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult Delete(int id)
         {
-            patientRepo.DischargePatient(id);
+            try
+            {
+                patientRepo.DischargePatient(id);
+                return Ok();
+            }
+            catch(Exception e)
+            {
+                return NotFound();
+            }
+            
         }
     }
 }

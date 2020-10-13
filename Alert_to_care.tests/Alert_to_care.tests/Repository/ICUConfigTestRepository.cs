@@ -2,6 +2,7 @@
 using RestSharp;
 using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Text;
 
 namespace Alert_to_care.tests.Repository
@@ -43,14 +44,14 @@ namespace Alert_to_care.tests.Repository
             IRestResponse restResponse = restClient.Execute(restRequest);
             return restResponse.IsSuccessful;
         }
-        public bool DeleteIcu(int id) {
+        public HttpStatusCode DeleteIcu(int id) {
             var restClient = new RestClient("http://localhost:54384/api/");
 
             string s = "ICUConfig/" + id.ToString();
             //Console.WriteLine(s);
             var restRequest = new RestRequest(s, Method.DELETE);
             IRestResponse response = restClient.Execute(restRequest);
-            return response.IsSuccessful;
+            return response.StatusCode;
         }
     }
 }

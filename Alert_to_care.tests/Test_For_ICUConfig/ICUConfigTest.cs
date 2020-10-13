@@ -1,5 +1,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RestSharp.Extensions;
+using System.Net;
 
 namespace Test_For_ICUConfig
 {
@@ -45,39 +46,67 @@ namespace Test_For_ICUConfig
         }
 
         [TestMethod]
-        public void TestMethod4()
+        public void WhenICUIsFullStatusNotFound()
         {
             Alert_to_care.tests.Repository.OccupancyMgmtRepository occupancyMgmt = new Alert_to_care.tests.Repository.OccupancyMgmtRepository();
             var response = occupancyMgmt.AddPatient(1);
-            Assert.AreEqual(true, response);
+            Assert.AreEqual(System.Net.HttpStatusCode.NotFound, response);
         }
 
         [TestMethod]
-        public void TestMethod5()
+        public void GetAllPatientWhenPatientsArePresent()
         {
             Alert_to_care.tests.Repository.OccupancyMgmtRepository occupancyMgmt = new Alert_to_care.tests.Repository.OccupancyMgmtRepository();
             var response = occupancyMgmt.GetAllPatient(1);
-            Assert.AreEqual("ana", response[0].name);
-            Assert.AreEqual(7, response[1].id);
+            Assert.Equals(HttpStatusCode.OK, response.StatusCode);
+            Assert.AreEqual("ana", response.Data[0].name);
+            Assert.AreEqual(7, response.Data[1].id);
         }
 
         [TestMethod]
-        public void TestMethod6()
+        public void GetAllPatientWhenICUDoesntExist()
+        {
+            Alert_to_care.tests.Repository.OccupancyMgmtRepository occupancyMgmt = new Alert_to_care.tests.Repository.OccupancyMgmtRepository();
+            var response = occupancyMgmt.GetAllPatient(9);
+            Assert.AreEqual(HttpStatusCode.NotFound, response.StatusCode);
+        }
+
+        [TestMethod]
+        public void GetPatientDetailsWhenPatientExists()
         {
             Alert_to_care.tests.Repository.OccupancyMgmtRepository occupancyMgmt = new Alert_to_care.tests.Repository.OccupancyMgmtRepository();
             var response = occupancyMgmt.GetPatientDetails(6);
-            Assert.AreEqual("ana", response.name);
-            Assert.AreEqual("b+", response.bloodGroup);
+            Assert.Equals(HttpStatusCode.OK, response.StatusCode);
+            Assert.AreEqual("ana", response.Data.name);
+            Assert.AreEqual("b+", response.Data.bloodGroup);
+            
         }
 
         [TestMethod]
-        public void TestMethod7()
+        public void GetPatientDetailsWhenPatientDoesNotExist()
+        {
+            Alert_to_care.tests.Repository.OccupancyMgmtRepository occupancyMgmt = new Alert_to_care.tests.Repository.OccupancyMgmtRepository();
+            var response = occupancyMgmt.GetPatientDetails(26);
+            Assert.AreEqual(HttpStatusCode.NotFound, response.StatusCode);
+
+        }
+
+
+        [TestMethod]
+        public void CheckIfPatientIsDeletedWhenExists()
         {
             Alert_to_care.tests.Repository.OccupancyMgmtRepository occupancyMgmt = new Alert_to_care.tests.Repository.OccupancyMgmtRepository();
             var response = occupancyMgmt.DeletePatient(15);
-            Assert.AreEqual(true, response);
+            Assert.AreEqual("Ok", response);
         }
 
+        [TestMethod]
+        public void CheckIfPatientIsDeletedWhenDoesNotExists()
+        {
+            Alert_to_care.tests.Repository.OccupancyMgmtRepository occupancyMgmt = new Alert_to_care.tests.Repository.OccupancyMgmtRepository();
+            var response = occupancyMgmt.DeletePatient(115);
+            Assert.AreEqual("NotFound", response);
+        }
 
         [TestMethod]
         public void PostVitalsToCheckWhenInRange()

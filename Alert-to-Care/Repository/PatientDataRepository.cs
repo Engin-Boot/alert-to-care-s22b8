@@ -145,7 +145,18 @@ namespace Alert_to_Care.Repository
 
         public void DischargePatient(int patientID)
         {
-            string stm = @"DELETE FROM patient WHERE Id=" + patientID;
+            string stm;
+          
+            stm = @"SELECT  COUNT(*) AS NumOfOccupants FROM patient Where IcuId=" + patientID;
+            using var cmi = new SQLiteCommand(stm, con);
+            using SQLiteDataReader rdri = cmi.ExecuteReader();
+            int occupancy = (int)Convert.ToInt64(rdri["NumOfOccupants"]);
+
+            if (occupancy==0)
+                throw new Exception();
+
+                
+            stm = @"DELETE FROM patient WHERE Id=" + patientID;
 
             using var cmd = new SQLiteCommand(stm, con);
             cmd.ExecuteNonQuery();
