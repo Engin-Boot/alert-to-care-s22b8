@@ -1,30 +1,47 @@
 ﻿using Models;
+using Newtonsoft.Json;
+using RestSharp;
 using System.Collections.Generic;
-using System.Data.SqlTypes;
 using System.IO;
+using System.Threading;
 
 namespace DataProducer
 {
     public class DataReader
     {
-        public PatientVitals ReadData() 
+        public void ReadDataAndPost() 
         {
-            using (var reader = new StreamReader(@"C:\Users\320105541\OneDrive - Philips\Desktop\boot\DataProducer\vitalData.csv"))
+            using (var reader = new StreamReader(@"C:\Users\320105541\OneDrive - Philips\Desktop\boot\alert-to-care-s22b8\DataProducer\vitalData.csv"))
             {
 
                 int i = 0;
                 while (!reader.EndOfStream)
                 {
                     if (i == 0) {
+                        i++;
+                        reader.ReadLine();
                         continue;
                     }
-                    i++;
-                    var line = reader.ReadLine();
-                    var values = line.Split(';');
-
-                    if (i == 3) { 
-                        
+                    List<PatientVitals> li = new List<PatientVitals>();
+                    for (int j = 0; j < 3; j++) {
+                        var line = reader.ReadLine();
+                        var values = line.Split(',');
+                        PatientVitals patientVitals = new PatientVitals();
+                        patientVitals.Id = int.Parse(values[0]);
+                        patientVitals.Vitals = new List<int>();
+                        patientVitals.Vitals.Add(int.Parse(values[1]));
+                        patientVitals.Vitals.Add(int.Parse(values[2]));
+                        patientVitals.Vitals.Add(int.Parse(values[3]));
+                        li.Add(patientVitals);
                     }
+                    var restClient = new RestClient("http://localhost:54384/api/");
+                    var restRequest = new RestRequest("VitalsAlert", Method.POST);
+                    
+                    restRequest.AddJsonBody(JsonConvert.SerializeObject(li));
+
+                    restClient.Execute(restRequest);
+                    Thread.Sleep(10000);
+
                 }
             }
         }

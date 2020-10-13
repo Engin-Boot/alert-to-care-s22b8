@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "JsMvDDbZr79pvOv2XXo5C6gglS2xTrsujP+goY1Kuc5JCX1RV11skA90bjg7uEGa0DadlMZ7CkSDkNri0u+uTQ==",
+  "dgSpecHash": "W1MWieWnMe46hJqqMe5uPshKE6nRjiHQzJxDzhZzD62gIR7Xhj16rjWHaWPVzEGDPQYljc/GorROWvQGpEey6A==",
   "success": true,
   "projectFilePath": "C:\\Users\\320105541\\OneDrive - Philips\\Desktop\\boot\\alert-to-care-s22b8\\DataProducer\\DataProducer\\DataProducer.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\320105541\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
+    "C:\\Users\\320105541\\.nuget\\packages\\restsharp\\106.11.7\\restsharp.106.11.7.nupkg.sha512"
+  ],
   "logs": []
 }

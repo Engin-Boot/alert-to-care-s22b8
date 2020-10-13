@@ -46,9 +46,9 @@ namespace Alert_to_Care.Controller
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            var allPatient=patientRepo.GetAllPatientsInTheICU(id);
-            if(allPatient!=null)
-                return Ok(allPatient);
+            var allPatients=patientRepo.GetAllPatientsInTheICU(id);
+            if(allPatients.Count!=0)
+                return Ok(allPatients);
             return NotFound();
         }
 
@@ -93,6 +93,7 @@ namespace Alert_to_Care.Controller
             }
             catch(Exception e)
             {
+                
                 return NotFound();
             }
             

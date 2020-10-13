@@ -42,7 +42,7 @@ namespace Test_For_ICUConfig
         {
             Alert_to_care.tests.Repository.ICUConfigTestRepository iCUConfigTestRepository = new Alert_to_care.tests.Repository.ICUConfigTestRepository();
             var response = iCUConfigTestRepository.DeleteIcu(11);
-            Assert.AreEqual(true, response);
+            Assert.AreEqual(HttpStatusCode.OK, response);
         }
 
         [TestMethod]
@@ -58,7 +58,7 @@ namespace Test_For_ICUConfig
         {
             Alert_to_care.tests.Repository.OccupancyMgmtRepository occupancyMgmt = new Alert_to_care.tests.Repository.OccupancyMgmtRepository();
             var response = occupancyMgmt.GetAllPatient(1);
-            Assert.Equals(HttpStatusCode.OK, response.StatusCode);
+            Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
             Assert.AreEqual("ana", response.Data[0].name);
             Assert.AreEqual(7, response.Data[1].id);
         }
@@ -67,7 +67,7 @@ namespace Test_For_ICUConfig
         public void GetAllPatientWhenICUDoesntExist()
         {
             Alert_to_care.tests.Repository.OccupancyMgmtRepository occupancyMgmt = new Alert_to_care.tests.Repository.OccupancyMgmtRepository();
-            var response = occupancyMgmt.GetAllPatient(9);
+            var response = occupancyMgmt.GetAllPatient(139);
             Assert.AreEqual(HttpStatusCode.NotFound, response.StatusCode);
         }
 
@@ -76,7 +76,7 @@ namespace Test_For_ICUConfig
         {
             Alert_to_care.tests.Repository.OccupancyMgmtRepository occupancyMgmt = new Alert_to_care.tests.Repository.OccupancyMgmtRepository();
             var response = occupancyMgmt.GetPatientDetails(6);
-            Assert.Equals(HttpStatusCode.OK, response.StatusCode);
+            Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
             Assert.AreEqual("ana", response.Data.name);
             Assert.AreEqual("b+", response.Data.bloodGroup);
             
@@ -96,16 +96,16 @@ namespace Test_For_ICUConfig
         public void CheckIfPatientIsDeletedWhenExists()
         {
             Alert_to_care.tests.Repository.OccupancyMgmtRepository occupancyMgmt = new Alert_to_care.tests.Repository.OccupancyMgmtRepository();
-            var response = occupancyMgmt.DeletePatient(15);
-            Assert.AreEqual("Ok", response);
+            var response = occupancyMgmt.DeletePatient(7);
+            Assert.AreEqual(HttpStatusCode.OK, response);
         }
 
         [TestMethod]
         public void CheckIfPatientIsDeletedWhenDoesNotExists()
         {
             Alert_to_care.tests.Repository.OccupancyMgmtRepository occupancyMgmt = new Alert_to_care.tests.Repository.OccupancyMgmtRepository();
-            var response = occupancyMgmt.DeletePatient(115);
-            Assert.AreEqual("NotFound", response);
+            var response = occupancyMgmt.DeletePatient(8);
+            Assert.AreEqual(HttpStatusCode.NotFound, response);
         }
 
         [TestMethod]

@@ -124,10 +124,11 @@ namespace Alert_to_Care.Repository
             using var cmd = new SQLiteCommand(stm, con);
             using SQLiteDataReader rdr = cmd.ExecuteReader();
             Console.WriteLine("inside get");
-            PatientModel patientObject = new PatientModel();
+            PatientModel patientObject=null;
 
             while (rdr.Read())
             {
+                patientObject = new PatientModel();
                 Console.WriteLine("Hi");
                 patientObject.Id = (int)Convert.ToInt64(rdr["Id"]);
                 patientObject.Name = Convert.ToString(rdr["Name"]);
@@ -147,12 +148,13 @@ namespace Alert_to_Care.Repository
         {
             string stm;
           
-            stm = @"SELECT  COUNT(*) AS NumOfOccupants FROM patient Where IcuId=" + patientID;
+            stm = @"SELECT * FROM patient Where Id=" + patientID;
             using var cmi = new SQLiteCommand(stm, con);
             using SQLiteDataReader rdri = cmi.ExecuteReader();
-            int occupancy = (int)Convert.ToInt64(rdri["NumOfOccupants"]);
+            int occupancy = (int)Convert.ToInt64(rdri["Id"]);
+            Console.WriteLine(occupancy);
 
-            if (occupancy==0)
+            if (occupancy!=patientID)
                 throw new Exception();
 
                 
