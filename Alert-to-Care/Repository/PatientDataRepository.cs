@@ -59,54 +59,10 @@ namespace Alert_to_Care.Repository
 
         public bool AddNewPatient(int icuID, PatientDetailsInput patient)
         {
-            //Connecting to ICU table to check the capacity
-            string cs1 = @"URI=file:C:\Users\320107420\source\repos\Alert-to-Care\Alert-to-Care\ICU.db";
-            SQLiteConnection con1;
-            con1 = new SQLiteConnection(cs1, true);
-            con1.Open();
-            using var cmdICU = new SQLiteCommand(con1);
-            string stm = "SELECT * FROM ICU where Id=" + icuID;
-            using var cmd1 = new SQLiteCommand(stm, con1);
-            using SQLiteDataReader rdr1 = cmd1.ExecuteReader();
-            int occupancy = 0;
-            int capacityOfICU = 0;
-            if (rdr1.Read())
-            {
-                //Checking capacity is full or not
-                capacityOfICU = (int)Convert.ToInt64(rdr1["NumberOfBeds"]);
+            int occupancy = ReturnBedNumber(icuID);
 
-                stm = @"SELECT  COUNT(*) AS NumOfOccupants FROM patient Where IcuId=" + icuID;
-                using var cmi = new SQLiteCommand(stm, con);
-                using SQLiteDataReader rdri = cmi.ExecuteReader();
-                if(rdri.Read())
-                    occupancy = (int)Convert.ToInt64(rdri["NumOfOccupants"]);
-
-                if (occupancy >= capacityOfICU)
-                    return false;
-            }
-            else
-            {
+            if (occupancy == -1)
                 return false;
-            }
-            stm = @"SELECT  * FROM patient Where IcuId=" + icuID;
-            using var cm = new SQLiteCommand(stm, con);
-            using SQLiteDataReader rdr = cm.ExecuteReader();
-            Boolean[] beds = new Boolean[capacityOfICU+1];
-            int i = 1;
-            while (rdr.Read())
-            {
-                int pos = (int)Convert.ToInt64(rdr["BedNumber"]);
-                beds[pos] = true;
-            }
-            while (i <= capacityOfICU)
-            {
-                if(!beds[i])
-                {
-                    occupancy = i;
-                    break;
-                }
-                i++;
-            }
 
             using var cmd = new SQLiteCommand(con);
             cmd.CommandText = @"INSERT INTO Patient(Name,Age,BloodGroup,Address,BedNumber,IcuId) VALUES('" + patient.name + "','" + patient.age + "','" + patient.bloodGroup + "','" + patient.address + "','" + occupancy + "','" + icuID + "')";
@@ -160,6 +116,77 @@ namespace Alert_to_Care.Repository
             cmd.ExecuteNonQuery();
 
 
+        }
+
+        public int ReturnBedNumber(int icuID)
+        {
+            //Connecting to ICU table to check the capacity
+            int capacityOfICU = CapacityOfICU(icuID);
+
+            string stm = @"SELECT  COUNT(*) AS NumOfOccupants FROM patient Where IcuId=" + icuID;
+            using var cmi = new SQLiteCommand(stm, con);
+            using SQLiteDataReader rdri = cmi.ExecuteReader();
+            int occupancy = (int)Convert.ToInt64(rdri["NumOfOccupants"]);
+
+            if (occupancy >= capacityOfICU)
+                return -1;
+
+            return ProcessBedNumber(icuID,capacityOfICU);
+            
+        }
+
+        public int CapacityOfICU(int icuID)
+        {
+            string cs1 = @"URI=file:C:\Users\320107420\source\repos\Alert-to-Care\Alert-to-Care\ICU.db";
+            SQLiteConnection con1;
+            con1 = new SQLiteConnection(cs1, true);
+            con1.Open();
+            using var cmdICU = new SQLiteCommand(con1);
+            string stm = "SELECT * FROM ICU where Id=" + icuID;
+            using var cmd1 = new SQLiteCommand(stm, con1);
+            using SQLiteDataReader rdr1 = cmd1.ExecuteReader();
+            int occupancy = 0;
+            int capacityOfICU = 0;
+            if (!rdr1.Read())
+                return -1;
+
+            //Checking capacity is full or not
+            capacityOfICU = (int)Convert.ToInt64(rdr1["NumberOfBeds"]);
+            return capacityOfICU;
+        }
+
+        public int ProcessBedNumber(int icuID,int capacityOfICU)
+        {
+            string stm = @"SELECT  * FROM patient Where IcuId=" + icuID;
+            using var cm = new SQLiteCommand(stm, con);
+            using SQLiteDataReader rdr = cm.ExecuteReader();
+            Boolean[] beds = new Boolean[capacityOfICU + 1];
+           
+            
+            while (rdr.Read())
+            {
+                int pos = (int)Convert.ToInt64(rdr["BedNumber"]);
+                beds[pos] = true;
+            }
+           
+            return ProcessNumberHelper(capacityOfICU,beds);
+        }
+
+        public int ProcessNumberHelper(int capacityOfICU,Boolean[] beds)
+        {
+            int occupancy = 0;
+            int i = 1;
+            
+            while (i <= capacityOfICU)
+            {
+                if (!beds[i])
+                {
+                    occupancy = i;
+                    break;
+                }
+                i++;
+            }
+            return occupancy;
         }
     }
 }
