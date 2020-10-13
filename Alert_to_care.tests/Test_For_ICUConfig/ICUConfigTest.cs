@@ -8,40 +8,57 @@ namespace Test_For_ICUConfig
     public class ICUConfigTest
     {
         [TestMethod]
-        public void TestMethod0()
+        public void GetAllIcusWhenIcusArePresent()
         {
             Alert_to_care.tests.Repository.ICUConfigTestRepository iCUConfigTestRepository = new Alert_to_care.tests.Repository.ICUConfigTestRepository();
             var icu = iCUConfigTestRepository.GetAllICU();
-            Assert.AreEqual(1, icu[0].id);
-            Assert.AreEqual(10, icu[0].numberOfBeds);
-            Assert.AreEqual('H', icu[0].layout);
+            Assert.AreEqual(1, icu.Data[0].id);
+            Assert.AreEqual(10, icu.Data[0].numberOfBeds);
+            Assert.AreEqual('H', icu.Data[0].layout);
+            Assert.AreEqual(HttpStatusCode.OK, icu.StatusCode);
         }
-
+        
 
         [TestMethod]
-        public void TestMethod1()
+        public void WhenIdIsPresentThenStatusIsOk()
         {
             Alert_to_care.tests.Repository.ICUConfigTestRepository iCUConfigTestRepository = new Alert_to_care.tests.Repository.ICUConfigTestRepository();
             var icu = iCUConfigTestRepository.GetICU(1);
-            Assert.AreEqual(1, icu.id);
-            Assert.AreEqual(10, icu.numberOfBeds);
-            Assert.AreEqual('H', icu.layout);
-            
+            Assert.AreEqual(1, icu.Data.id);
+            Assert.AreEqual(10, icu.Data.numberOfBeds);
+            Assert.AreEqual('H', icu.Data.layout);
+            Assert.AreEqual(HttpStatusCode.OK, icu.StatusCode);
         }
 
         [TestMethod]
-        public void TestMethod2()
+        public void WhenIdIsPresentThenStatusIsNotFound()
+        {
+            Alert_to_care.tests.Repository.ICUConfigTestRepository iCUConfigTestRepository = new Alert_to_care.tests.Repository.ICUConfigTestRepository();
+            var icu = iCUConfigTestRepository.GetICU(22);
+            Assert.AreEqual(HttpStatusCode.NotFound, icu.StatusCode);
+        }
+
+        [TestMethod]
+        public void RegisterIcuWhenJsonFromBodyIsPosted()
         {
             Alert_to_care.tests.Repository.ICUConfigTestRepository iCUConfigTestRepository = new Alert_to_care.tests.Repository.ICUConfigTestRepository();
             var response = iCUConfigTestRepository.RegisterIcu();
-            Assert.AreEqual(true, response);
+            Assert.AreEqual(HttpStatusCode.OK, response);
             
         }
         [TestMethod]
-        public void TestMethod3()
+        public void DeleteIcuWhenIdIsPresentThenStatusOk()
         {
             Alert_to_care.tests.Repository.ICUConfigTestRepository iCUConfigTestRepository = new Alert_to_care.tests.Repository.ICUConfigTestRepository();
             var response = iCUConfigTestRepository.DeleteIcu(11);
+            Assert.AreEqual(HttpStatusCode.OK, response);
+        }
+
+        [TestMethod]
+        public void DeleteIcuWhenIdIsNotPresentThenStatusNotFound()
+        {
+            Alert_to_care.tests.Repository.ICUConfigTestRepository iCUConfigTestRepository = new Alert_to_care.tests.Repository.ICUConfigTestRepository();
+            var response = iCUConfigTestRepository.DeleteIcu(25);
             Assert.AreEqual(HttpStatusCode.OK, response);
         }
 
@@ -60,7 +77,7 @@ namespace Test_For_ICUConfig
             var response = occupancyMgmt.GetAllPatient(1);
             Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
             Assert.AreEqual("ana", response.Data[0].name);
-            Assert.AreEqual(7, response.Data[1].id);
+            Assert.AreEqual(6, response.Data[0].id);
         }
 
         [TestMethod]
@@ -101,7 +118,7 @@ namespace Test_For_ICUConfig
         }
 
         [TestMethod]
-        public void CheckIfPatientIsDeletedWhenDoesNotExists()
+        public void CheckIfPatientIsDeletedWhenDoesNotExist()
         {
             Alert_to_care.tests.Repository.OccupancyMgmtRepository occupancyMgmt = new Alert_to_care.tests.Repository.OccupancyMgmtRepository();
             var response = occupancyMgmt.DeletePatient(8);

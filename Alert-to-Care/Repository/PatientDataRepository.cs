@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Data.SQLite;
 using Models;
 
@@ -124,7 +122,7 @@ namespace Alert_to_Care.Repository
             using var cmd = new SQLiteCommand(stm, con);
             using SQLiteDataReader rdr = cmd.ExecuteReader();
             Console.WriteLine("inside get");
-            PatientModel patientObject=null;
+            PatientModel patientObject = null;
 
             while (rdr.Read())
             {
@@ -146,19 +144,17 @@ namespace Alert_to_Care.Repository
 
         public void DischargePatient(int patientID)
         {
-            string stm;
-          
-            stm = @"SELECT * FROM patient Where Id=" + patientID;
-            using var cmi = new SQLiteCommand(stm, con);
-            using SQLiteDataReader rdri = cmi.ExecuteReader();
-            int occupancy = (int)Convert.ToInt64(rdri["Id"]);
-            Console.WriteLine(occupancy);
-
-            if (occupancy!=patientID)
+            string com = @"SELECT COUNT(*) AS Count FROM Patient WHERE id=" + patientID;
+            using var check = new SQLiteCommand(com, con);
+            using SQLiteDataReader sQLiteDataReader = check.ExecuteReader();
+            var countOfIcu = 0;
+            if (sQLiteDataReader.Read())
+                countOfIcu = (int)Convert.ToInt64(sQLiteDataReader["Count"]);
+            if (countOfIcu == 0)
+            {
                 throw new Exception();
-
-                
-            stm = @"DELETE FROM patient WHERE Id=" + patientID;
+            }
+            string stm = @"DELETE FROM patient WHERE Id=" + patientID;
 
             using var cmd = new SQLiteCommand(stm, con);
             cmd.ExecuteNonQuery();

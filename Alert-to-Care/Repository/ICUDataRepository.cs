@@ -139,7 +139,7 @@ namespace Alert_to_Care.Repository
             if (sQLiteDataReader.Read())
                 countOfIcu = (int)Convert.ToInt64(sQLiteDataReader["Count"]);
             if (countOfIcu == 0) {
-                throw new System.SystemException();
+                throw new Exception();
             }
 
 

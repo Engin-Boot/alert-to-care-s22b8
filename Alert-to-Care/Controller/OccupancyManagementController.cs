@@ -75,13 +75,7 @@ namespace Alert_to_Care.Controller
 
         }
 
-        // PUT api/<OccupancyManagementController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] PatientModel patient)
-        {
-           
-        }
-
+        
         // DELETE api/<OccupancyManagementController>/5
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
@@ -91,7 +85,7 @@ namespace Alert_to_Care.Controller
                 patientRepo.DischargePatient(id);
                 return Ok();
             }
-            catch(Exception e)
+            catch(Exception)
             {
                 
                 return NotFound();

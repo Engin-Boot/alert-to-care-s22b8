@@ -2,8 +2,8 @@
 using Models;
 using Microsoft.AspNetCore.Mvc;
 using Alert_to_Care.Repository;
-using System.Data.SQLite;
 using System;
+
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -22,41 +22,56 @@ namespace Alert_to_Care.Controller
 
         // GET: api/<ICUConfigController>
         [HttpGet]
-        public List<ICUModel> Get()
+        public IActionResult Get()
         {
-            return icuDataRep.GetAllICU();
+            var allIcu = icuDataRep.GetAllICU();
+            if (allIcu == null)
+            {
+                return NotFound();
+            }
+            else { 
+                return Ok(allIcu);
+            }
         }
 
         //GET api/<ICUConfigController>/5
         [HttpGet("{id}")]
-        public ICUModel Get(int id)
+        public IActionResult Get(int id)
         {
-            return icuDataRep.ViewICU(id);
+            var icu = icuDataRep.ViewICU(id);
+            if (icu == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return Ok(icu);
+            }
         }
 
         //POST api/<ICUConfigController>
         [HttpPost("register")]
-        public void Post([FromBody] UserInput value)
+        public IActionResult Post([FromBody] UserInput value)
         {
             icuDataRep.RegisterNewICU(value);
+            return Ok();
         }
 
         // DELETE api/<ICUConfigController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult Delete(int id)
         {
             try
             {
                 icuDataRep.DeleteICU(id);
+                return Ok();
                 
             }
             catch (Exception)
             {
-                Console.WriteLine("this icu does not exist");
+                return NotFound();
             }
-        }
-
-        
+        }  
 
 
     }

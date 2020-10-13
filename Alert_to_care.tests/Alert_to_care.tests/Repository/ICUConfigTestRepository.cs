@@ -9,7 +9,7 @@ namespace Alert_to_care.tests.Repository
 {
     public class ICUConfigTestRepository
     {
-        public List<Models.ICUModel> GetAllICU()
+        public IRestResponse<List<Models.ICUModel>> GetAllICU()
         {
             var restClient = new RestClient("http://localhost:54384/api/");
 
@@ -17,10 +17,10 @@ namespace Alert_to_care.tests.Repository
 
 
             IRestResponse<List<Models.ICUModel>> response = restClient.Execute<List<Models.ICUModel>>(restRequest);
-            return response.Data;
+            return response;
         }
 
-        public Models.ICUModel GetICU(int id)
+        public IRestResponse<Models.ICUModel> GetICU(int id)
         {
             var restClient = new RestClient("http://localhost:54384/api/");
 
@@ -30,10 +30,10 @@ namespace Alert_to_care.tests.Repository
 
 
             IRestResponse<Models.ICUModel> response = restClient.Execute<Models.ICUModel>(restRequest);
-            return response.Data;
+            return response;
         }
 
-        public bool RegisterIcu() {
+        public HttpStatusCode RegisterIcu() {
             var restClient = new RestClient("http://localhost:54384/api/");
             var restRequest = new RestRequest("ICUConfig/register", Method.POST);
             Models.UserInput userInput = new Models.UserInput();
@@ -42,7 +42,7 @@ namespace Alert_to_care.tests.Repository
             restRequest.AddJsonBody(JsonConvert.SerializeObject(userInput));
 
             IRestResponse restResponse = restClient.Execute(restRequest);
-            return restResponse.IsSuccessful;
+            return restResponse.StatusCode;
         }
         public HttpStatusCode DeleteIcu(int id) {
             var restClient = new RestClient("http://localhost:54384/api/");
