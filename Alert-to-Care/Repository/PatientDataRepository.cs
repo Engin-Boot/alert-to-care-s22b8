@@ -126,6 +126,8 @@ namespace Alert_to_Care.Repository
             string stm = @"SELECT  COUNT(*) AS NumOfOccupants FROM patient Where IcuId=" + icuID;
             using var cmi = new SQLiteCommand(stm, con);
             using SQLiteDataReader rdri = cmi.ExecuteReader();
+            if (!rdri.Read())
+                return -1;
             int occupancy = (int)Convert.ToInt64(rdri["NumOfOccupants"]);
 
             if (occupancy >= capacityOfICU)
