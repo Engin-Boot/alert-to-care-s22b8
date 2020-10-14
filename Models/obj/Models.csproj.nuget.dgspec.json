@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\320105541\\OneDrive - Philips\\Desktop\\newBoot\\alert-to-care-s22b8\\Models\\Models.csproj": {}
+    "C:\\Users\\320105541\\OneDrive - Philips\\Desktop\\boot\\alert-to-care-s22b8\\Models\\Models.csproj": {}
   },
   "projects": {
-    "C:\\Users\\320105541\\OneDrive - Philips\\Desktop\\newBoot\\alert-to-care-s22b8\\Models\\Models.csproj": {
+    "C:\\Users\\320105541\\OneDrive - Philips\\Desktop\\boot\\alert-to-care-s22b8\\Models\\Models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\320105541\\OneDrive - Philips\\Desktop\\newBoot\\alert-to-care-s22b8\\Models\\Models.csproj",
+        "projectUniqueName": "C:\\Users\\320105541\\OneDrive - Philips\\Desktop\\boot\\alert-to-care-s22b8\\Models\\Models.csproj",
         "projectName": "Models",
-        "projectPath": "C:\\Users\\320105541\\OneDrive - Philips\\Desktop\\newBoot\\alert-to-care-s22b8\\Models\\Models.csproj",
+        "projectPath": "C:\\Users\\320105541\\OneDrive - Philips\\Desktop\\boot\\alert-to-care-s22b8\\Models\\Models.csproj",
         "packagesPath": "C:\\Users\\320105541\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\320105541\\OneDrive - Philips\\Desktop\\newBoot\\alert-to-care-s22b8\\Models\\obj\\",
+        "outputPath": "C:\\Users\\320105541\\OneDrive - Philips\\Desktop\\boot\\alert-to-care-s22b8\\Models\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"
