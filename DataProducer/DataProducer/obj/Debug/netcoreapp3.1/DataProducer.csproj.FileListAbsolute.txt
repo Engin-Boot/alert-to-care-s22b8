@@ -14,3 +14,19 @@ C:\Users\320105541\OneDrive - Philips\Desktop\boot\alert-to-care-s22b8\DataProdu
 C:\Users\320105541\OneDrive - Philips\Desktop\boot\alert-to-care-s22b8\DataProducer\DataProducer\obj\Debug\netcoreapp3.1\DataProducer.dll
 C:\Users\320105541\OneDrive - Philips\Desktop\boot\alert-to-care-s22b8\DataProducer\DataProducer\obj\Debug\netcoreapp3.1\DataProducer.pdb
 C:\Users\320105541\OneDrive - Philips\Desktop\boot\alert-to-care-s22b8\DataProducer\DataProducer\obj\Debug\netcoreapp3.1\DataProducer.genruntimeconfig.cache
+C:\Users\320107420\source\repos\Alert-to-Care\DataProducer\DataProducer\bin\Debug\netcoreapp3.1\DataProducer.exe
+C:\Users\320107420\source\repos\Alert-to-Care\DataProducer\DataProducer\bin\Debug\netcoreapp3.1\DataProducer.deps.json
+C:\Users\320107420\source\repos\Alert-to-Care\DataProducer\DataProducer\bin\Debug\netcoreapp3.1\DataProducer.runtimeconfig.json
+C:\Users\320107420\source\repos\Alert-to-Care\DataProducer\DataProducer\bin\Debug\netcoreapp3.1\DataProducer.runtimeconfig.dev.json
+C:\Users\320107420\source\repos\Alert-to-Care\DataProducer\DataProducer\bin\Debug\netcoreapp3.1\DataProducer.dll
+C:\Users\320107420\source\repos\Alert-to-Care\DataProducer\DataProducer\bin\Debug\netcoreapp3.1\DataProducer.pdb
+C:\Users\320107420\source\repos\Alert-to-Care\DataProducer\DataProducer\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\320107420\source\repos\Alert-to-Care\DataProducer\DataProducer\bin\Debug\netcoreapp3.1\RestSharp.dll
+C:\Users\320107420\source\repos\Alert-to-Care\DataProducer\DataProducer\obj\Debug\netcoreapp3.1\DataProducer.csprojAssemblyReference.cache
+C:\Users\320107420\source\repos\Alert-to-Care\DataProducer\DataProducer\obj\Debug\netcoreapp3.1\DataProducer.AssemblyInfoInputs.cache
+C:\Users\320107420\source\repos\Alert-to-Care\DataProducer\DataProducer\obj\Debug\netcoreapp3.1\DataProducer.AssemblyInfo.cs
+C:\Users\320107420\source\repos\Alert-to-Care\DataProducer\DataProducer\obj\Debug\netcoreapp3.1\DataProducer.csproj.CoreCompileInputs.cache
+C:\Users\320107420\source\repos\Alert-to-Care\DataProducer\DataProducer\obj\Debug\netcoreapp3.1\DataProducer.csproj.CopyComplete
+C:\Users\320107420\source\repos\Alert-to-Care\DataProducer\DataProducer\obj\Debug\netcoreapp3.1\DataProducer.dll
+C:\Users\320107420\source\repos\Alert-to-Care\DataProducer\DataProducer\obj\Debug\netcoreapp3.1\DataProducer.pdb
+C:\Users\320107420\source\repos\Alert-to-Care\DataProducer\DataProducer\obj\Debug\netcoreapp3.1\DataProducer.genruntimeconfig.cache
