@@ -30,20 +30,7 @@ namespace Alert_to_Care.Repository
             cmd.ExecuteNonQuery();
         }
 
-        public List<PatientModel> GetAllPatientsInTheICU(int id)
-        {
-            string stm = "SELECT * FROM Patient Where IcuId=" + id;
-
-            using var cmd = new SQLiteCommand(stm, con);
-            using SQLiteDataReader rdr = cmd.ExecuteReader();
-            Console.WriteLine("inside get");
-
-            List<PatientModel> listOfPatients = RetrievePatient(rdr);
-            
-            return listOfPatients;
-        }
-
-
+       
         public bool AddNewPatient(int icuID, PatientDetailsInput patient)
         {
             int occupancy = ReturnBedNumber(icuID);
@@ -68,11 +55,21 @@ namespace Alert_to_Care.Repository
 
             PatientModel patientObject = RetrievePatient(rdr)[0];
 
-            
-
             return patientObject;
         }
 
+        public List<PatientModel> GetAllPatientsInTheICU(int id)
+        {
+            string stm = "SELECT * FROM Patient Where IcuId=" + id;
+
+            using var cmd = new SQLiteCommand(stm, con);
+            using SQLiteDataReader rdr = cmd.ExecuteReader();
+            Console.WriteLine("inside get");
+
+            List<PatientModel> listOfPatients = RetrievePatient(rdr);
+
+            return listOfPatients;
+        }
 
         public void DischargePatient(int patientID)
         {
