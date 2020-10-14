@@ -2,7 +2,7 @@ name: Build And Run
 
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
   pull_request:
     branches: [ master ]
 
