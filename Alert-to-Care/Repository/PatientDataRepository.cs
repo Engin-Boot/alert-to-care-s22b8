@@ -38,22 +38,8 @@ namespace Alert_to_Care.Repository
             using SQLiteDataReader rdr = cmd.ExecuteReader();
             Console.WriteLine("inside get");
 
-            List<PatientModel> listOfPatients = new List<PatientModel>();
-            while (rdr.Read())
-            {
-                PatientModel patientObject = new PatientModel();
-                patientObject.Id = (int)Convert.ToInt64(rdr["Id"]);
-                patientObject.Name = Convert.ToString(rdr["Name"]);
-                patientObject.Age = (int)Convert.ToInt64(rdr["Age"]);
-                patientObject.BloodGroup = Convert.ToString(rdr["BloodGroup"]);
-                patientObject.Address = Convert.ToString(rdr["Address"]);
-                patientObject.BedNumber = (int)Convert.ToInt64(rdr["BedNumber"]);
-                patientObject.IcuId = (int)Convert.ToInt64(rdr["IcuId"]);
-
-
-                listOfPatients.Add(patientObject);
-            }
-
+            List<PatientModel> listOfPatients = RetrievePatient(rdr);
+            
             return listOfPatients;
         }
 
@@ -79,21 +65,10 @@ namespace Alert_to_Care.Repository
             using var cmd = new SQLiteCommand(stm, con);
             using SQLiteDataReader rdr = cmd.ExecuteReader();
             Console.WriteLine("inside get");
-            PatientModel patientObject = null;
 
-            while (rdr.Read())
-            {
-                patientObject = new PatientModel();
-                Console.WriteLine("Hi");
-                patientObject.Id = (int)Convert.ToInt64(rdr["Id"]);
-                patientObject.Name = Convert.ToString(rdr["Name"]);
-                patientObject.Age = (int)Convert.ToInt64(rdr["Age"]);
-                patientObject.BloodGroup = Convert.ToString(rdr["BloodGroup"]);
-                patientObject.Address = Convert.ToString(rdr["Address"]);
-                patientObject.BedNumber = (int)Convert.ToInt64(rdr["BedNumber"]);
-                patientObject.IcuId = (int)Convert.ToInt64(rdr["IcuId"]);
+            PatientModel patientObject = RetrievePatient(rdr)[0];
 
-            }
+            
 
             return patientObject;
         }
@@ -207,6 +182,26 @@ namespace Alert_to_Care.Repository
             {
                 con1.Close();
             }
+        }
+
+        public List<PatientModel> RetrievePatient(SQLiteDataReader rdr)
+        {
+            List<PatientModel> list = null;
+            while (rdr.Read())
+            {
+
+                PatientModel patientObject = new PatientModel();
+                patientObject.Id = (int)Convert.ToInt64(rdr["Id"]);
+                patientObject.Name = Convert.ToString(rdr["Name"]);
+                patientObject.Age = (int)Convert.ToInt64(rdr["Age"]);
+                patientObject.BloodGroup = Convert.ToString(rdr["BloodGroup"]);
+                patientObject.Address = Convert.ToString(rdr["Address"]);
+                patientObject.BedNumber = (int)Convert.ToInt64(rdr["BedNumber"]);
+                patientObject.IcuId = (int)Convert.ToInt64(rdr["IcuId"]);
+                list.Add(patientObject);
+
+            }
+            return list;
         }
     }
 }
