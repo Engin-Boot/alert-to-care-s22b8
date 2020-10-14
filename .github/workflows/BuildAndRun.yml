@@ -8,14 +8,17 @@ jobs:
   build:
  
     runs-on: windows-latest
- 
-    steps:
-    - uses: actions/checkout@v1
+    env:
+     Solution_Name: Alert-to-Care.sln 
+   steps:
+    - uses: actions/checkout@v2
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 3.1.100
-    - name: Build with dotnet
-      run: dotnet build --configuration Release
-    - name: Run unit tests
-      run: dotnet test --no-build --configuration Release
+        dotnet-version: 3.1.301
+    - name: Install dependencies
+      run: dotnet restore
+    - name: Build
+      run: dotnet build --configuration Release --no-restore
+    - name: Test
+      run: dotnet test --no-restore --verbosity normal
