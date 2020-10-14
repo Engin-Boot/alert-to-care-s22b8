@@ -12,9 +12,7 @@ namespace Alert_to_Care.Repository
         SQLiteConnection con;
 
 
-         //List<ICUModel> listOfICU = new List<ICUModel>();
-       
-        //static int ICUId = 0;
+         
 
         public ICUDataRepository()
         {
@@ -27,27 +25,6 @@ namespace Alert_to_Care.Repository
               NumberOfBeds INTEGER NOT NULL,
               Layout CHAR(2) NOT NULL)";
             cmd.ExecuteNonQuery();
-
-            //cmd.CommandText = @"CREATE TABLE IF NOT EXISTS RLATIONS(
-            //    IcuId   INTEGER NOT NULL,
-            //    BedId   INTEGER NOT NULL,
-            //    EmpId   INTEGER NOT NULL,
-            //    PRIMARY KEY (IcuId, BedId)
-            //)";
-            //cmd.ExecuteNonQuery();
-            //
-            //RegisterNewICU(new UserInput
-            //{
-            //    NumberOfBeds = 4,
-            //    Layout = 'H'
-            //});
-
-            //RegisterNewICU(new UserInput
-            //{
-            //    NumberOfBeds = 6, 
-            //    Layout = 'L'
-            //});
-
 
         }
 
@@ -75,29 +52,14 @@ namespace Alert_to_Care.Repository
         }
 
 
-        public void RegisterNewICU(UserInput userInput) {
-            //{
-            //    ICUModel newICU = new ICUModel();
-
-
-            //    newICU.id = ICUId++;
-            //    newICU.Beds = new Bed[userInput.NumberOfBeds];
-            //    newICU.NumberOfBeds = userInput.NumberOfBeds;
-            //    newICU.Layout = userInput.Layout;
-
-
-            //    for (int i = 0; i < newICU.Beds.Length; i++)
-            //    {
-            //        newICU.Beds[i] = new Bed();
-            //        newICU.Beds[i].id = "ICU:" + newICU.id + "|Bed:" + i;
-            //        newICU.Beds[i].isOccupied = false;
-            //    }
-            //    listOfICU.Add(newICU);
+        public void RegisterNewICU(UserInput userInput)
+        {
+            
 
             using var cmd = new SQLiteCommand(con);
             cmd.CommandText = @"INSERT INTO ICU(NumberOfBeds, Layout) VALUES('" + userInput.NumberOfBeds + "','" + userInput.Layout + "')";
             cmd.ExecuteNonQuery();
-  } 
+        } 
         public ICUModel ViewICU(int id)
         {
    
@@ -119,7 +81,7 @@ namespace Alert_to_Care.Repository
                     
             
             return iCUModel;
-    }
+        }
 
         public void DeleteICU(int id)
         {

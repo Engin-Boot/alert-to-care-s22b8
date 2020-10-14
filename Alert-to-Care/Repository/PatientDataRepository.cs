@@ -147,7 +147,7 @@ namespace Alert_to_Care.Repository
             string stm = "SELECT * FROM ICU where Id=" + icuID;
             using var cmd1 = new SQLiteCommand(stm, con1);
             using SQLiteDataReader rdr1 = cmd1.ExecuteReader();
-            int occupancy = 0;
+          
             int capacityOfICU = 0;
             if (!rdr1.Read())
                 return -1;
