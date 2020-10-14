@@ -13,25 +13,23 @@ namespace DataProducer
         {
             using (var reader = new StreamReader(@"C:\Users\320105541\OneDrive - Philips\Desktop\boot\alert-to-care-s22b8\DataProducer\vitalData.csv"))
             {
+                reader.ReadLine();
 
-                int i = 0;
+                
                 while (!reader.EndOfStream)
                 {
-                    if (i == 0) {
-                        i++;
-                        reader.ReadLine();
-                        continue;
-                    }
                     List<PatientVitals> li = new List<PatientVitals>();
                     for (int j = 0; j < 3; j++) {
                         var line = reader.ReadLine();
                         var values = line.Split(',');
                         PatientVitals patientVitals = new PatientVitals();
                         patientVitals.Id = int.Parse(values[0]);
-                        patientVitals.Vitals = new List<int>();
-                        patientVitals.Vitals.Add(int.Parse(values[1]));
-                        patientVitals.Vitals.Add(int.Parse(values[2]));
-                        patientVitals.Vitals.Add(int.Parse(values[3]));
+                        patientVitals.Vitals = new List<int>
+                        {
+                            int.Parse(values[1]),
+                            int.Parse(values[2]),
+                            int.Parse(values[3])
+                        };
                         li.Add(patientVitals);
                     }
                     var restClient = new RestClient("http://localhost:54384/api/");

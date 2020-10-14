@@ -23,9 +23,9 @@ namespace Alert_to_Care.Controller
 
         // POST api/<VitalsAlertController>
         [HttpPost]
-        public bool Post([FromBody] List<PatientVitals> allPatientVitals)
+        public void Post([FromBody] List<PatientVitals> allPatientVitals)
         {
-           return vitalsChecker.CheckVitals(allPatientVitals);
+           vitalsChecker.CheckVitals(allPatientVitals);
         }
 
        

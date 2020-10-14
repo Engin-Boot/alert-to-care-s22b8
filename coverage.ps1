@@ -1,4 +1,4 @@
-param($linerate)
+﻿param($linerate)
 
 function WriteXmlToScreen ([xml]$xml)
 {

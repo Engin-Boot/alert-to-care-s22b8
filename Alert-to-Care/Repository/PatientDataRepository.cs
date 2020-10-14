@@ -9,7 +9,7 @@ namespace Alert_to_Care.Repository
     public class PatientDataRepository : IPatientData
     {
 
-        string cs = @"URI=file:C:\Users\320107420\source\repos\Alert-to-Care\Alert-to-Care\Patient.db";
+        string cs = @"URI=file:C:\Users\320105541\OneDrive - Philips\Desktop\newBoot\alert-to-care-s22b8\Alert-to-Care\Patient.db";
         SQLiteConnection con;
 
         public PatientDataRepository()
@@ -150,7 +150,7 @@ namespace Alert_to_Care.Repository
 
         public int CapacityOfICU(int icuID)
         {
-            string cs1 = @"URI=file:C:\Users\320107420\source\repos\Alert-to-Care\Alert-to-Care\ICU.db";
+            string cs1 = @"URI=file:C:\Users\320105541\OneDrive - Philips\Desktop\newBoot\alert-to-care-s22b8\Alert-to-Care\ICU.db";
             SQLiteConnection con1;
             con1 = new SQLiteConnection(cs1, true);
 
@@ -169,7 +169,7 @@ namespace Alert_to_Care.Repository
             string stm = "SELECT * FROM ICU where Id=" + icuID;
             using var cmd1 = new SQLiteCommand(stm, con1);
             using SQLiteDataReader rdr1 = cmd1.ExecuteReader();
-            int occupancy = 0;
+          
             int capacityOfICU = 0;
             if (!rdr1.Read())
                 return -1;

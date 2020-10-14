@@ -9,7 +9,7 @@ namespace Alert_to_Care.Repository
 {
     public class ICUDataRepository :IICUData
     {
-        string cs = @"URI=file:C:\Users\320107420\source\repos\Alert-to-Care\Alert-to-Care\ICU.db";
+        string cs = @"URI=file:C:\Users\320105541\OneDrive - Philips\Desktop\newBoot\alert-to-care-s22b8\Alert-to-Care\ICU.db";
         SQLiteConnection con;
 
         public ICUDataRepository()
@@ -60,36 +60,34 @@ namespace Alert_to_Care.Repository
             return listOfIcu;
         }
 
-
         public void RegisterNewICU(UserInput userInput) {
            
             using var cmd = new SQLiteCommand(con);
             cmd.CommandText = @"INSERT INTO ICU(NumberOfBeds, Layout) VALUES('" + userInput.NumberOfBeds + "','" + userInput.Layout + "')";
             cmd.ExecuteNonQuery();
   } 
-        public Models.ICUModel ViewICU(int id)
+       
+        public ICUModel ViewICU(int id)
         {
-    
-        string stm = @"SELECT * FROM ICU WHERE id=" + id;
+   
+            string stm = @"SELECT * FROM ICU WHERE Id=" + id;
 
-        using var cmd = new SQLiteCommand(stm, con);
-        using SQLiteDataReader rdr = cmd.ExecuteReader();
+            using var cmd = new SQLiteCommand(stm, con);
+            using SQLiteDataReader rdr = cmd.ExecuteReader();
 
-            if (rdr == null)
-                return null;
+            if (!rdr.Read())
+                throw new Exception();
 
-        ICUModel iCUModel = new ICUModel();
+            ICUModel iCUModel = new ICUModel();
             
-            while (rdr.Read())
-        {
-                iCUModel.id = (int)Convert.ToInt64(rdr["Id"]);
-                iCUModel.NumberOfBeds = (int)Convert.ToInt64(rdr["NumberOfBeds"]);
-                iCUModel.Layout =Convert.ToChar(rdr["Layout"]);
+            iCUModel.id = (int)Convert.ToInt64(rdr["Id"]);
+            iCUModel.NumberOfBeds = (int)Convert.ToInt64(rdr["NumberOfBeds"]);
+            iCUModel.Layout =Convert.ToChar(rdr["Layout"]);
 
-                Console.WriteLine($"{iCUModel.id} {iCUModel.NumberOfBeds} {iCUModel.Layout}");
-        }
+                    
+            
             return iCUModel;
-    }
+        }
 
         public void DeleteICU(int id)
         {
@@ -109,7 +107,7 @@ namespace Alert_to_Care.Repository
             using var cmd = new SQLiteCommand(stm, con);
             cmd.ExecuteNonQuery();
 
-            string cs2 = @"URI=file:C:\Users\320107420\source\repos\Alert-to-Care\Alert-to-Care\Patient.db";
+            string cs2 = @"URI=file:C:\Users\320105541\OneDrive - Philips\Desktop\newBoot\alert-to-care-s22b8\Alert-to-Care\Patient.db";
             SQLiteConnection con2 = new SQLiteConnection(cs2, true);
 
             try

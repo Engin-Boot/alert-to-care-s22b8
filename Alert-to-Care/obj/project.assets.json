@@ -1297,7 +1297,7 @@
       "Microsoft.EntityFrameworkCore.Sqlite >= 3.1.8",
       "Microsoft.EntityFrameworkCore.Tools >= 3.1.8",
       "Models >= 1.0.0",
-      "System.Data.SQLite.Core >= 1.0.113.1"
+      "System.Data.SQLite.Core >= *"
     ]
   },
   "packageFolders": {
@@ -1353,7 +1353,7 @@
           },
           "System.Data.SQLite.Core": {
             "target": "Package",
-            "version": "[1.0.113.1, )"
+            "version": "[*, )"
           }
         },
         "imports": [

@@ -54,7 +54,7 @@
             },
             "System.Data.SQLite.Core": {
               "target": "Package",
-              "version": "[1.0.113.1, )"
+              "version": "[*, )"
             }
           },
           "imports": [
