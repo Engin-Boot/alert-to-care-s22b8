@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
+using System.IO;
 using Models;
 
 namespace Alert_to_Care.Repository
@@ -14,7 +15,17 @@ namespace Alert_to_Care.Repository
         public PatientDataRepository()
         {
             con = new SQLiteConnection(cs, true);
-            con.Open();
+            
+            try
+            {
+                if (con.OpenAndReturn() == null)
+                    throw new FileNotFoundException();
+                
+            }
+            catch(FileNotFoundException e)
+            {
+                con.Close();
+            }
             using var cmd = new SQLiteCommand(con);
 
             cmd.CommandText = @"CREATE TABLE IF NOT EXISTS Patient
@@ -142,7 +153,18 @@ namespace Alert_to_Care.Repository
             string cs1 = @"URI=file:C:\Users\320107420\source\repos\Alert-to-Care\Alert-to-Care\ICU.db";
             SQLiteConnection con1;
             con1 = new SQLiteConnection(cs1, true);
-            con1.Open();
+
+            try
+            {
+                if (con1.OpenAndReturn() == null)
+                    throw new FileNotFoundException();
+
+            }
+            catch (FileNotFoundException e)
+            {
+                con1.Close();
+            }
+
             using var cmdICU = new SQLiteCommand(con1);
             string stm = "SELECT * FROM ICU where Id=" + icuID;
             using var cmd1 = new SQLiteCommand(stm, con1);
