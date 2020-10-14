@@ -7,7 +7,7 @@ using System.Data.SQLite;
 
 namespace Alert_to_Care.Repository
 {
-    public class ICUDataRepository :IICUData
+    public class ICUDataRepository :CommonFunctionality,IICUData
     {
         string cs = @"URI=file:C:\Users\320105541\OneDrive - Philips\Desktop\newBoot\alert-to-care-s22b8\Alert-to-Care\ICU.db";
         SQLiteConnection con=null;
@@ -81,14 +81,8 @@ namespace Alert_to_Care.Repository
         public void DeleteICU(int id)
         {
             string com = @"SELECT COUNT(*) AS Count FROM ICU WHERE id=" + id;
-            using var check = new SQLiteCommand(com, con);
-            using SQLiteDataReader sQLiteDataReader = check.ExecuteReader();
-            var countOfIcu = 0;
-            if (sQLiteDataReader.Read())
-                countOfIcu = (int)Convert.ToInt64(sQLiteDataReader["Count"]);
-            if (countOfIcu == 0) {
-                throw new Exception();
-            }
+
+            var countOfICU = CheckIfICUExists(com, com);
 
 
             string stm = @"DELETE FROM ICU WHERE id=" + id;
@@ -107,21 +101,7 @@ namespace Alert_to_Care.Repository
 
         }
 
-        public void OpenFile(String cs1, SQLiteConnection con1)
-        {
-            con1 = new SQLiteConnection(cs1, true);
-
-            try
-            {
-                if (con1.OpenAndReturn() == null)
-                    throw new FileNotFoundException();
-
-            }
-            catch (FileNotFoundException e)
-            {
-                con1.Close();
-            }
-        }
+        
 
 
     }

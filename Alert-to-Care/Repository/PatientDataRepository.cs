@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.Data.SQLite;
 using System.IO;
 using Models;
-
 namespace Alert_to_Care.Repository
 {
-    public class PatientDataRepository : IPatientData
+    public class PatientDataRepository : CommonFunctionality,IPatientData
     {
 
         string cs = @"URI=file:C:\Users\320105541\OneDrive - Philips\Desktop\newBoot\alert-to-care-s22b8\Alert-to-Care\Patient.db";
@@ -74,15 +73,9 @@ namespace Alert_to_Care.Repository
         public void DischargePatient(int patientID)
         {
             string com = @"SELECT COUNT(*) AS Count FROM Patient WHERE id=" + patientID;
-            using var check = new SQLiteCommand(com, con);
-            using SQLiteDataReader sQLiteDataReader = check.ExecuteReader();
-            var countOfIcu = 0;
-            if (sQLiteDataReader.Read())
-                countOfIcu = (int)Convert.ToInt64(sQLiteDataReader["Count"]);
-            if (countOfIcu == 0)
-            {
-                throw new Exception();
-            }
+
+            var countOfIcu = CheckIfICUExists(com, con);
+
             string stm = @"DELETE FROM patient WHERE Id=" + patientID;
 
             using var cmd = new SQLiteCommand(stm, con);
@@ -163,22 +156,6 @@ namespace Alert_to_Care.Repository
                 i++;
             }
             return occupancy;
-        }
-
-        public void OpenFile(String cs1,SQLiteConnection con1)
-        {
-            con1 = new SQLiteConnection(cs1, true);
-
-            try
-            {
-                if (con1.OpenAndReturn() == null)
-                    throw new FileNotFoundException();
-
-            }
-            catch (FileNotFoundException e)
-            {
-                con1.Close();
-            }
         }
 
         public List<PatientModel> RetrievePatient(SQLiteDataReader rdr)
