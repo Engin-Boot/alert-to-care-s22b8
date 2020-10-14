@@ -31,10 +31,10 @@ namespace Test_For_ICUConfig
         }
 
         [TestMethod]
-        public void WhenIdIsPresentThenStatusIsNotFound()
+        public void WhenIcuIdIsNotPresentThenStatusIsNotFound()
         {
             Alert_to_care.tests.Repository.ICUConfigTestRepository iCUConfigTestRepository = new Alert_to_care.tests.Repository.ICUConfigTestRepository();
-            var icu = iCUConfigTestRepository.GetICU(22);
+            var icu = iCUConfigTestRepository.GetICU(172);
             Assert.AreEqual(HttpStatusCode.NotFound, icu.StatusCode);
         }
 
@@ -50,7 +50,7 @@ namespace Test_For_ICUConfig
         public void DeleteIcuWhenIdIsPresentThenStatusOk()
         {
             Alert_to_care.tests.Repository.ICUConfigTestRepository iCUConfigTestRepository = new Alert_to_care.tests.Repository.ICUConfigTestRepository();
-            var response = iCUConfigTestRepository.DeleteIcu(11);
+            var response = iCUConfigTestRepository.DeleteIcu(72);
             Assert.AreEqual(HttpStatusCode.OK, response);
         }
 
@@ -58,8 +58,8 @@ namespace Test_For_ICUConfig
         public void DeleteIcuWhenIdIsNotPresentThenStatusNotFound()
         {
             Alert_to_care.tests.Repository.ICUConfigTestRepository iCUConfigTestRepository = new Alert_to_care.tests.Repository.ICUConfigTestRepository();
-            var response = iCUConfigTestRepository.DeleteIcu(25);
-            Assert.AreEqual(HttpStatusCode.OK, response);
+            var response = iCUConfigTestRepository.DeleteIcu(125);
+            Assert.AreEqual(HttpStatusCode.NotFound, response);
         }
 
         [TestMethod]
@@ -67,7 +67,7 @@ namespace Test_For_ICUConfig
         {
             Alert_to_care.tests.Repository.OccupancyMgmtRepository occupancyMgmt = new Alert_to_care.tests.Repository.OccupancyMgmtRepository();
             var response = occupancyMgmt.AddPatient(1);
-            Assert.AreEqual(System.Net.HttpStatusCode.NotFound, response);
+            Assert.AreEqual(HttpStatusCode.NotFound, response);
         }
 
         [TestMethod]
@@ -113,7 +113,7 @@ namespace Test_For_ICUConfig
         public void CheckIfPatientIsDeletedWhenExists()
         {
             Alert_to_care.tests.Repository.OccupancyMgmtRepository occupancyMgmt = new Alert_to_care.tests.Repository.OccupancyMgmtRepository();
-            var response = occupancyMgmt.DeletePatient(7);
+            var response = occupancyMgmt.DeletePatient(23);
             Assert.AreEqual(HttpStatusCode.OK, response);
         }
 

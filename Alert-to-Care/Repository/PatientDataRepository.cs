@@ -8,7 +8,7 @@ namespace Alert_to_Care.Repository
     public class PatientDataRepository : IPatientData
     {
 
-        string cs = @"URI=file:C:\Users\320107420\source\repos\Alert-to-Care\Alert-to-Care\Patient.db";
+        string cs = @"URI=file:C:\Users\320105541\OneDrive - Philips\Desktop\newBoot\alert-to-care-s22b8\Alert-to-Care\Patient.db";
         SQLiteConnection con;
 
         public PatientDataRepository()
@@ -126,6 +126,8 @@ namespace Alert_to_Care.Repository
             string stm = @"SELECT  COUNT(*) AS NumOfOccupants FROM patient Where IcuId=" + icuID;
             using var cmi = new SQLiteCommand(stm, con);
             using SQLiteDataReader rdri = cmi.ExecuteReader();
+            if (!rdri.Read())
+                return -1;
             int occupancy = (int)Convert.ToInt64(rdri["NumOfOccupants"]);
 
             if (occupancy >= capacityOfICU)
@@ -137,7 +139,7 @@ namespace Alert_to_Care.Repository
 
         public int CapacityOfICU(int icuID)
         {
-            string cs1 = @"URI=file:C:\Users\320107420\source\repos\Alert-to-Care\Alert-to-Care\ICU.db";
+            string cs1 = @"URI=file:C:\Users\320105541\OneDrive - Philips\Desktop\newBoot\alert-to-care-s22b8\Alert-to-Care\ICU.db";
             SQLiteConnection con1;
             con1 = new SQLiteConnection(cs1, true);
             con1.Open();
