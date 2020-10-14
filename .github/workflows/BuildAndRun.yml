@@ -1,16 +1,18 @@
-name: Build and Run
- 
-on: 
-    push:
-        branches: [master]
- 
+name: Build And Run
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ master ]
+
 jobs:
   build:
- 
-    runs-on: windows-latest
+
+    runs-on: ubuntu-latest
     env:
      Solution_Name: Alert-to-Care.sln 
-   steps:
+    steps:
     - uses: actions/checkout@v2
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
