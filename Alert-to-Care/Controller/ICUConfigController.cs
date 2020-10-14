@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿
 using Models;
 using Microsoft.AspNetCore.Mvc;
 using Alert_to_Care.Repository;
