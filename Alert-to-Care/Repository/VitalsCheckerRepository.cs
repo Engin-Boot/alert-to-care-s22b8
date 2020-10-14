@@ -1,5 +1,4 @@
 ﻿using Models;
-using System;
 using System.Collections.Generic;
 
 namespace Alert_to_Care.Repository
@@ -21,31 +20,45 @@ namespace Alert_to_Care.Repository
             upperLimit.Add(95);
             lowerLimit.Add(30);
         }
-        public bool CheckVitals(List<PatientVitals> patientVitals)
-        {
-            int fl = 0;
-            for (int i = 0; i < patientVitals.Count; i++) {
-                if (patientVitals[i].Vitals[0] < lowerLimit[0] || patientVitals[i].Vitals[0] > upperLimit[0]) {
-                    alerter.Alert($"{patientVitals[i].Id} crossed threshold of BPM ");
-                    fl--;
-                }
-                if (patientVitals[i].Vitals[1] < lowerLimit[1] || patientVitals[i].Vitals[1] > upperLimit[1])
-                {
-                    alerter.Alert($"{patientVitals[i].Id} crossed threshold of sop2 ");
-                    fl--;
-                }
-                if (patientVitals[i].Vitals[2] < lowerLimit[2] || patientVitals[i].Vitals[2] > upperLimit[2])
-                {
-                    alerter.Alert($"{patientVitals[i].Id} crossed threshold of resp rate");
-                    fl--;
-                }
 
+        public void AlertForBPM(int upperLimit, int lowerLimit, int value, List<PatientVitals> patientVitals, int i)
+        {
+            if (value < lowerLimit || value > upperLimit)
+            {
+                alerter.Alert($"{patientVitals[i].Id} crossed threshold of BPM ");
+            }
+        }
+
+        public void AlertForSpo2(int upperLimit, int lowerLimit, int value, List<PatientVitals> patientVitals, int i)
+        {
+            if (value < lowerLimit || value > upperLimit)
+            {
+                alerter.Alert($"{patientVitals[i].Id} crossed threshold of Spo2 ");
+            }
+        }
+
+        public void AlertForRR(int upperLimit, int lowerLimit, int value, List<PatientVitals> patientVitals, int i)
+        {
+            if (value < lowerLimit || value > upperLimit)
+            {
+                alerter.Alert($"{patientVitals[i].Id} crossed threshold of resp rate ");
+            }
+        }
+        public void CheckVitals(List<PatientVitals> patientVitals)
+        {
+            for (int i = 0; i < patientVitals.Count; i++) {
+                
+                AlertForBPM(upperLimit[0], lowerLimit[0], patientVitals[i].Vitals[0], patientVitals, i);
+                
+                AlertForSpo2(upperLimit[1], lowerLimit[1], patientVitals[i].Vitals[1], patientVitals, i);
+                
+                AlertForRR(upperLimit[2], lowerLimit[2], patientVitals[i].Vitals[2], patientVitals, i);
                 
             }
-            if (fl == 0)
-                return true;
-            return false;
+            
         }
+
+        
 
     }
 }
