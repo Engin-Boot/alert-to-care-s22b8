@@ -78,20 +78,25 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\320107420\\.nuget\\packages\\": {}
+    "C:\\Users\\320105541\\.nuget\\packages\\": {},
+    "C:\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\320107420\\source\\repos\\Alert-to-Care\\DataProducer\\DataProducer\\DataProducer.csproj",
+      "projectUniqueName": "C:\\Users\\320105541\\OneDrive - Philips\\Documents\\boot\\alert-to-care-s22b8\\DataProducer\\DataProducer\\DataProducer.csproj",
       "projectName": "DataProducer",
-      "projectPath": "C:\\Users\\320107420\\source\\repos\\Alert-to-Care\\DataProducer\\DataProducer\\DataProducer.csproj",
-      "packagesPath": "C:\\Users\\320107420\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\320107420\\source\\repos\\Alert-to-Care\\DataProducer\\DataProducer\\obj\\",
+      "projectPath": "C:\\Users\\320105541\\OneDrive - Philips\\Documents\\boot\\alert-to-care-s22b8\\DataProducer\\DataProducer\\DataProducer.csproj",
+      "packagesPath": "C:\\Users\\320105541\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\320105541\\OneDrive - Philips\\Documents\\boot\\alert-to-care-s22b8\\DataProducer\\DataProducer\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Microsoft\\Xamarin\\NuGet\\"
+      ],
       "configFilePaths": [
-        "C:\\Users\\320107420\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\320105541\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
