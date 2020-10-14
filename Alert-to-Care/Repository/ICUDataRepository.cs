@@ -82,7 +82,7 @@ namespace Alert_to_Care.Repository
         {
             string com = @"SELECT COUNT(*) AS Count FROM ICU WHERE id=" + id;
 
-            var countOfICU = CheckIfICUExists(com, com);
+            var countOfICU = CheckIfICUExists(com, con);
 
 
             string stm = @"DELETE FROM ICU WHERE id=" + id;
