@@ -10,22 +10,11 @@ namespace Alert_to_Care.Repository
     public class ICUDataRepository :IICUData
     {
         string cs = @"URI=file:C:\Users\320105541\OneDrive - Philips\Desktop\newBoot\alert-to-care-s22b8\Alert-to-Care\ICU.db";
-        SQLiteConnection con;
+        SQLiteConnection con=null;
 
         public ICUDataRepository()
         {
-            con = new SQLiteConnection(cs,true);
-
-            try
-            {
-                if (con.OpenAndReturn() == null)
-                    throw new FileNotFoundException();
-
-            }
-            catch (FileNotFoundException e)
-            {
-                con.Close();
-            }
+            OpenFile(cs, con);
 
             using var cmd = new SQLiteCommand(con);
 
@@ -108,18 +97,9 @@ namespace Alert_to_Care.Repository
             cmd.ExecuteNonQuery();
 
             string cs2 = @"URI=file:C:\Users\320105541\OneDrive - Philips\Desktop\newBoot\alert-to-care-s22b8\Alert-to-Care\Patient.db";
-            SQLiteConnection con2 = new SQLiteConnection(cs2, true);
+            SQLiteConnection con2 = null;
 
-            try
-            {
-                if (con2.OpenAndReturn() == null)
-                    throw new FileNotFoundException();
-
-            }
-            catch (FileNotFoundException e)
-            {
-                con2.Close();
-            }
+            OpenFile(cs2, con2);
 
             string stm2 = @"DELETE FROM Patient where IcuId=" + id;
             using var cmd2 = new SQLiteCommand(stm2, con2);
@@ -127,7 +107,21 @@ namespace Alert_to_Care.Repository
 
         }
 
-       
+        public void OpenFile(String cs1, SQLiteConnection con1)
+        {
+            con1 = new SQLiteConnection(cs1, true);
+
+            try
+            {
+                if (con1.OpenAndReturn() == null)
+                    throw new FileNotFoundException();
+
+            }
+            catch (FileNotFoundException e)
+            {
+                con1.Close();
+            }
+        }
 
 
     }
