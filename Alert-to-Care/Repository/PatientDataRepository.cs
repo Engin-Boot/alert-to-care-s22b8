@@ -10,22 +10,12 @@ namespace Alert_to_Care.Repository
     {
 
         string cs = @"URI=file:C:\Users\320105541\OneDrive - Philips\Desktop\newBoot\alert-to-care-s22b8\Alert-to-Care\Patient.db";
-        SQLiteConnection con;
+        SQLiteConnection con=null;
 
         public PatientDataRepository()
         {
-            con = new SQLiteConnection(cs, true);
-            
-            try
-            {
-                if (con.OpenAndReturn() == null)
-                    throw new FileNotFoundException();
-                
-            }
-            catch(FileNotFoundException e)
-            {
-                con.Close();
-            }
+            OpenFile(cs, con);
+
             using var cmd = new SQLiteCommand(con);
 
             cmd.CommandText = @"CREATE TABLE IF NOT EXISTS Patient
@@ -151,19 +141,9 @@ namespace Alert_to_Care.Repository
         public int CapacityOfICU(int icuID)
         {
             string cs1 = @"URI=file:C:\Users\320105541\OneDrive - Philips\Desktop\newBoot\alert-to-care-s22b8\Alert-to-Care\ICU.db";
-            SQLiteConnection con1;
-            con1 = new SQLiteConnection(cs1, true);
+            SQLiteConnection con1=null;
 
-            try
-            {
-                if (con1.OpenAndReturn() == null)
-                    throw new FileNotFoundException();
-
-            }
-            catch (FileNotFoundException e)
-            {
-                con1.Close();
-            }
+            OpenFile(cs1, con1);
 
             using var cmdICU = new SQLiteCommand(con1);
             string stm = "SELECT * FROM ICU where Id=" + icuID;
@@ -211,6 +191,22 @@ namespace Alert_to_Care.Repository
                 i++;
             }
             return occupancy;
+        }
+
+        public void OpenFile(String cs1,SQLiteConnection con1)
+        {
+            con1 = new SQLiteConnection(cs1, true);
+
+            try
+            {
+                if (con1.OpenAndReturn() == null)
+                    throw new FileNotFoundException();
+
+            }
+            catch (FileNotFoundException e)
+            {
+                con1.Close();
+            }
         }
     }
 }
