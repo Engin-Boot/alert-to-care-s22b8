@@ -52,8 +52,8 @@ namespace Alert_to_Care.Repository
             using SQLiteDataReader rdr = cmd.ExecuteReader();
             Console.WriteLine("inside get");
 
-            PatientModel patientObject = RetrievePatient(rdr).Count!=0?RetrievePatient(rdr)[0]:null;
-
+            List<PatientModel> list = RetrievePatient(rdr);
+            PatientModel patientObject =   (list.Count)!=0 ? list[0] : null;
 
             return patientObject;
         }
