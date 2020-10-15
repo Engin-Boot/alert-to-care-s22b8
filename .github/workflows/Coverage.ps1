@@ -11,7 +11,7 @@ function WriteXmlToScreen ([xml]$xml)
     Write-Output $StringWriter.ToString();
 }
 
-$report = Get-Content -Path Alert_To_Care_Unit_Tests\TestResults\*\coverage.cobertura.xml | Out-String
+$report = Get-Content -Path \a\alert-to-care-s22b8\alert-to-care-s22b8\Alert_To_Care_Unit_Tests\TestResults\8df2003d-98ef-401b-8d39-c50c0403d3ca\coverage.cobertura.xml | Out-String
 Write-Host "---------------------------------"
 Write-Host "Code Coverage report ..." 
 Write-Host "---------------------------------"
