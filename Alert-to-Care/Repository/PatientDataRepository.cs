@@ -26,7 +26,7 @@ namespace Alert_to_Care.Repository
               IcuId INTEGER NOT NULL,
               BedNumber INTEGER NOT NULL,
               FOREIGN KEY(IcuId) REFERENCES ICU(IcuId))";
-            cmd.ExecuteNonQuery();
+            var x = cmd.ExecuteNonQuery();
         }
 
        
