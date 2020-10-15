@@ -39,12 +39,13 @@ namespace Alert_to_Care.Controller
         public IActionResult Get(int id)
         {
             ICUModel icu;
-            try
+            icu = icuDataRep.ViewICU(id);
+            if (icu != null)
             {
-                icu = icuDataRep.ViewICU(id);
+                
                 return Ok(icu);
             }
-            catch(Exception)
+            else
             {
                 return NotFound();
             }

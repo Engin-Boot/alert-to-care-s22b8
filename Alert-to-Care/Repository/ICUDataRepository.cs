@@ -9,7 +9,7 @@ namespace Alert_to_Care.Repository
 {
     public class ICUDataRepository :CommonFunctionality,IICUData
     {
-        string cs = @"URI=file:C:\Users\320105541\OneDrive - Philips\Desktop\newBoot\alert-to-care-s22b8\Alert-to-Care\ICU.db";
+        string cs = @"URI=file:C:\Users\320105541\OneDrive - Philips\Documents\boot\alert-to-care-s22b8\Alert-to-Care\ICU.db";
         SQLiteConnection con=null;
 
         public ICUDataRepository()
@@ -49,12 +49,19 @@ namespace Alert_to_Care.Repository
             return listOfIcu;
         }
 
-        public void RegisterNewICU(UserInput userInput) {
-           
-            using var cmd = new SQLiteCommand(con);
-            cmd.CommandText = @"INSERT INTO ICU(NumberOfBeds, Layout) VALUES('" + userInput.NumberOfBeds + "','" + userInput.Layout + "')";
-            cmd.ExecuteNonQuery();
-  } 
+        public bool RegisterNewICU(UserInput userInput) {
+            try
+            {
+                using var cmd = new SQLiteCommand(con);
+                cmd.CommandText = @"INSERT INTO ICU(NumberOfBeds, Layout) VALUES('" + userInput.NumberOfBeds + "','" + userInput.Layout + "')";
+                cmd.ExecuteNonQuery();
+                return true;
+            }
+            catch 
+            {
+                return false;
+            }
+        } 
        
         public ICUModel ViewICU(int id)
         {
@@ -65,7 +72,7 @@ namespace Alert_to_Care.Repository
             using SQLiteDataReader rdr = cmd.ExecuteReader();
 
             if (!rdr.Read())
-                throw new Exception();
+                return null;
 
             ICUModel iCUModel = new ICUModel();
             
@@ -78,26 +85,34 @@ namespace Alert_to_Care.Repository
             return iCUModel;
         }
 
-        public void DeleteICU(int id)
+        public bool DeleteICU(int id)
         {
-            string com = @"SELECT COUNT(*) AS Count FROM ICU WHERE id=" + id;
+            try
+            {
+                string com = @"SELECT COUNT(*) AS Count FROM ICU WHERE id=" + id;
 
-            var countOfICU = CheckIfICUExists(com, con);
+                var countOfICU = CheckIfICUExists(com, con);
 
 
-            string stm = @"DELETE FROM ICU WHERE id=" + id;
+                string stm = @"DELETE FROM ICU WHERE id=" + id;
 
-            using var cmd = new SQLiteCommand(stm, con);
-            cmd.ExecuteNonQuery();
+                using var cmd = new SQLiteCommand(stm, con);
+                cmd.ExecuteNonQuery();
 
-            string cs2 = @"URI=file:C:\Users\320105541\OneDrive - Philips\Desktop\newBoot\alert-to-care-s22b8\Alert-to-Care\Patient.db";
-            SQLiteConnection con2 = null;
+                string cs2 = @"URI=file:C:\Users\320105541\OneDrive - Philips\Documents\boot\alert-to-care-s22b8\Alert-to-Care\Patient.db";
+                SQLiteConnection con2 = null;
 
-            OpenFile(cs2, con2);
+                OpenFile(cs2, con2);
 
-            string stm2 = @"DELETE FROM Patient where IcuId=" + id;
-            using var cmd2 = new SQLiteCommand(stm2, con2);
-            cmd2.ExecuteNonQuery();
+                string stm2 = @"DELETE FROM Patient where IcuId=" + id;
+                using var cmd2 = new SQLiteCommand(stm2, con2);
+                cmd2.ExecuteNonQuery();
+                return true;
+            }
+            catch 
+            {
+                return false;
+            }
 
         }
 

@@ -44,7 +44,7 @@ namespace Alert_to_Care.Repository
                 alerter.Alert($"{patientVitals[i].Id} crossed threshold of resp rate ");
             }
         }
-        public void CheckVitals(List<PatientVitals> patientVitals)
+        public bool CheckVitals(List<PatientVitals> patientVitals)
         {
             for (int i = 0; i < patientVitals.Count; i++) {
                 
@@ -55,6 +55,7 @@ namespace Alert_to_Care.Repository
                 AlertForRR(upperLimit[2], lowerLimit[2], patientVitals[i].Vitals[2], patientVitals, i);
                 
             }
+            return true;
             
         }
 

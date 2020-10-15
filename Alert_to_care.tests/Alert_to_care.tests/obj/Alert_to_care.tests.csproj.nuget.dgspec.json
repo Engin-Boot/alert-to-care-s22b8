@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\320105541\\OneDrive - Philips\\Desktop\\newBoot\\alert-to-care-s22b8\\Alert_to_care.tests\\Alert_to_care.tests\\Alert_to_care.tests.csproj": {}
+    "C:\\Users\\320105541\\OneDrive - Philips\\Documents\\boot\\alert-to-care-s22b8\\Alert_to_care.tests\\Alert_to_care.tests\\Alert_to_care.tests.csproj": {}
   },
   "projects": {
-    "C:\\Users\\320105541\\OneDrive - Philips\\Desktop\\newBoot\\alert-to-care-s22b8\\Alert_to_care.tests\\Alert_to_care.tests\\Alert_to_care.tests.csproj": {
+    "C:\\Users\\320105541\\OneDrive - Philips\\Documents\\boot\\alert-to-care-s22b8\\Alert_to_care.tests\\Alert_to_care.tests\\Alert_to_care.tests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\320105541\\OneDrive - Philips\\Desktop\\newBoot\\alert-to-care-s22b8\\Alert_to_care.tests\\Alert_to_care.tests\\Alert_to_care.tests.csproj",
+        "projectUniqueName": "C:\\Users\\320105541\\OneDrive - Philips\\Documents\\boot\\alert-to-care-s22b8\\Alert_to_care.tests\\Alert_to_care.tests\\Alert_to_care.tests.csproj",
         "projectName": "Alert_to_care.tests",
-        "projectPath": "C:\\Users\\320105541\\OneDrive - Philips\\Desktop\\newBoot\\alert-to-care-s22b8\\Alert_to_care.tests\\Alert_to_care.tests\\Alert_to_care.tests.csproj",
+        "projectPath": "C:\\Users\\320105541\\OneDrive - Philips\\Documents\\boot\\alert-to-care-s22b8\\Alert_to_care.tests\\Alert_to_care.tests\\Alert_to_care.tests.csproj",
         "packagesPath": "C:\\Users\\320105541\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\320105541\\OneDrive - Philips\\Desktop\\newBoot\\alert-to-care-s22b8\\Alert_to_care.tests\\Alert_to_care.tests\\obj\\",
+        "outputPath": "C:\\Users\\320105541\\OneDrive - Philips\\Documents\\boot\\alert-to-care-s22b8\\Alert_to_care.tests\\Alert_to_care.tests\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"

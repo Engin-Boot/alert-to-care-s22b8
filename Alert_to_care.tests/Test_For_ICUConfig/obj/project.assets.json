@@ -5481,11 +5481,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\320105541\\OneDrive - Philips\\Desktop\\newBoot\\alert-to-care-s22b8\\Alert_to_care.tests\\Test_For_ICUConfig\\Test_For_ICUConfig.csproj",
+      "projectUniqueName": "C:\\Users\\320105541\\OneDrive - Philips\\Documents\\boot\\alert-to-care-s22b8\\Alert_to_care.tests\\Test_For_ICUConfig\\Test_For_ICUConfig.csproj",
       "projectName": "Test_For_ICUConfig",
-      "projectPath": "C:\\Users\\320105541\\OneDrive - Philips\\Desktop\\newBoot\\alert-to-care-s22b8\\Alert_to_care.tests\\Test_For_ICUConfig\\Test_For_ICUConfig.csproj",
+      "projectPath": "C:\\Users\\320105541\\OneDrive - Philips\\Documents\\boot\\alert-to-care-s22b8\\Alert_to_care.tests\\Test_For_ICUConfig\\Test_For_ICUConfig.csproj",
       "packagesPath": "C:\\Users\\320105541\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\320105541\\OneDrive - Philips\\Desktop\\newBoot\\alert-to-care-s22b8\\Alert_to_care.tests\\Test_For_ICUConfig\\obj\\",
+      "outputPath": "C:\\Users\\320105541\\OneDrive - Philips\\Documents\\boot\\alert-to-care-s22b8\\Alert_to_care.tests\\Test_For_ICUConfig\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\"
@@ -5505,8 +5505,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\Users\\320105541\\OneDrive - Philips\\Desktop\\newBoot\\alert-to-care-s22b8\\Alert_to_care.tests\\Alert_to_care.tests\\Alert_to_care.tests.csproj": {
-              "projectPath": "C:\\Users\\320105541\\OneDrive - Philips\\Desktop\\newBoot\\alert-to-care-s22b8\\Alert_to_care.tests\\Alert_to_care.tests\\Alert_to_care.tests.csproj"
+            "C:\\Users\\320105541\\OneDrive - Philips\\Documents\\boot\\alert-to-care-s22b8\\Alert_to_care.tests\\Alert_to_care.tests\\Alert_to_care.tests.csproj": {
+              "projectPath": "C:\\Users\\320105541\\OneDrive - Philips\\Documents\\boot\\alert-to-care-s22b8\\Alert_to_care.tests\\Alert_to_care.tests\\Alert_to_care.tests.csproj"
             }
           }
         }
