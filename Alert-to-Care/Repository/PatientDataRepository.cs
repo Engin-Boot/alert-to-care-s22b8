@@ -8,7 +8,7 @@ namespace Alert_to_Care.Repository
     public class PatientDataRepository : CommonFunctionality,IPatientData
     {
 
-        string cs = @"URI=file:C:\Users\320105541\OneDrive - Philips\Desktop\newBoot\alert-to-care-s22b8\Alert-to-Care\Patient.db";
+        string cs = @"URI=file:C:\Users\320105541\OneDrive - Philips\Documents\boot\alert-to-care-s22b8\Alert-to-Care\Patient.db";
         SQLiteConnection con=null;
 
         public PatientDataRepository()
@@ -70,17 +70,24 @@ namespace Alert_to_Care.Repository
             return listOfPatients;
         }
 
-        public void DischargePatient(int patientID)
+        public bool DischargePatient(int patientID)
         {
-            string com = @"SELECT COUNT(*) AS Count FROM Patient WHERE id=" + patientID;
+            try
+            {
+                string com = @"SELECT COUNT(*) AS Count FROM Patient WHERE id=" + patientID;
 
-            var countOfIcu = CheckIfICUExists(com, con);
+                var countOfIcu = CheckIfICUExists(com, con);
 
-            string stm = @"DELETE FROM patient WHERE Id=" + patientID;
+                string stm = @"DELETE FROM patient WHERE Id=" + patientID;
 
-            using var cmd = new SQLiteCommand(stm, con);
-            cmd.ExecuteNonQuery();
-
+                using var cmd = new SQLiteCommand(stm, con);
+                cmd.ExecuteNonQuery();
+                return true;
+            }
+            catch 
+            {
+                return false;
+            }
 
         }
 
@@ -105,7 +112,7 @@ namespace Alert_to_Care.Repository
 
         public int CapacityOfICU(int icuID)
         {
-            string cs1 = @"URI=file:C:\Users\320105541\OneDrive - Philips\Desktop\newBoot\alert-to-care-s22b8\Alert-to-Care\ICU.db";
+            string cs1 = @"URI=file:C:\Users\320105541\OneDrive - Philips\Documents\boot\alert-to-care-s22b8\Alert-to-Care\ICU.db";
             SQLiteConnection con1=null;
 
             OpenFile(cs1, con1);

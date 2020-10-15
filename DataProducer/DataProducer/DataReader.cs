@@ -12,8 +12,7 @@ namespace DataProducer
     {
         public List<IRestResponse> ReadDataAndPost()
         {
-            try
-            {
+            
                 using (var reader = new StreamReader(@"C:\Users\320105541\OneDrive - Philips\Desktop\boot\alert-to-care-s22b8\DataProducer\vitalData.csv"))
                 {
                     reader.ReadLine();
@@ -50,12 +49,8 @@ namespace DataProducer
                     return lr;
                 }
 
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                return null;
-            }
+            
+            
         }
     }
 }

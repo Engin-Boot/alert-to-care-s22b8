@@ -1,6 +1,7 @@
 {
   "format": 1,
   "restore": {
+<<<<<<< HEAD
     "C:\\Users\\320107420\\source\\repos\\Alert-to-Care\\Models\\Models.csproj": {}
   },
   "projects": {
@@ -12,6 +13,19 @@
         "projectPath": "C:\\Users\\320107420\\source\\repos\\Alert-to-Care\\Models\\Models.csproj",
         "packagesPath": "C:\\Users\\320107420\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\320107420\\source\\repos\\Alert-to-Care\\Models\\obj\\",
+=======
+    "C:\\Users\\320105541\\OneDrive - Philips\\Documents\\boot\\alert-to-care-s22b8\\Models\\Models.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\320105541\\OneDrive - Philips\\Documents\\boot\\alert-to-care-s22b8\\Models\\Models.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\320105541\\OneDrive - Philips\\Documents\\boot\\alert-to-care-s22b8\\Models\\Models.csproj",
+        "projectName": "Models",
+        "projectPath": "C:\\Users\\320105541\\OneDrive - Philips\\Documents\\boot\\alert-to-care-s22b8\\Models\\Models.csproj",
+        "packagesPath": "C:\\Users\\320105541\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\320105541\\OneDrive - Philips\\Documents\\boot\\alert-to-care-s22b8\\Models\\obj\\",
+>>>>>>> 8f0049b3b6b9a0bf7d5c7e786901d7a30b617305
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\320107420\\AppData\\Roaming\\NuGet\\NuGet.Config",

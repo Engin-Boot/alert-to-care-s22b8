@@ -1,15 +1,23 @@
 ﻿
 
+using System;
+
 namespace DataProducer
 {
     class Program
     {
         static void Main()
         {
-            while (true)
+            try
             {
-                DataReader dataReader = new DataReader();
-                dataReader.ReadDataAndPost();
+                while (true)
+                {
+                    DataReader dataReader = new DataReader();
+                    dataReader.ReadDataAndPost();
+                }
+            }
+            catch (Exception e) {
+                Console.WriteLine(e.Message);
             }
         }
     }
