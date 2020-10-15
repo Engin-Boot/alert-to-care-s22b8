@@ -9,7 +9,7 @@ namespace Alert_to_Care.Repository
 {
     public class ICUDataRepository :CommonFunctionality,IICUData
     {
-        string cs = @"URI=file:C:\Users\320105541\OneDrive - Philips\Documents\boot\alert-to-care-s22b8\Alert-to-Care\ICU.db";
+        string cs = @"URI=file:\a\alert-to-care-s22b8\alert-to-care-s22b8\Alert-to-Care\ICU.db";
         SQLiteConnection con=null;
 
         public ICUDataRepository()
@@ -99,7 +99,7 @@ namespace Alert_to_Care.Repository
                 using var cmd = new SQLiteCommand(stm, con);
                 cmd.ExecuteNonQuery();
 
-                string cs2 = @"URI=file:C:\Users\320105541\OneDrive - Philips\Documents\boot\alert-to-care-s22b8\Alert-to-Care\Patient.db";
+                string cs2 = @"URI=file:\a\alert-to-care-s22b8\alert-to-care-s22b8\Alert-to-Care\Patient.db";
                 SQLiteConnection con2 = OpenFile(cs2);
 
 
