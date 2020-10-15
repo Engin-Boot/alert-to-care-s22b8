@@ -168,10 +168,10 @@ namespace Alert_to_Care.Repository
 
         public List<PatientModel> RetrievePatient(SQLiteDataReader rdr)
         {
-            List<PatientModel> list = null;
+            List<PatientModel> list = new List<PatientModel>();
             while (rdr.Read())
             {
-                list = new List<PatientModel>();
+                
                 PatientModel patientObject = new PatientModel();
                 patientObject.Id = (int)Convert.ToInt64(rdr["Id"]);
                 patientObject.Name = Convert.ToString(rdr["Name"]);
