@@ -53,9 +53,12 @@ namespace Alert_to_Care.Repository
             Console.WriteLine("inside get");
 
             List<PatientModel> list = RetrievePatient(rdr);
-            PatientModel patientObject =   (list.Count)!=0 ? list[0] : null;
+            if (list.Count != 0)
+                return list[0];
 
-            return patientObject;
+
+
+            return null;
         }
 
         public List<PatientModel> GetAllPatientsInTheICU(int id)
