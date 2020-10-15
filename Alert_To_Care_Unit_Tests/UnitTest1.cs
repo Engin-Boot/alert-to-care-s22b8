@@ -2,7 +2,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Alert_to_Care.Repository;
 using Models;
 using System.Collections.Generic;
-
+using System.Data.SQLite;
 namespace Alert_To_Care_Unit_Tests
 {
     [TestClass]
@@ -50,10 +50,20 @@ namespace Alert_To_Care_Unit_Tests
 
         }
         [TestMethod]
-        public void DeleteIcuWhenIdIsPresentThenStatusOk()
+         public void DeleteIcuWhenIdIsPresentThenStatusOk()
         {
+            string cs = @"URI=file:\a\alert-to-care-s22b8\alert-to-care-s22b8\Alert-to-Care\ICU.db";
+            SQLiteConnection con = new SQLiteConnection(cs, true);
+            con.Open();
+            using var cmd = new SQLiteCommand(con);
+            cmd.CommandText = @"SET IDENTITY_INSERT ICU ON;
+
+                              INSERT INTO ICU(Id) VALUES('200');
+
+                              SET IDENTITY_INSERT ICU OFF;";
+            cmd.ExecuteNonQuery();
             ICUDataRepository iCUDataRepository = new ICUDataRepository();
-            var response = iCUDataRepository.DeleteICU(74);
+            var response = iCUDataRepository.DeleteICU(200);
             Assert.AreEqual(true, response);
         }
 
@@ -109,17 +119,27 @@ namespace Alert_To_Care_Unit_Tests
         public void GetPatientDetailsWhenPatientDoesNotExist()
         {
             PatientDataRepository patientDataRepository = new PatientDataRepository();
-            var response = patientDataRepository.GetPatient(126);
-            Assert.AreEqual(null, response);
+            var response = patientDataRepository.GetPatient(26);
+            Assert.AreEqual(null, response.Name);
 
         }
 
 
         [TestMethod]
-        public void CheckIfPatientIsDeletedWhenExists()
+         public void CheckIfPatientIsDeletedWhenExists()
         {
+            string cs = @"URI=file:\a\alert-to-care-s22b8\alert-to-care-s22b8\Alert-to-Care\Patient.db";
+            SQLiteConnection con = new SQLiteConnection(cs, true);
+            con.Open();
+            using var cmd = new SQLiteCommand(con);
+            cmd.CommandText = @"SET IDENTITY_INSERT Patient ON;
+
+                              INSERT INTO Patient(Id) VALUES('200');
+
+                              SET IDENTITY_INSERT Patient OFF;";
+            cmd.ExecuteNonQuery();
             PatientDataRepository patientDataRepository = new PatientDataRepository();
-            var response = patientDataRepository.DischargePatient(24);
+            var response = patientDataRepository.DischargePatient(200);
             Assert.AreEqual(true, response);
         }
 
