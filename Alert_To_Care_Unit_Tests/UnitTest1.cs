@@ -110,7 +110,7 @@ namespace Alert_To_Care_Unit_Tests
         {
             PatientDataRepository patientDataRepository = new PatientDataRepository();
             var response = patientDataRepository.GetPatient(26);
-            Assert.AreEqual(null, response);
+            Assert.AreEqual(null, response.Name);
 
         }
 
