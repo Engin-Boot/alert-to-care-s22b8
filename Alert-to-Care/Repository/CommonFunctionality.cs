@@ -9,20 +9,24 @@ namespace Alert_to_Care.Repository
 {
     public class CommonFunctionality
     {
-        public void OpenFile(String cs1, SQLiteConnection con1)
+        public SQLiteConnection OpenFile(String cs1)
         {
-            con1 = new SQLiteConnection(cs1, true);
+            SQLiteConnection con1 = new SQLiteConnection(cs1, true);
 
             try
             {
                 if (con1.OpenAndReturn() == null)
+                {
+                    con1.Close();
                     throw new FileNotFoundException();
-
+                }
+                //con1.Open()
             }
-            catch (FileNotFoundException e)
+            catch (FileNotFoundException )
             {
-                con1.Close();
+                Console.WriteLine("File not found.");
             }
+            return con1;
         }
 
         public int CheckIfICUExists(string com,SQLiteConnection con)

@@ -13,7 +13,7 @@ namespace Alert_to_Care.Repository
 
         public PatientDataRepository()
         {
-            OpenFile(cs, con);
+            con=OpenFile(cs);
 
             using var cmd = new SQLiteCommand(con);
 
@@ -53,6 +53,7 @@ namespace Alert_to_Care.Repository
             Console.WriteLine("inside get");
 
             PatientModel patientObject = RetrievePatient(rdr)[0];
+
 
             return patientObject;
         }
@@ -113,9 +114,9 @@ namespace Alert_to_Care.Repository
         public int CapacityOfICU(int icuID)
         {
             string cs1 = @"URI=file:C:\Users\320105541\OneDrive - Philips\Documents\boot\alert-to-care-s22b8\Alert-to-Care\ICU.db";
-            SQLiteConnection con1=null;
+            SQLiteConnection con1= OpenFile(cs1);
 
-            OpenFile(cs1, con1);
+
 
             using var cmdICU = new SQLiteCommand(con1);
             string stm = "SELECT * FROM ICU where Id=" + icuID;
@@ -170,7 +171,7 @@ namespace Alert_to_Care.Repository
             List<PatientModel> list = null;
             while (rdr.Read())
             {
-
+                list = new List<PatientModel>();
                 PatientModel patientObject = new PatientModel();
                 patientObject.Id = (int)Convert.ToInt64(rdr["Id"]);
                 patientObject.Name = Convert.ToString(rdr["Name"]);

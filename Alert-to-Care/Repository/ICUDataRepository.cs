@@ -14,7 +14,7 @@ namespace Alert_to_Care.Repository
 
         public ICUDataRepository()
         {
-            OpenFile(cs, con);
+            con=OpenFile(cs);
 
             using var cmd = new SQLiteCommand(con);
 
@@ -100,9 +100,9 @@ namespace Alert_to_Care.Repository
                 cmd.ExecuteNonQuery();
 
                 string cs2 = @"URI=file:C:\Users\320105541\OneDrive - Philips\Documents\boot\alert-to-care-s22b8\Alert-to-Care\Patient.db";
-                SQLiteConnection con2 = null;
+                SQLiteConnection con2 = OpenFile(cs2);
 
-                OpenFile(cs2, con2);
+
 
                 string stm2 = @"DELETE FROM Patient where IcuId=" + id;
                 using var cmd2 = new SQLiteCommand(stm2, con2);

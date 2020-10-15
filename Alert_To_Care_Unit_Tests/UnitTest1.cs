@@ -53,7 +53,7 @@ namespace Alert_To_Care_Unit_Tests
         public void DeleteIcuWhenIdIsPresentThenStatusOk()
         {
             ICUDataRepository iCUDataRepository = new ICUDataRepository();
-            var response = iCUDataRepository.DeleteICU(73);
+            var response = iCUDataRepository.DeleteICU(74);
             Assert.AreEqual(true, response);
         }
 
@@ -119,7 +119,7 @@ namespace Alert_To_Care_Unit_Tests
         public void CheckIfPatientIsDeletedWhenExists()
         {
             PatientDataRepository patientDataRepository = new PatientDataRepository();
-            var response = patientDataRepository.DischargePatient(23);
+            var response = patientDataRepository.DischargePatient(24);
             Assert.AreEqual(true, response);
         }
 
