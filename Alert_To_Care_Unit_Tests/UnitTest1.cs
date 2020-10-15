@@ -56,11 +56,7 @@ namespace Alert_To_Care_Unit_Tests
             SQLiteConnection con = new SQLiteConnection(cs, true);
             con.Open();
             using var cmd = new SQLiteCommand(con);
-            cmd.CommandText = @"SET IDENTITY_INSERT ICU ON;
-
-                              INSERT INTO ICU(Id) VALUES('200');
-
-                              SET IDENTITY_INSERT ICU OFF;";
+            cmd.CommandText = @"SET IDENTITY_INSERT ICU ON;INSERT INTO ICU(Id) VALUES('200');SET IDENTITY_INSERT ICU OFF;";
             cmd.ExecuteNonQuery();
             ICUDataRepository iCUDataRepository = new ICUDataRepository();
             var response = iCUDataRepository.DeleteICU(200);
@@ -132,11 +128,7 @@ namespace Alert_To_Care_Unit_Tests
             SQLiteConnection con = new SQLiteConnection(cs, true);
             con.Open();
             using var cmd = new SQLiteCommand(con);
-            cmd.CommandText = @"SET IDENTITY_INSERT Patient ON;
-
-                              INSERT INTO Patient(Id) VALUES('200');
-
-                              SET IDENTITY_INSERT Patient OFF;";
+            cmd.CommandText = @"SET IDENTITY_INSERT Patient ON;INSERT INTO Patient(Id) VALUES('200');SET IDENTITY_INSERT Patient OFF;";
             cmd.ExecuteNonQuery();
             PatientDataRepository patientDataRepository = new PatientDataRepository();
             var response = patientDataRepository.DischargePatient(200);
