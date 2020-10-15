@@ -1,4 +1,4 @@
-param($linerate)
+param($linerate, $projectName)
 
 function WriteXmlToScreen ([xml]$xml)
 {
@@ -11,7 +11,8 @@ function WriteXmlToScreen ([xml]$xml)
     Write-Output $StringWriter.ToString();
 }
 
-$report = Get-Content -Path \a\alert-to-care-s22b8\alert-to-care-s22b8\Alert_To_Care_Unit_Tests\TestResults\*\coverage.cobertura.xml | Out-String
+$path = $projectName + "\TestResults\*\coverage.cobertura.xml"
+$report = Get-Content -Path  $path | Out-String
 Write-Host "---------------------------------"
 Write-Host "Code Coverage report ..." 
 Write-Host "---------------------------------"
