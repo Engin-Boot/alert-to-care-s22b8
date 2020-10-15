@@ -119,8 +119,8 @@ namespace Alert_To_Care_Unit_Tests
         public void GetPatientDetailsWhenPatientDoesNotExist()
         {
             PatientDataRepository patientDataRepository = new PatientDataRepository();
-            var response = patientDataRepository.GetPatient(26);
-            Assert.AreEqual(null, response.Name);
+            var response = patientDataRepository.GetPatient(126);
+            Assert.AreEqual(null, response);
 
         }
 
