@@ -1,17 +1,18 @@
 {
   "version": 2,
-<<<<<<< HEAD
   "dgSpecHash": "myaU9+IT4mRlN0xgM/bagJ5hAuv1OIy00ufBHYbWYBYnuALVg6DkWuVWh70NIJpGoP1XP5qx2jBRtOVp5eu1Nw==",
   "success": true,
   "projectFilePath": "C:\\Users\\320107420\\source\\repos\\Alert-to-Care\\Models\\Models.csproj",
-=======
-  "dgSpecHash": "/DQPQDFhuNUpQ8xOZwLUdI7N5j3ROUgdDWpBjNnjGESU8u/5JCxX4oHgEeJ0I1m3ItEJMSaqMjzx9BlIRPrndA==",
-  "success": true,
-  "projectFilePath": "C:\\Users\\320105541\\OneDrive - Philips\\Documents\\boot\\alert-to-care-s22b8\\Models\\Models.csproj",
->>>>>>> 8f0049b3b6b9a0bf7d5c7e786901d7a30b617305
   "expectedPackageFiles": [
     "C:\\Users\\320107420\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Users\\320107420\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file C:\\Users\\320107420\\source\\repos\\Alert-to-Care\\Models\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }
