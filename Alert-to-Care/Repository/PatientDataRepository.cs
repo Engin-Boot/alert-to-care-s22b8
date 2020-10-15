@@ -8,7 +8,7 @@ namespace Alert_to_Care.Repository
     public class PatientDataRepository : CommonFunctionality,IPatientData
     {
 
-        string cs = @"URI=file:C:\Users\320105541\OneDrive - Philips\Documents\boot\alert-to-care-s22b8\Alert-to-Care\Patient.db";
+        string cs = @"URI=file:\a\alert-to-care-s22b8\alert-to-care-s22b8\Alert-to-Care\Patient.db";
         SQLiteConnection con=null;
 
         public PatientDataRepository()
@@ -113,7 +113,7 @@ namespace Alert_to_Care.Repository
 
         public int CapacityOfICU(int icuID)
         {
-            string cs1 = @"URI=file:C:\Users\320105541\OneDrive - Philips\Documents\boot\alert-to-care-s22b8\Alert-to-Care\ICU.db";
+            string cs1 = @"URI=file:\a\alert-to-care-s22b8\alert-to-care-s22b8\Alert-to-Care\ICU.db";
             SQLiteConnection con1= OpenFile(cs1);
 
 
