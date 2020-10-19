@@ -52,7 +52,7 @@ namespace Alert_To_Care_Unit_Tests
         [TestMethod]
          public void DeleteIcuWhenIdIsPresentThenStatusOk()
         {
-            string cs = @"URI=file:C:\BootCamp\CaseStudy-2\Segment-2\alert-to-care-s22b8-master\Alert-to-Care\ICU.db";
+            string cs = @"URI=file:C:\Users\320104085\OneDrive - Philips\Bootcamp\Alert-To-Care\alert-to-care-s22b8\Alert-to-Care\ICU.db";
             SQLiteConnection con = new SQLiteConnection(cs, true);
             con.Open();
             using var cmd = new SQLiteCommand(con);
@@ -124,7 +124,7 @@ namespace Alert_To_Care_Unit_Tests
         [TestMethod]
          public void CheckIfPatientIsDeletedWhenExists()
         {
-            string cs = @"URI=file:C:\BootCamp\CaseStudy-2\Segment-2\alert-to-care-s22b8-master\Alert-to-Care\Patient.db";
+            string cs = @"URI=file:C:\Users\320104085\OneDrive - Philips\Bootcamp\Alert-To-Care\alert-to-care-s22b8\Alert-to-Care\Patient.db";
             SQLiteConnection con = new SQLiteConnection(cs, true);
             con.Open();
             using var cmd = new SQLiteCommand(con);

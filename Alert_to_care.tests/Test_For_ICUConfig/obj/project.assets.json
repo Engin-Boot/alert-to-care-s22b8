@@ -5475,19 +5475,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\320088465\\.nuget\\packages\\": {}
+    "C:\\Users\\320104085\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\BootCamp\\CaseStudy-2\\Segment-2\\alert-to-care-s22b8-master\\Alert_to_care.tests\\Test_For_ICUConfig\\Test_For_ICUConfig.csproj",
+      "projectUniqueName": "C:\\Users\\320104085\\OneDrive - Philips\\Bootcamp\\Alert-To-Care\\alert-to-care-s22b8\\Alert_to_care.tests\\Test_For_ICUConfig\\Test_For_ICUConfig.csproj",
       "projectName": "Test_For_ICUConfig",
-      "projectPath": "C:\\BootCamp\\CaseStudy-2\\Segment-2\\alert-to-care-s22b8-master\\Alert_to_care.tests\\Test_For_ICUConfig\\Test_For_ICUConfig.csproj",
-      "packagesPath": "C:\\Users\\320088465\\.nuget\\packages\\",
-      "outputPath": "C:\\BootCamp\\CaseStudy-2\\Segment-2\\alert-to-care-s22b8-master\\Alert_to_care.tests\\Test_For_ICUConfig\\obj\\",
+      "projectPath": "C:\\Users\\320104085\\OneDrive - Philips\\Bootcamp\\Alert-To-Care\\alert-to-care-s22b8\\Alert_to_care.tests\\Test_For_ICUConfig\\Test_For_ICUConfig.csproj",
+      "packagesPath": "C:\\Users\\320104085\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\320104085\\OneDrive - Philips\\Bootcamp\\Alert-To-Care\\alert-to-care-s22b8\\Alert_to_care.tests\\Test_For_ICUConfig\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\320088465\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\320104085\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -5500,8 +5500,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\BootCamp\\CaseStudy-2\\Segment-2\\alert-to-care-s22b8-master\\Alert_to_care.tests\\Alert_to_care.tests\\Alert_to_care.tests.csproj": {
-              "projectPath": "C:\\BootCamp\\CaseStudy-2\\Segment-2\\alert-to-care-s22b8-master\\Alert_to_care.tests\\Alert_to_care.tests\\Alert_to_care.tests.csproj"
+            "C:\\Users\\320104085\\OneDrive - Philips\\Bootcamp\\Alert-To-Care\\alert-to-care-s22b8\\Alert_to_care.tests\\Alert_to_care.tests\\Alert_to_care.tests.csproj": {
+              "projectPath": "C:\\Users\\320104085\\OneDrive - Philips\\Bootcamp\\Alert-To-Care\\alert-to-care-s22b8\\Alert_to_care.tests\\Alert_to_care.tests\\Alert_to_care.tests.csproj"
             }
           }
         }
@@ -5555,7 +5555,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
       }
     }
   }

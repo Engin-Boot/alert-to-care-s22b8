@@ -13,7 +13,7 @@ namespace DataProducer
         public List<IRestResponse> ReadDataAndPost()
         {
             
-                using (var reader = new StreamReader(@"C:\BootCamp\CaseStudy-2\Segment-2\alert-to-care-s22b8-master\DataProducer\vitalData.csv"))
+                using (var reader = new StreamReader(@"C:\Users\320104085\OneDrive - Philips\Bootcamp\Alert-To-Care\alert-to-care-s22b8\DataProducer\vitalData.csv"))
                 {
                     reader.ReadLine();
 
