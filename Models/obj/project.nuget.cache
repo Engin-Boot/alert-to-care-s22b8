@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "+sc0ts89ESEiloQOAtMIgKAls+8zpmcdVuXgiF5cwjcVIi3246momW22KCnx97z64dpP61D9JJReEefBZI+FkA==",
+  "success": true,
+  "projectFilePath": "C:\\BootCamp\\CaseStudy-2\\Segment-2\\alert-to-care-s22b8-master\\Models\\Models.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\320088465\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\320088465\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
