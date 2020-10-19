@@ -10,7 +10,7 @@ namespace Alert_to_care.tests.Repository
     public class OccupancyMgmtRepository
     {
         public HttpStatusCode AddPatient(int icuId) {
-            var restClient = new RestClient("http://localhost:54384/api/");
+            var restClient = new RestClient("http://localhost:5000/api/");
             var restRequest = new RestRequest($"OccupancyManagement/{icuId}", Method.POST);
             Models.OccupancyMgmtModel userInput = new Models.OccupancyMgmtModel();
             userInput.address = "rohini";
@@ -25,7 +25,7 @@ namespace Alert_to_care.tests.Repository
 
         public IRestResponse<List<Models.PatientModel>> GetAllPatient(int icuId)
         {
-            var restClient = new RestClient("http://localhost:54384/api/");
+            var restClient = new RestClient("http://localhost:5000/api/");
 
             string s = "OccupancyManagement/" + icuId.ToString();
             //Console.WriteLine(s);
@@ -38,7 +38,7 @@ namespace Alert_to_care.tests.Repository
 
         public IRestResponse<Models.PatientModel> GetPatientDetails(int patientId)
         {
-            var restClient = new RestClient("http://localhost:54384/api/");
+            var restClient = new RestClient("http://localhost:5000/api/");
 
             string s = "OccupancyManagement/GetPatientById/" + patientId.ToString();
             //Console.WriteLine(s);
@@ -50,7 +50,7 @@ namespace Alert_to_care.tests.Repository
         }
         public HttpStatusCode DeletePatient(int patientId)
         {
-            var restClient = new RestClient("http://localhost:54384/api/");
+            var restClient = new RestClient("http://localhost:5000/api/");
 
             string s = "OccupancyManagement/" + patientId.ToString();
             //Console.WriteLine(s);

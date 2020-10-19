@@ -11,7 +11,7 @@ namespace Alert_to_care.tests.Repository
     {
         public IRestResponse<List<Models.ICUModel>> GetAllICU()
         {
-            var restClient = new RestClient("http://localhost:54384/api/");
+            var restClient = new RestClient("http://localhost:5000/api/");
 
             var restRequest = new RestRequest("ICUConfig/", Method.GET);
 
@@ -22,7 +22,7 @@ namespace Alert_to_care.tests.Repository
 
         public IRestResponse<Models.ICUModel> GetICU(int id)
         {
-            var restClient = new RestClient("http://localhost:54384/api/");
+            var restClient = new RestClient("http://localhost:5000/api/");
 
             string s = "ICUConfig/" + id.ToString();
             //Console.WriteLine(s);
@@ -34,7 +34,7 @@ namespace Alert_to_care.tests.Repository
         }
 
         public HttpStatusCode RegisterIcu() {
-            var restClient = new RestClient("http://localhost:54384/api/");
+            var restClient = new RestClient("http://localhost:5000/api/");
             var restRequest = new RestRequest("ICUConfig/register", Method.POST);
             Models.UserInput userInput = new Models.UserInput();
             userInput.numberOfBeds = 3;
@@ -45,7 +45,7 @@ namespace Alert_to_care.tests.Repository
             return restResponse.StatusCode;
         }
         public HttpStatusCode DeleteIcu(int id) {
-            var restClient = new RestClient("http://localhost:54384/api/");
+            var restClient = new RestClient("http://localhost:5000/api/");
 
             string s = "ICUConfig/" + id.ToString();
             //Console.WriteLine(s);

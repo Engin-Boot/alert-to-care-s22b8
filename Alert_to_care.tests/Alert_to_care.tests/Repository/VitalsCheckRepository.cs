@@ -11,7 +11,7 @@ namespace Alert_to_care.tests.Repository
         
         public bool CheckVitals(bool inRange)
         {
-            var restClient = new RestClient("http://localhost:54384/api/");
+            var restClient = new RestClient("http://localhost:5000/api/");
             var restRequest = new RestRequest($"VitalsAlert/", Method.POST);
 
             List<Models.PatientVitals> list = new List<Models.PatientVitals>();

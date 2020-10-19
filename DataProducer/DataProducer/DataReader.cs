@@ -35,7 +35,7 @@ namespace DataProducer
                         };
                             li.Add(patientVitals);
                         }
-                        var restClient = new RestClient("http://localhost:54384/api/");
+                        var restClient = new RestClient("http://localhost:5000/api/");
                         var restRequest = new RestRequest("VitalsAlert", Method.POST);
 
                         restRequest.AddJsonBody(JsonConvert.SerializeObject(li));

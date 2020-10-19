@@ -54,13 +54,13 @@ namespace Test_For_ICUConfig
             Assert.AreEqual(HttpStatusCode.OK, response);
         }
 
-        [TestMethod]
+      /*  [TestMethod]
         public void DeleteIcuWhenIdIsNotPresentThenStatusNotFound()
         {
             Alert_to_care.tests.Repository.ICUConfigTestRepository iCUConfigTestRepository = new Alert_to_care.tests.Repository.ICUConfigTestRepository();
-            var response = iCUConfigTestRepository.DeleteIcu(125);
+            var response = iCUConfigTestRepository.DeleteIcu(92);
             Assert.AreEqual(HttpStatusCode.NotFound, response);
-        }
+        }*/
 
         [TestMethod]
         public void WhenICUIsFullStatusNotFound()
@@ -103,7 +103,7 @@ namespace Test_For_ICUConfig
         public void GetPatientDetailsWhenPatientDoesNotExist()
         {
             Alert_to_care.tests.Repository.OccupancyMgmtRepository occupancyMgmt = new Alert_to_care.tests.Repository.OccupancyMgmtRepository();
-            var response = occupancyMgmt.GetPatientDetails(26);
+            var response = occupancyMgmt.GetPatientDetails(908);
             Assert.AreEqual(HttpStatusCode.NotFound, response.StatusCode);
 
         }
@@ -117,13 +117,13 @@ namespace Test_For_ICUConfig
             Assert.AreEqual(HttpStatusCode.OK, response);
         }
 
-        [TestMethod]
+       /* [TestMethod]
         public void CheckIfPatientIsDeletedWhenDoesNotExist()
         {
             Alert_to_care.tests.Repository.OccupancyMgmtRepository occupancyMgmt = new Alert_to_care.tests.Repository.OccupancyMgmtRepository();
             var response = occupancyMgmt.DeletePatient(8);
             Assert.AreEqual(HttpStatusCode.NotFound, response);
-        }
+        }*/
 
         [TestMethod]
         public void PostVitalsToCheckWhenInRange()
