@@ -17,5 +17,7 @@ namespace Alert_to_Care.Repository
 
         public bool DeleteICU(int id);
 
+        public bool RegisterNewICUWithGivenId(int id, UserInput value);
+
     }
 }

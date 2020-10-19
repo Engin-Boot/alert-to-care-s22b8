@@ -421,8 +421,6 @@ C:\Users\320104085\OneDrive - Philips\Bootcamp\Alert-To-Care\alert-to-care-s22b8
 C:\Users\320104085\OneDrive - Philips\Bootcamp\Alert-To-Care\alert-to-care-s22b8\Alert-to-Care\obj\Debug\netcoreapp3.1\Alert-to-Care.csprojAssemblyReference.cache
 C:\Users\320104085\OneDrive - Philips\Bootcamp\Alert-To-Care\alert-to-care-s22b8\Alert-to-Care\obj\Debug\netcoreapp3.1\Alert-to-Care.AssemblyInfoInputs.cache
 C:\Users\320104085\OneDrive - Philips\Bootcamp\Alert-To-Care\alert-to-care-s22b8\Alert-to-Care\obj\Debug\netcoreapp3.1\Alert-to-Care.AssemblyInfo.cs
-C:\Users\320104085\OneDrive - Philips\Bootcamp\Alert-To-Care\alert-to-care-s22b8\Alert-to-Care\obj\Debug\netcoreapp3.1\Alert-to-Care.csproj.CoreCompileInputs.cache
-C:\Users\320104085\OneDrive - Philips\Bootcamp\Alert-To-Care\alert-to-care-s22b8\Alert-to-Care\obj\Debug\netcoreapp3.1\Alert-to-Care.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\320104085\OneDrive - Philips\Bootcamp\Alert-To-Care\alert-to-care-s22b8\Alert-to-Care\obj\Debug\netcoreapp3.1\Alert-to-Care.RazorTargetAssemblyInfo.cache
 C:\Users\320104085\OneDrive - Philips\Bootcamp\Alert-To-Care\alert-to-care-s22b8\Alert-to-Care\obj\Debug\netcoreapp3.1\Alert-to-Care.csproj.CopyComplete
 C:\Users\320104085\OneDrive - Philips\Bootcamp\Alert-To-Care\alert-to-care-s22b8\Alert-to-Care\obj\Debug\netcoreapp3.1\staticwebassets\Alert-to-Care.StaticWebAssets.Manifest.cache
@@ -430,3 +428,11 @@ C:\Users\320104085\OneDrive - Philips\Bootcamp\Alert-To-Care\alert-to-care-s22b8
 C:\Users\320104085\OneDrive - Philips\Bootcamp\Alert-To-Care\alert-to-care-s22b8\Alert-to-Care\obj\Debug\netcoreapp3.1\Alert-to-Care.dll
 C:\Users\320104085\OneDrive - Philips\Bootcamp\Alert-To-Care\alert-to-care-s22b8\Alert-to-Care\obj\Debug\netcoreapp3.1\Alert-to-Care.pdb
 C:\Users\320104085\OneDrive - Philips\Bootcamp\Alert-To-Care\alert-to-care-s22b8\Alert-to-Care\obj\Debug\netcoreapp3.1\Alert-to-Care.genruntimeconfig.cache
+C:\Users\320104085\OneDrive - Philips\Bootcamp\Alert-To-Care\alert-to-care-s22b8\Alert-to-Care\bin\Debug\netcoreapp3.1\System.Data.SqlClient.dll
+C:\Users\320104085\OneDrive - Philips\Bootcamp\Alert-To-Care\alert-to-care-s22b8\Alert-to-Care\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\sni.dll
+C:\Users\320104085\OneDrive - Philips\Bootcamp\Alert-To-Care\alert-to-care-s22b8\Alert-to-Care\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\sni.dll
+C:\Users\320104085\OneDrive - Philips\Bootcamp\Alert-To-Care\alert-to-care-s22b8\Alert-to-Care\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
+C:\Users\320104085\OneDrive - Philips\Bootcamp\Alert-To-Care\alert-to-care-s22b8\Alert-to-Care\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\320104085\OneDrive - Philips\Bootcamp\Alert-To-Care\alert-to-care-s22b8\Alert-to-Care\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\320104085\OneDrive - Philips\Bootcamp\Alert-To-Care\alert-to-care-s22b8\Alert-to-Care\obj\Debug\netcoreapp3.1\Alert-to-Care.csproj.CoreCompileInputs.cache
+C:\Users\320104085\OneDrive - Philips\Bootcamp\Alert-To-Care\alert-to-care-s22b8\Alert-to-Care\obj\Debug\netcoreapp3.1\Alert-to-Care.MvcApplicationPartsAssemblyInfo.cache

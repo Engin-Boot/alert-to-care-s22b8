@@ -73,7 +73,25 @@ namespace Alert_to_Care.Controller
             {
                 return NotFound();
             }
-        }  
+        }
+
+        //PUT api/<ICUConfigController>
+        [HttpPut("{id}")]
+        public IActionResult Update(int id, [FromBody] UserInput value)
+        {
+            try
+            {
+                icuDataRep.DeleteICU(id);
+                icuDataRep.RegisterNewICUWithGivenId(id,value);
+                return Ok();
+
+            }
+            catch (Exception)
+            {
+                return NotFound();
+            }
+        }
+
 
 
     }

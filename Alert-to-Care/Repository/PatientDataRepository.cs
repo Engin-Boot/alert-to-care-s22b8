@@ -8,7 +8,8 @@ namespace Alert_to_Care.Repository
     public class PatientDataRepository : CommonFunctionality,IPatientData
     {
 
-        string cs = @"URI=file:C:\Users\320104085\OneDrive - Philips\Bootcamp\Alert-To-Care\alert-to-care-s22b8\Alert-to-Care\Patient.db";
+        //string cs = @"URI=file:C:\Users\320104085\OneDrive - Philips\Bootcamp\Alert-To-Care\alert-to-care-s22b8\Alert-to-Care\Patient.db";
+        string cs = @"URI=file:" + Directory.GetCurrentDirectory() + @"\" + "Patient.db";
         SQLiteConnection con=null;
 
         public PatientDataRepository()
@@ -95,6 +96,14 @@ namespace Alert_to_Care.Repository
 
         }
 
+        public bool RegisterNewPatinetWithGivenId(int id, PatientModel patient) {
+
+            using var cmd = new SQLiteCommand(con);
+            cmd.CommandText = @"INSERT INTO Patient(Id,Name,Age,BloodGroup,Address,IcuId,BedNumber) VALUES('"+ id +"','"+ patient.Name + "','" + patient.Age + "','" + patient.BloodGroup + "','" + patient.Address + "','" + patient.IcuId + "','" + patient.BedNumber + "')";
+            cmd.ExecuteNonQuery();
+            return true;
+        }
+
         public int ReturnBedNumber(int icuID)
         {
             //Connecting to ICU table to check the capacity
@@ -116,7 +125,8 @@ namespace Alert_to_Care.Repository
 
         public int CapacityOfICU(int icuID)
         {
-            string cs1 = @"URI=file:C:\Users\320104085\OneDrive - Philips\Bootcamp\Alert-To-Care\alert-to-care-s22b8\Alert-to-Care\ICU.db";
+            //string cs1 = @"URI=file:C:\Users\320104085\OneDrive - Philips\Bootcamp\Alert-To-Care\alert-to-care-s22b8\Alert-to-Care\ICU.db";
+            string cs1 = @"URI=file:" + Directory.GetCurrentDirectory() + @"\" + "ICU.db";
             SQLiteConnection con1= OpenFile(cs1);
 
 

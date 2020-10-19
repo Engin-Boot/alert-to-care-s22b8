@@ -3,13 +3,18 @@ using System;
 using System.IO;
 using System.Collections.Generic;
 using System.Data.SQLite;
-
+using System.Data.SqlClient;
 
 namespace Alert_to_Care.Repository
 {
     public class ICUDataRepository :CommonFunctionality,IICUData
     {
-        string cs = @"URI=file:C:\Users\320104085\OneDrive - Philips\Bootcamp\Alert-To-Care\alert-to-care-s22b8\Alert-to-Care\ICU.db";
+       
+   
+       
+        string cs = @"URI=file:"+ Directory.GetCurrentDirectory() + @"\ICU.db";
+        //string cs = @"URI=file:C:\Users\320104085\OneDrive - Philips\Bootcamp\Alert-To-Care\alert-to-care-s22b8\Alert-to-Care\ICU.db";
+        
         SQLiteConnection con=null;
 
         public ICUDataRepository()
@@ -23,6 +28,8 @@ namespace Alert_to_Care.Repository
               NumberOfBeds INTEGER NOT NULL,
               Layout CHAR(2) NOT NULL)";
             cmd.ExecuteNonQuery();
+
+            Console.WriteLine("path:"+cs);
 
         }
 
@@ -99,10 +106,9 @@ namespace Alert_to_Care.Repository
                 using var cmd = new SQLiteCommand(stm, con);
                 cmd.ExecuteNonQuery();
 
-                string cs2 = @"URI=file:C:\Users\320104085\OneDrive - Philips\Bootcamp\Alert-To-Care\alert-to-care-s22b8\Alert-to-Care\Patient.db";
+                //string cs2 = @"URI=file:C:\Users\320104085\OneDrive - Philips\Bootcamp\Alert-To-Care\alert-to-care-s22b8\Alert-to-Care\Patient.db";
+                string cs2 = @"URI=file:" + Directory.GetCurrentDirectory() + @"\" + "Patient.db";
                 SQLiteConnection con2 = OpenFile(cs2);
-
-
 
                 string stm2 = @"DELETE FROM Patient where IcuId=" + id;
                 using var cmd2 = new SQLiteCommand(stm2, con2);
@@ -115,8 +121,17 @@ namespace Alert_to_Care.Repository
             }
 
         }
+        public bool RegisterNewICUWithGivenId(int id, UserInput value) {
+           
+            using var cmd = new SQLiteCommand(con);
+            cmd.CommandText = @"INSERT INTO ICU(Id, NumberOfBeds, Layout) VALUES('" + id + "','" + value.NumberOfBeds + "','" + value.Layout+ "')";
+            //cmd.CommandText = @"INSERT INTO ICU(Id, NumberOfBeds, Layout) VALUES("+id+ "," +value.NumberOfBeds+"," +value.Layout+")";
+            cmd.ExecuteNonQuery();
+            return true; 
+        }
 
-        
+
+
 
 
     }

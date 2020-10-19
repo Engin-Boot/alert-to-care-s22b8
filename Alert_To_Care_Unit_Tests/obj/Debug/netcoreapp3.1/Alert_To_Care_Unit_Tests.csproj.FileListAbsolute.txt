@@ -598,3 +598,9 @@ C:\Users\320104085\OneDrive - Philips\Bootcamp\Alert-To-Care\alert-to-care-s22b8
 C:\Users\320104085\OneDrive - Philips\Bootcamp\Alert-To-Care\alert-to-care-s22b8\Alert_To_Care_Unit_Tests\obj\Debug\netcoreapp3.1\Alert_To_Care_Unit_Tests.dll
 C:\Users\320104085\OneDrive - Philips\Bootcamp\Alert-To-Care\alert-to-care-s22b8\Alert_To_Care_Unit_Tests\obj\Debug\netcoreapp3.1\Alert_To_Care_Unit_Tests.pdb
 C:\Users\320104085\OneDrive - Philips\Bootcamp\Alert-To-Care\alert-to-care-s22b8\Alert_To_Care_Unit_Tests\obj\Debug\netcoreapp3.1\Alert_To_Care_Unit_Tests.genruntimeconfig.cache
+C:\Users\320104085\OneDrive - Philips\Bootcamp\Alert-To-Care\alert-to-care-s22b8\Alert_To_Care_Unit_Tests\bin\Debug\netcoreapp3.1\System.Data.SqlClient.dll
+C:\Users\320104085\OneDrive - Philips\Bootcamp\Alert-To-Care\alert-to-care-s22b8\Alert_To_Care_Unit_Tests\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\sni.dll
+C:\Users\320104085\OneDrive - Philips\Bootcamp\Alert-To-Care\alert-to-care-s22b8\Alert_To_Care_Unit_Tests\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\sni.dll
+C:\Users\320104085\OneDrive - Philips\Bootcamp\Alert-To-Care\alert-to-care-s22b8\Alert_To_Care_Unit_Tests\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
+C:\Users\320104085\OneDrive - Philips\Bootcamp\Alert-To-Care\alert-to-care-s22b8\Alert_To_Care_Unit_Tests\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\320104085\OneDrive - Philips\Bootcamp\Alert-To-Care\alert-to-care-s22b8\Alert_To_Care_Unit_Tests\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll

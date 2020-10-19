@@ -39,7 +39,7 @@ namespace Alert_to_Care.Controller
         //    return Request.CreateResponse(HttpStatusCode.OK, stud);
         //}
 
-        // GET api/<OccupancyManagementController>/5
+        // GET api/<OccupancyManagementController>/<icuId>
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
@@ -49,7 +49,7 @@ namespace Alert_to_Care.Controller
             return NotFound();
         }
 
-        // GET api/<OccupancyManagementController>/<GetPatientById>/5
+        // GET api/<OccupancyManagementController>/<GetPatientById>/<patientId>
         [Route("[action]/{id}")]
         [HttpGet]
         public IActionResult GetPatientById(int id)
@@ -61,7 +61,7 @@ namespace Alert_to_Care.Controller
 
         }
 
-        // POST api/<OccupancyManagementController>
+        // POST api/<OccupancyManagementController>/{icuId}
         [HttpPost("{id}")]
         public IActionResult Post(int id, [FromBody] PatientDetailsInput patient)
         {
@@ -73,7 +73,7 @@ namespace Alert_to_Care.Controller
         }
 
         
-        // DELETE api/<OccupancyManagementController>/5
+        // DELETE api/<OccupancyManagementController>/<patient>
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
@@ -88,6 +88,23 @@ namespace Alert_to_Care.Controller
                 return NotFound();
             }
             
+        }
+
+        //PUT api/<ICUConfigController>/<patient id>
+        [HttpPut("{id}")]
+        public IActionResult Update(int id, [FromBody] PatientModel value)
+        {
+            try
+            {
+                patientRepo.DischargePatient(id);
+                patientRepo.RegisterNewPatinetWithGivenId(id, value);
+                return Ok();
+
+            }
+            catch (Exception)
+            {
+                return NotFound();
+            }
         }
     }
 }

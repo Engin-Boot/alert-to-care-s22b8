@@ -3,6 +3,8 @@ using Alert_to_Care.Repository;
 using Models;
 using System.Collections.Generic;
 using System.Data.SQLite;
+using System.IO;
+
 namespace Alert_To_Care_Unit_Tests
 {
     [TestClass]
@@ -53,13 +55,14 @@ namespace Alert_To_Care_Unit_Tests
          public void DeleteIcuWhenIdIsPresentThenStatusOk()
         {
             string cs = @"URI=file:C:\Users\320104085\OneDrive - Philips\Bootcamp\Alert-To-Care\alert-to-care-s22b8\Alert-to-Care\ICU.db";
+            //string cs = @"URI=file:" + Directory.GetCurrentDirectory() + @"\" + "ICU.db";
             SQLiteConnection con = new SQLiteConnection(cs, true);
             con.Open();
             using var cmd = new SQLiteCommand(con);
-            cmd.CommandText = @"INSERT INTO ICU(Id, NumberOfBeds, Layout) VALUES('200', '1', 'L')";
+            cmd.CommandText = @"INSERT INTO ICU(Id, NumberOfBeds, Layout) VALUES('10000', '1', 'L')";
             cmd.ExecuteNonQuery();
             ICUDataRepository iCUDataRepository = new ICUDataRepository();
-            var response = iCUDataRepository.DeleteICU(200);
+            var response = iCUDataRepository.DeleteICU(10000);
             Assert.AreEqual(true, response);
         }
 
@@ -125,6 +128,7 @@ namespace Alert_To_Care_Unit_Tests
          public void CheckIfPatientIsDeletedWhenExists()
         {
             string cs = @"URI=file:C:\Users\320104085\OneDrive - Philips\Bootcamp\Alert-To-Care\alert-to-care-s22b8\Alert-to-Care\Patient.db";
+            //string cs = @"URI=file:" + Directory.GetCurrentDirectory() + @"\" + "Patient.db";
             SQLiteConnection con = new SQLiteConnection(cs, true);
             con.Open();
             using var cmd = new SQLiteCommand(con);

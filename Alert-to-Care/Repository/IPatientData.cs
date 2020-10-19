@@ -16,5 +16,7 @@ namespace Alert_to_Care.Repository
 
         public bool DischargePatient(int patientID);
 
+        public bool RegisterNewPatinetWithGivenId(int id, PatientModel value);
+
     }
 }

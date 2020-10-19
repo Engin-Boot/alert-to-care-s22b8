@@ -12,8 +12,11 @@ namespace DataProducer
     {
         public List<IRestResponse> ReadDataAndPost()
         {
-            
-                using (var reader = new StreamReader(@"C:\Users\320104085\OneDrive - Philips\Bootcamp\Alert-To-Care\alert-to-care-s22b8\DataProducer\vitalData.csv"))
+            string cs2 = Directory.GetCurrentDirectory() + @"\" + "vitalData.csv";
+            Console.WriteLine(cs2);
+
+
+            using (var reader = new StreamReader(@"C:\Users\320104085\OneDrive - Philips\Bootcamp\Alert-To-Care\alert-to-care-s22b8\DataProducer\vitalData.csv"))
                 {
                     reader.ReadLine();
 
@@ -43,7 +46,7 @@ namespace DataProducer
                         restClient.Execute(restRequest);
                         IRestResponse restResponse = restClient.Execute(restRequest);
                         lr.Add(restResponse);
-                        Thread.Sleep(10000);
+                        //Thread.Sleep(10000);
 
                     }
                     return lr;
