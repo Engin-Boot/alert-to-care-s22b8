@@ -1,0 +1,3 @@
+[submodule "AlertToCare"]
+	path = AlertToCare
+	url = https://github.com/Engin-Boot/alert-to-care-s22b8.git
