@@ -19,8 +19,7 @@ namespace Alert_to_Care.Controller
         }
         
 
-       
-
+  
         // POST api/<VitalsAlertController>
         [HttpPost]
         public void Post([FromBody] List<PatientVitals> allPatientVitals)

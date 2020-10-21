@@ -42,12 +42,12 @@ namespace Alert_to_Care.Controller
             icu = icuDataRep.ViewICU(id);
             if (icu != null)
             {
-                
                 return Ok(icu);
             }
             else
             {
-                return NotFound();
+                icu = new ICUModel();
+                return Ok(icu);
             }
         }
 
@@ -55,23 +55,53 @@ namespace Alert_to_Care.Controller
         [HttpPost("register")]
         public IActionResult Post([FromBody] UserInput value)
         {
-            icuDataRep.RegisterNewICU(value);
-            return Ok();
+
+            bool isSucess=icuDataRep.RegisterNewICU(value);
+            if (isSucess)
+            {
+                Message message = new Message();
+                message.Messages = "Registered Sucessfully!";
+                return Ok(message);
+            }
+            else
+            {
+                Message message = new Message();
+                message.Messages = "Unable to register!";
+                return Ok(message);
+
+
+            }
         }
 
         // DELETE api/<ICUConfigController>/5
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
+            
             try
             {
-                icuDataRep.DeleteICU(id);
-                return Ok();
                 
+                bool isPresent=icuDataRep.DeleteICU(id);
+                if (isPresent)
+                {
+                    Message message = new Message();
+                    message.Messages = "ICU ID : " + id + " deleted!";
+                    return Ok(message);
+                }
+                else
+                {
+                    Message message = new Message();
+                    message.Messages = "ICU ID : " + id + " not registered!";
+                    return Ok(message);
+
+                }
+
             }
             catch (Exception)
             {
-                return NotFound();
+                Message message = new Message();
+                message.Messages = "Something went wrong!";
+                return NotFound(message);
             }
         }
 
@@ -81,14 +111,28 @@ namespace Alert_to_Care.Controller
         {
             try
             {
-                icuDataRep.DeleteICU(id);
-                icuDataRep.RegisterNewICUWithGivenId(id,value);
-                return Ok();
+                bool isPresent=icuDataRep.DeleteICU(id);
+                if (isPresent)
+                {
+                    icuDataRep.RegisterNewICUWithGivenId(id, value);
+                    Message message = new Message();
+                    message.Messages = "ICU ID : " + id + " Updated!";
+                    return Ok(message);
+                   
+                }
+                else {
+                    Message message = new Message();
+                    message.Messages = "ICU ID : " + id + " not registered!";
+                    return Ok(message);
+
+                }
 
             }
             catch (Exception)
             {
-                return NotFound();
+                Message message = new Message();
+                message.Messages = "Something went wrong!";
+                return NotFound(message);
             }
         }
 
