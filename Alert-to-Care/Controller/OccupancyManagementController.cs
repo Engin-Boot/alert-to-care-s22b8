@@ -43,10 +43,14 @@ namespace Alert_to_Care.Controller
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
+
             var allPatients=patientRepo.GetAllPatientsInTheICU(id);
-            if(allPatients.Count!=0)
+            if (allPatients.Count != 0)
                 return Ok(allPatients);
-            return NotFound();
+            else
+            {
+                return Ok(allPatients);
+            }
         }
 
         // GET api/<OccupancyManagementController>/<GetPatientById>/<patientId>
@@ -54,10 +58,12 @@ namespace Alert_to_Care.Controller
         [HttpGet]
         public IActionResult GetPatientById(int id)
         {
-            var patient=patientRepo.GetPatient(id);
+            PatientModel patient=patientRepo.GetPatient(id);
             if (patient != null)
                 return Ok(patient);
-            return NotFound();
+            else
+                patient = new PatientModel();
+            return Ok(patient);
 
         }
 
@@ -67,9 +73,18 @@ namespace Alert_to_Care.Controller
         {
             bool result = patientRepo.AddNewPatient(id, patient);
             if (result)
-                return Ok();
-            return NotFound();
+            {
+                Message message = new Message();
+                message.Messages = "Registered Sucessfully!";
+                return Ok(message);
+            }
+            else
+            {
+                Message message = new Message();
+                message.Messages = "Registration UnSucessfull - Bed not Available!";
+                return Ok(message);
 
+            }
         }
 
         
@@ -79,8 +94,20 @@ namespace Alert_to_Care.Controller
         {
             try
             {
-                patientRepo.DischargePatient(id);
-                return Ok();
+             bool present= patientRepo.DischargePatient(id);
+                if(present)
+                {
+                    Message message = new Message();
+                    message.Messages = "Patient ID : " + id + " deleted!";
+                    return Ok(message);
+                }
+                else
+                {
+                    Message message = new Message();
+                    message.Messages = "Patient ID : " + id + " not registered!";
+                    return Ok(message);
+
+                }
             }
             catch(Exception)
             {
@@ -96,14 +123,28 @@ namespace Alert_to_Care.Controller
         {
             try
             {
-                patientRepo.DischargePatient(id);
-                patientRepo.RegisterNewPatinetWithGivenId(id, value);
-                return Ok();
+               bool present= patientRepo.DischargePatient(id);
+                if (present)
+                {
+                    patientRepo.RegisterNewPatinetWithGivenId(id, value);
+
+                    Message message = new Message();
+                    message.Messages = "Updated Successfully!";
+                    return Ok(message);
+                }
+                else
+                {
+                    Message message = new Message();
+                    message.Messages = "Id Not Present - Update Unsuccessfull!";
+                    return Ok(message);
+                }
 
             }
             catch (Exception)
             {
-                return NotFound();
+                Message message = new Message();
+                message.Messages = "Something went wrong!";
+                return NotFound(message);
             }
         }
     }
