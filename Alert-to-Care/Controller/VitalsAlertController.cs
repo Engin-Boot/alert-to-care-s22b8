@@ -22,9 +22,12 @@ namespace Alert_to_Care.Controller
   
         // POST api/<VitalsAlertController>
         [HttpPost]
-        public void Post([FromBody] List<PatientVitals> allPatientVitals)
+        public IActionResult Post([FromBody] List<PatientVitals> allPatientVitals)
         {
            vitalsChecker.CheckVitals(allPatientVitals);
+            Message message = new Message();
+            message.Messages = "Alert Sent!!";
+            return Ok(message);
         }
 
        
