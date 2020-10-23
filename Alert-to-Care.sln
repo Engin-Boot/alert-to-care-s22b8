@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alert-to-Care", "Alert-to-C
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Models", "Models\Models.csproj", "{6BAFD77A-B669-409F-B239-19B9737C350C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alert-To-Care-Unit-Tests", "Alert-To-Care-Unit-Tests\Alert-To-Care-Unit-Tests.csproj", "{7451AF8F-A3A1-4928-A3A4-88EAF5ED2A25}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alert_To_Care.Integration.Tests", "Alert_To_Care.Integration.Tests\Alert_To_Care.Integration.Tests.csproj", "{F0742C8F-32B3-4DB0-BE16-F70671F99F1B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alert-To-Care-Unit-Tests", "Alert-To-Care-Unit-Tests\Alert-To-Care-Unit-Tests.csproj", "{7451AF8F-A3A1-4928-A3A4-88EAF5ED2A25}"
 	ProjectSection(ProjectDependencies) = postProject
 		{6BAFD77A-B669-409F-B239-19B9737C350C} = {6BAFD77A-B669-409F-B239-19B9737C350C}
 		{61CE868D-D2D1-4837-860A-51A5CBCE5DAF} = {61CE868D-D2D1-4837-860A-51A5CBCE5DAF}
@@ -27,10 +29,10 @@ Global
 		{6BAFD77A-B669-409F-B239-19B9737C350C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6BAFD77A-B669-409F-B239-19B9737C350C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6BAFD77A-B669-409F-B239-19B9737C350C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{08D72BC5-69F1-47F0-9A12-47B84115C8AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{08D72BC5-69F1-47F0-9A12-47B84115C8AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{08D72BC5-69F1-47F0-9A12-47B84115C8AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{08D72BC5-69F1-47F0-9A12-47B84115C8AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F0742C8F-32B3-4DB0-BE16-F70671F99F1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F0742C8F-32B3-4DB0-BE16-F70671F99F1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F0742C8F-32B3-4DB0-BE16-F70671F99F1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F0742C8F-32B3-4DB0-BE16-F70671F99F1B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7451AF8F-A3A1-4928-A3A4-88EAF5ED2A25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7451AF8F-A3A1-4928-A3A4-88EAF5ED2A25}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7451AF8F-A3A1-4928-A3A4-88EAF5ED2A25}.Release|Any CPU.ActiveCfg = Release|Any CPU
