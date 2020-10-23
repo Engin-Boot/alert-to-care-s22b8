@@ -1744,19 +1744,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\320088465\\.nuget\\packages\\": {}
+    "C:\\Users\\320104085\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\GUI\\alert-to-care-s22b8\\Alert-to-Care\\Alert-to-Care.csproj",
+      "projectUniqueName": "C:\\Users\\320104085\\OneDrive - Philips\\Bootcamp\\AlertToCare-Final-LinkedWithApi\\alert-to-care-s22b8\\Alert-to-Care\\Alert-to-Care.csproj",
       "projectName": "Alert-to-Care",
-      "projectPath": "C:\\GUI\\alert-to-care-s22b8\\Alert-to-Care\\Alert-to-Care.csproj",
-      "packagesPath": "C:\\Users\\320088465\\.nuget\\packages\\",
-      "outputPath": "C:\\GUI\\alert-to-care-s22b8\\Alert-to-Care\\obj\\",
+      "projectPath": "C:\\Users\\320104085\\OneDrive - Philips\\Bootcamp\\AlertToCare-Final-LinkedWithApi\\alert-to-care-s22b8\\Alert-to-Care\\Alert-to-Care.csproj",
+      "packagesPath": "C:\\Users\\320104085\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\320104085\\OneDrive - Philips\\Bootcamp\\AlertToCare-Final-LinkedWithApi\\alert-to-care-s22b8\\Alert-to-Care\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\320088465\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\320104085\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -1768,9 +1768,10 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "C:\\GUI\\alert-to-care-s22b8\\Models\\Models.csproj": {
-              "projectPath": "C:\\GUI\\alert-to-care-s22b8\\Models\\Models.csproj"
+            "C:\\Users\\320104085\\OneDrive - Philips\\Bootcamp\\AlertToCare-Final-LinkedWithApi\\alert-to-care-s22b8\\Models\\Models.csproj": {
+              "projectPath": "C:\\Users\\320104085\\OneDrive - Philips\\Bootcamp\\AlertToCare-Final-LinkedWithApi\\alert-to-care-s22b8\\Models\\Models.csproj"
             }
           }
         }
@@ -1783,6 +1784,7 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
+        "targetAlias": "netcoreapp3.1",
         "dependencies": {
           "Microsoft.EntityFrameworkCore.Sqlite": {
             "target": "Package",
@@ -1813,6 +1815,16 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[3.1.2, 3.1.2]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Host.win-x64",
+            "version": "[3.1.7, 3.1.7]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"
@@ -1821,7 +1833,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100-rc.1.20452.10\\RuntimeIdentifierGraph.json"
       }
     }
   }

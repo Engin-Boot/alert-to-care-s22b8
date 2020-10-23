@@ -56,18 +56,13 @@ namespace Alert_to_Care.Repository
             return listOfIcu;
         }
 
-        public bool RegisterNewICU(UserInput userInput) {
-            try
-            {
+        public bool RegisterNewICU(UserInput userInput) 
+        {
                 using var cmd = new SQLiteCommand(con);
                 cmd.CommandText = @"INSERT INTO ICU(NumberOfBeds, Layout) VALUES('" + userInput.NumberOfBeds + "','" + userInput.Layout + "')";
                 cmd.ExecuteNonQuery();
                 return true;
-            }
-            catch 
-            {
-                return false;
-            }
+ 
         } 
        
         public ICUModel ViewICU(int id)

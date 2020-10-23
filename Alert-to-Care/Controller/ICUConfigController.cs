@@ -25,13 +25,8 @@ namespace Alert_to_Care.Controller
         public IActionResult Get()
         {
             var allIcu = icuDataRep.GetAllICU();
-            if (allIcu == null)
-            {
-                return NotFound();
-            }
-            else { 
                 return Ok(allIcu);
-            }
+            
         }
 
         //GET api/<ICUConfigController>/5
@@ -56,21 +51,11 @@ namespace Alert_to_Care.Controller
         public IActionResult Post([FromBody] UserInput value)
         {
 
-            bool isSucess=icuDataRep.RegisterNewICU(value);
-            if (isSucess)
-            {
-                Message message = new Message();
-                message.Messages = "Registered Sucessfully!";
-                return Ok(message);
-            }
-            else
-            {
-                Message message = new Message();
-                message.Messages = "Unable to register!";
-                return Ok(message);
-
-
-            }
+           icuDataRep.RegisterNewICU(value);
+           Message message = new Message();
+           message.Messages = "Registered Sucessfully!";
+           return Ok(message);
+           
         }
 
         // DELETE api/<ICUConfigController>/5
@@ -78,9 +63,6 @@ namespace Alert_to_Care.Controller
         public IActionResult Delete(int id)
         {
             
-            try
-            {
-                
                 bool isPresent=icuDataRep.DeleteICU(id);
                 if (isPresent)
                 {
@@ -93,24 +75,15 @@ namespace Alert_to_Care.Controller
                     Message message = new Message();
                     message.Messages = "ICU ID : " + id + " not registered!";
                     return Ok(message);
-
                 }
-
-            }
-            catch (Exception)
-            {
-                Message message = new Message();
-                message.Messages = "Something went wrong!";
-                return NotFound(message);
-            }
         }
 
         //PUT api/<ICUConfigController>
         [HttpPut("{id}")]
         public IActionResult Update(int id, [FromBody] UserInput value)
         {
-            try
-            {
+            
+           
                 bool isPresent=icuDataRep.DeleteICU(id);
                 if (isPresent)
                 {
@@ -127,13 +100,8 @@ namespace Alert_to_Care.Controller
 
                 }
 
-            }
-            catch (Exception)
-            {
-                Message message = new Message();
-                message.Messages = "Something went wrong!";
-                return NotFound(message);
-            }
+            
+            
         }
 
 

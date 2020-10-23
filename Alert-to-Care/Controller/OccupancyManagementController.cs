@@ -20,26 +20,6 @@ namespace Alert_to_Care.Controller
             this.patientRepo = patientData;
         }
 
-        // GET: api/<OccupancyManagementController>
-        //[HttpGet]
-        //public List<PatientModel> Get()
-        //{
-        //    return ;
-        //}
-
-        //public HttpResponseMessage Get(int id)
-        //{
-        //    Student stud = GetStudentFromDB(id);
-
-        //    if (stud == null)
-        //    {
-        //        return Request.CreateResponse(HttpStatusCode.NotFound, id);
-        //    }
-
-        //    return Request.CreateResponse(HttpStatusCode.OK, stud);
-        //}
-
-        // GET api/<OccupancyManagementController>/<icuId>
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
@@ -92,9 +72,7 @@ namespace Alert_to_Care.Controller
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            try
-            {
-             bool present= patientRepo.DischargePatient(id);
+               bool present= patientRepo.DischargePatient(id);
                 if(present)
                 {
                     Message message = new Message();
@@ -108,21 +86,14 @@ namespace Alert_to_Care.Controller
                     return Ok(message);
 
                 }
-            }
-            catch(Exception)
-            {
-                
-                return NotFound();
-            }
-            
         }
 
         //PUT api/<ICUConfigController>/<patient id>
         [HttpPut("{id}")]
         public IActionResult Update(int id, [FromBody] PatientModel value)
         {
-            try
-            {
+           
+            
                bool present= patientRepo.DischargePatient(id);
                 if (present)
                 {
@@ -139,13 +110,7 @@ namespace Alert_to_Care.Controller
                     return Ok(message);
                 }
 
-            }
-            catch (Exception)
-            {
-                Message message = new Message();
-                message.Messages = "Something went wrong!";
-                return NotFound(message);
-            }
+           
         }
     }
 }
