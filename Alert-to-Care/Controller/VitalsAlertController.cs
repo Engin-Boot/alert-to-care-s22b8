@@ -11,27 +11,22 @@ namespace Alert_to_Care.Controller
     [ApiController]
     public class VitalsAlertController : ControllerBase
     {
-        readonly IVitalsCheckerRepository vitalsChecker;
+        private readonly IVitalsCheckerRepository vitalsChecker;
 
         public VitalsAlertController(IVitalsCheckerRepository _vitalsChecker)
         {
             vitalsChecker = _vitalsChecker;
         }
-        
 
-  
+
         // POST api/<VitalsAlertController>
         [HttpPost]
         public IActionResult Post([FromBody] List<PatientVitals> allPatientVitals)
         {
-           vitalsChecker.CheckVitals(allPatientVitals);
-            Message message = new Message();
+            vitalsChecker.CheckVitals(allPatientVitals);
+            var message = new Message();
             message.Messages = "Alert Sent!!";
             return Ok(message);
         }
-
-       
-
-       
     }
 }

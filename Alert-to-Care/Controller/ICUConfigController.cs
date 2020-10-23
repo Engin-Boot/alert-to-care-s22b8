@@ -1,8 +1,6 @@
-﻿
-using Models;
+﻿using Alert_to_Care.Repository;
 using Microsoft.AspNetCore.Mvc;
-using Alert_to_Care.Repository;
-using System;
+using Models;
 
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -15,9 +13,9 @@ namespace Alert_to_Care.Controller
     {
         public IICUData icuDataRep;
 
-        public ICUConfigController(IICUData iCUData) 
+        public ICUConfigController(IICUData iCUData)
         {
-            icuDataRep = iCUData;    
+            icuDataRep = iCUData;
         }
 
         // GET: api/<ICUConfigController>
@@ -25,8 +23,7 @@ namespace Alert_to_Care.Controller
         public IActionResult Get()
         {
             var allIcu = icuDataRep.GetAllICU();
-                return Ok(allIcu);
-            
+            return Ok(allIcu);
         }
 
         //GET api/<ICUConfigController>/5
@@ -39,72 +36,58 @@ namespace Alert_to_Care.Controller
             {
                 return Ok(icu);
             }
-            else
-            {
-                icu = new ICUModel();
-                return Ok(icu);
-            }
+
+            icu = new ICUModel();
+            return Ok(icu);
         }
 
         //POST api/<ICUConfigController>
         [HttpPost("register")]
         public IActionResult Post([FromBody] UserInput value)
         {
-
-           icuDataRep.RegisterNewICU(value);
-           Message message = new Message();
-           message.Messages = "Registered Sucessfully!";
-           return Ok(message);
-           
+            icuDataRep.RegisterNewICU(value);
+            var message = new Message();
+            message.Messages = "Registered Sucessfully!";
+            return Ok(message);
         }
 
         // DELETE api/<ICUConfigController>/5
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            
-                bool isPresent=icuDataRep.DeleteICU(id);
-                if (isPresent)
-                {
-                    Message message = new Message();
-                    message.Messages = "ICU ID : " + id + " deleted!";
-                    return Ok(message);
-                }
-                else
-                {
-                    Message message = new Message();
-                    message.Messages = "ICU ID : " + id + " not registered!";
-                    return Ok(message);
-                }
+            var isPresent = icuDataRep.DeleteICU(id);
+            if (isPresent)
+            {
+                var message = new Message();
+                message.Messages = "ICU ID : " + id + " deleted!";
+                return Ok(message);
+            }
+            else
+            {
+                var message = new Message();
+                message.Messages = "ICU ID : " + id + " not registered!";
+                return Ok(message);
+            }
         }
 
         //PUT api/<ICUConfigController>
         [HttpPut("{id}")]
         public IActionResult Update(int id, [FromBody] UserInput value)
         {
-            
-           
-                bool isPresent=icuDataRep.DeleteICU(id);
-                if (isPresent)
-                {
-                    icuDataRep.RegisterNewICUWithGivenId(id, value);
-                    Message message = new Message();
-                    message.Messages = "ICU ID : " + id + " Updated!";
-                    return Ok(message);
-                   
-                }
-                else {
-                    Message message = new Message();
-                    message.Messages = "ICU ID : " + id + " not registered!";
-                    return Ok(message);
-
-                }
-
-            
-            
+            var isPresent = icuDataRep.DeleteICU(id);
+            if (isPresent)
+            {
+                icuDataRep.RegisterNewICUWithGivenId(id, value);
+                var message = new Message();
+                message.Messages = "ICU ID : " + id + " Updated!";
+                return Ok(message);
+            }
+            else
+            {
+                var message = new Message();
+                message.Messages = "ICU ID : " + id + " not registered!";
+                return Ok(message);
+            }
         }
-
-
-
     }
 }

@@ -1,37 +1,34 @@
-﻿using System;
-using Xunit;
+﻿using System.Collections.Generic;
 using Alert_to_Care.Controller;
-using Models;
 using Alert_to_Care.Repository;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore.Query.Internal;
+using Models;
+using Xunit;
+
 namespace Alert_To_Care_Unit_Tests
 {
     public class VitalsAlertControllerUnitTest
     {
-        readonly VitalsAlertController  controller;
+        private readonly VitalsAlertController controller;
 
         public VitalsAlertControllerUnitTest()
         {
-
             IVitalsCheckerRepository service = new VitalsCheckerRepository();
             controller = new VitalsAlertController(service);
         }
 
         [Fact]
-
-        void ReturnOkWhenPostIsCalled() {
-
-            List<PatientVitals> vitalsListWithId = new List<PatientVitals>();
-            List<int> vitalList =new List<int>();
+        private void ReturnOkWhenPostIsCalled()
+        {
+            var vitalsListWithId = new List<PatientVitals>();
+            var vitalList = new List<int>();
             vitalList.Add(22);
             vitalList.Add(22);
             vitalList.Add(22);
-            PatientVitals patientOneVital = new PatientVitals()
+            var patientOneVital = new PatientVitals
             {
                 Id = 102,
-                Vitals =vitalList
+                Vitals = vitalList
             };
             vitalsListWithId.Add(patientOneVital);
             // Act
@@ -45,8 +42,5 @@ namespace Alert_To_Care_Unit_Tests
             var actual = model.Messages;
             Assert.Equal("Alert Sent!!", actual);
         }
-
     }
-    
 }
-

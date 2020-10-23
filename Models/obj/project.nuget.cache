@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "HOmOpAQzdfoPoXmruRQ/XMWuWov/wzCKO+ineb3HpXwo+IYS3Nh1eNN3DZYW+OBMMA5ykudIItMdPNNuyRc1vQ==",
+  "dgSpecHash": "huEqFiBcn00Q/Fcj8WSQ9vO6WANXNmT+2MbIeTRffkoezIuDBe53gp2tta8otFaQMoWE7nhFQKhYVRCHOouStg==",
   "success": true,
-  "projectFilePath": "C:\\data\\New-Project\\alert-to-care-s22b8\\Models\\Models.csproj",
+  "projectFilePath": "C:\\Users\\320104085\\OneDrive - Philips\\Bootcamp\\FreshApiAlertToCare\\alert-to-care-s22b8\\Models\\Models.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\320088465\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
-    "C:\\Users\\320088465\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+    "C:\\Users\\320104085\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\320104085\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
   ],
   "logs": []
 }

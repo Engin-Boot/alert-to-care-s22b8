@@ -1,5 +1,4 @@
-﻿
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Models;
 
 namespace Alert_to_Care.Repository
@@ -8,7 +7,7 @@ namespace Alert_to_Care.Repository
     {
         public List<PatientModel> GetAllPatientsInTheICU(int id);
 
-        public bool AddNewPatient(int icuID,PatientDetailsInput patient);
+        public bool AddNewPatient(int icuID, PatientDetailsInput patient);
 
 
         public PatientModel GetPatient(int id);
@@ -17,6 +16,5 @@ namespace Alert_to_Care.Repository
         public bool DischargePatient(int patientID);
 
         public bool RegisterNewPatinetWithGivenId(int id, PatientModel value);
-
     }
 }

@@ -1,6 +1,5 @@
-﻿using Models;
-using System.Collections.Generic;
-
+﻿using System.Collections.Generic;
+using Models;
 
 namespace Alert_to_Care.Repository
 {
@@ -18,6 +17,5 @@ namespace Alert_to_Care.Repository
         public bool DeleteICU(int id);
 
         public bool RegisterNewICUWithGivenId(int id, UserInput value);
-
     }
 }

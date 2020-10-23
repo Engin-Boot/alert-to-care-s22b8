@@ -1,44 +1,45 @@
-﻿using System.Net;
+﻿using System.Collections.Generic;
+using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using Models;
+using AssistAPurchase.Integration.Tests;
 using FluentAssertions;
+using Models;
 using Newtonsoft.Json;
 using Xunit;
-using AssistAPurchase.Integration.Tests;
-using System.Collections.Generic;
 
 namespace Alert_To_Care.Integration.Tests
 {
-   public class AlertControllerIntegrationTest
+    public class AlertControllerIntegrationTest
     {
+        private static readonly string url = "http://localhost:5000/api/VitalsAlert";
 
         private readonly TestContext _sut;
-        static string url = "http://localhost:5000/api/VitalsAlert";
+
         public AlertControllerIntegrationTest()
         {
             _sut = new TestContext();
         }
-        
+
         [Fact]
         public async Task WhenNeedSendAnAlert()
         {
-            List<PatientVitals> vitalsListWithId = new List<PatientVitals>();
-            List<int> vitalList = new List<int>();
-            vitalList.Add(22);
-            vitalList.Add(22);
-            vitalList.Add(22);
-            PatientVitals patientOneVital = new PatientVitals()
+            var vitalsList = new List<PatientVitals>();
+            var vitals = new List<int>();
+            vitals.Add(200);
+            vitals.Add(1000);
+            vitals.Add(30);
+            var patientVital = new PatientVitals
             {
                 Id = 24,
-                Vitals = vitalList
+                Vitals = vitals
             };
-            vitalsListWithId.Add(patientOneVital);
+            vitalsList.Add(patientVital);
             var response = await _sut.Client.PostAsync(url,
-                new StringContent(JsonConvert.SerializeObject(vitalsListWithId), Encoding.UTF8, "application/json"));
+                new StringContent(JsonConvert.SerializeObject(vitalsList), Encoding.UTF8, "application/json"));
             response.StatusCode.Should().Be(HttpStatusCode.OK);
-          //  var responseString = await response.Content.ReadAsStringAsync();
+            //  var responseString = await response.Content.ReadAsStringAsync();
             //Assert.Contains("Registration UnSucessfull - Bed not Available!", responseString);
         }
     }

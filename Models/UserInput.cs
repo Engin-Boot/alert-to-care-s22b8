@@ -1,6 +1,4 @@
-﻿
-
-namespace Models
+﻿namespace Models
 {
     public class UserInput
     {

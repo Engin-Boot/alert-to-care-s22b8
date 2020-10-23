@@ -1,4 +1,4 @@
-
+using Alert_to_Care.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -22,28 +22,22 @@ namespace Alert_to_Care
         {
             services.AddCors();
             services.AddControllers();
-            services.AddSingleton<Repository.IICUData, Repository.ICUDataRepository>();
-            services.AddSingleton<Repository.IPatientData, Repository.PatientDataRepository>();
-            services.AddSingleton<Repository.IVitalsCheckerRepository, Repository.VitalsCheckerRepository>();
-
+            services.AddSingleton<IICUData, ICUDataRepository>();
+            services.AddSingleton<IPatientData, PatientDataRepository>();
+            services.AddSingleton<IVitalsCheckerRepository, VitalsCheckerRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-            
-            app.UseRouting();
-            app.UseCors(options => options.WithOrigins("http://localhost:4200").AllowAnyHeader().AllowAnyMethod().AllowCredentials());
-       
+            if (env.IsDevelopment()) app.UseDeveloperExceptionPage();
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+            app.UseRouting();
+            app.UseCors(options => options.WithOrigins("http://localhost:4200").AllowAnyHeader().AllowAnyMethod()
+                .AllowCredentials());
+
+
+            app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
         }
     }
 }

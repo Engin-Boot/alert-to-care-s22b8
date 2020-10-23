@@ -2,18 +2,18 @@
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using Models;
+using AssistAPurchase.Integration.Tests;
 using FluentAssertions;
+using Models;
 using Newtonsoft.Json;
 using Xunit;
-using AssistAPurchase.Integration.Tests;
 
 namespace Alert_To_Care.Integration.Tests
 {
     public class OccupancyManagementControllerIntegrationTests
     {
+        private static readonly string url = "https://localhost:5000/api/OccupancyManagement";
         private readonly TestContext _sut;
-        static string url = "https://localhost:5000/api/OccupancyManagement";
 
         public OccupancyManagementControllerIntegrationTests()
         {
@@ -37,7 +37,6 @@ namespace Alert_To_Care.Integration.Tests
             var responseString = await response.Content.ReadAsStringAsync();
             response.StatusCode.Should().Be(HttpStatusCode.OK);
             Assert.Contains("Patient ID : 8909808 not registered!", responseString);
-
         }
 
         [Fact]
@@ -47,13 +46,12 @@ namespace Alert_To_Care.Integration.Tests
             var responseString = await response.Content.ReadAsStringAsync();
             response.StatusCode.Should().Be(HttpStatusCode.OK);
             //   Assert.Contains("Patient ID : 1 deleted!", responseString);
-
         }
 
         [Fact]
         public async Task WhenNewDataToBeCreatedThenCheckResponse()
         {
-            var createIcu = new PatientModel()
+            var createIcu = new PatientModel
             {
                 Name = "Amulya",
                 Address = "UP",
@@ -71,7 +69,7 @@ namespace Alert_To_Care.Integration.Tests
         [Fact]
         public async Task WhenNewDataToBeCreatedThenCheckResponseNotRegistered()
         {
-            var createIcu = new PatientModel()
+            var createIcu = new PatientModel
             {
                 Name = "Amulya",
                 Address = "UP",
@@ -87,19 +85,15 @@ namespace Alert_To_Care.Integration.Tests
         }
 
         [Fact]
-
         public async Task WhenPatientIsNotUpdatedThenCheckTheResponse()
         {
-
-            var updatePatient = new PatientModel()
+            var updatePatient = new PatientModel
             {
-
                 Name = "Amulya Alur",
                 Address = "UP",
                 Age = 21,
                 BedNumber = 5,
                 BloodGroup = "B+"
-
             };
             var response = await _sut.Client.PutAsync(url + "/1",
                 new StringContent(JsonConvert.SerializeObject(updatePatient), Encoding.UTF8, "application/json"));
@@ -110,19 +104,15 @@ namespace Alert_To_Care.Integration.Tests
         }
 
         [Fact]
-
         public async Task WhenPatientIsUpdatedSuccessfullyThenCheckTheResponse()
         {
-
-            var updatePatient = new PatientModel()
+            var updatePatient = new PatientModel
             {
-
                 Name = "Amulya Alur",
                 Address = "UP",
                 Age = 21,
                 BedNumber = 5,
                 BloodGroup = "B+"
-
             };
             var response = await _sut.Client.PutAsync(url + "/2",
                 new StringContent(JsonConvert.SerializeObject(updatePatient), Encoding.UTF8, "application/json"));
@@ -135,25 +125,19 @@ namespace Alert_To_Care.Integration.Tests
         [Fact]
         public async Task WhenPatientsAreUpdatedSuccessfullyThenCheckTheResponse()
         {
-
-            var updatePatient = new PatientDetailsInput()
+            var updatePatient = new PatientDetailsInput
             {
-
                 name = "Amulya Alur",
                 address = "UP",
                 age = 21,
                 bloodGroup = "B+"
-
             };
-            var response = await _sut.Client.PutAsync(url + "/99",
+            var response = await _sut.Client.PutAsync(url + "/22",
                 new StringContent(JsonConvert.SerializeObject(updatePatient), Encoding.UTF8, "application/json"));
             Assert.True(response.StatusCode == HttpStatusCode.OK);
             var responseString = await response.Content.ReadAsStringAsync();
             //  Assert.Contains("Updated Successfully!", responseString);
             //     Assert.Contains("Updated Successfully!", responseString);
-
         }
-
-
     }
 }

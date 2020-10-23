@@ -1,5 +1,4 @@
-﻿
-namespace Models
+﻿namespace Models
 {
     public class PatientModel
     {
@@ -7,9 +6,9 @@ namespace Models
         public string Name { get; set; }
 
         public int Age { get; set; }
-        
+
         public string BloodGroup { get; set; }
-        
+
         public string Address { get; set; }
 
         public int IcuId { get; set; }

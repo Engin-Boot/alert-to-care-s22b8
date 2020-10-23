@@ -5,15 +5,16 @@ using Microsoft.AspNetCore.TestHost;
 
 namespace AssistAPurchase.Integration.Tests
 {
-    class TestContext
+    internal class TestContext
     {
-        public HttpClient Client { get; private set; }
         private TestServer _server;
 
         public TestContext()
         {
             SetupClient();
         }
+
+        public HttpClient Client { get; private set; }
 
         private void SetupClient()
         {
