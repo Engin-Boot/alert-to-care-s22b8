@@ -39,9 +39,9 @@ namespace Alert_To_Care_Unit_Tests
             // Assert
             Assert.IsType<OkObjectResult>(result);
             var okObjectResult = result as OkObjectResult;
-            Assert.NotNull(okObjectResult);
+            //Assert.NotNull(okObjectResult);
             var model = okObjectResult.Value as Message;
-            Assert.NotNull(model);
+            //Assert.NotNull(model);
             var actual = model.Messages;
             Assert.Equal("Alert Sent!!", actual);
         }

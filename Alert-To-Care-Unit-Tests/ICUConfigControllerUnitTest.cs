@@ -70,14 +70,11 @@ namespace Alert_To_Care_Unit_Tests
                 Layout = 'L',
                 NumberOfBeds = 3
             };
-
             var actionResult = controller.Post(body);
-
+            Assert.IsType<OkObjectResult>(actionResult);
             //Assert
             var okObjectResult = actionResult as OkObjectResult;
-            Assert.NotNull(okObjectResult);
             var model = okObjectResult.Value as Message;
-            Assert.NotNull(model);
             var actual = model.Messages;
             Assert.Equal(expected, actual);
         }
@@ -90,10 +87,7 @@ namespace Alert_To_Care_Unit_Tests
             var actionResult = controller.Delete(id);
             //Assert
             Assert.IsType<OkObjectResult>(actionResult);
-            var okObjectResult = actionResult as OkObjectResult;
-            Assert.NotNull(okObjectResult);
-            var model = okObjectResult.Value as Message;
-            Assert.NotNull(model);
+     
         }
 
         [Fact]
@@ -105,9 +99,7 @@ namespace Alert_To_Care_Unit_Tests
             //Assert
             Assert.IsType<OkObjectResult>(actionResult);
             var okObjectResult = actionResult as OkObjectResult;
-            Assert.NotNull(okObjectResult);
             var model = okObjectResult.Value as Message;
-            Assert.NotNull(model);
             var actual = model.Messages;
             Assert.Equal("ICU ID : " + id + " not registered!", actual);
         }
@@ -118,7 +110,7 @@ namespace Alert_To_Care_Unit_Tests
 
             //make sure this id is available in db
             //write the icu id which is available
-            int id = 288;
+            int id = 100;
             UserInput body = new UserInput()
             {
                 Layout = 'L',
@@ -127,12 +119,8 @@ namespace Alert_To_Care_Unit_Tests
             var result = controller.Update(id,body); ;
             //Assert
             Assert.IsType<OkObjectResult>(result);
-            var okObjectResult = result as OkObjectResult;
-            Assert.NotNull(okObjectResult);
-            var model = okObjectResult.Value as Message;
-            Assert.NotNull(model);
+        
         }
-
 
         [Fact]
         public void WhenUpdateIsCalledWithNoIucIdReturnNotRegistered() {
@@ -147,29 +135,33 @@ namespace Alert_To_Care_Unit_Tests
             //Assert
             Assert.IsType<OkObjectResult>(result);
             var okObjectResult = result as OkObjectResult;
-            Assert.NotNull(okObjectResult);
             var model = okObjectResult.Value as Message;
-            Assert.NotNull(model);
             var actual = model.Messages;
             Assert.Equal("ICU ID : " + id + " not registered!", actual);
 
         }
 
         [Fact]
-        void ModelTest() {
+        void ModelBedTest() {
             Bed bed = new Bed();
             bed.id = "1";
             bed.isOccupied = true;
             Assert.Equal("1",bed.id);
             Assert.True(bed.isOccupied);
+       
+        }
+
+        [Fact]
+        void ModelIcuTest()
+        {
+
             ICUModel icuModel = new ICUModel();
             icuModel.id = 1;
             icuModel.NumberOfBeds = 2;
             icuModel.Layout = 'L';
-            Assert.Equal(1,icuModel.id);
-            Assert.Equal(2,icuModel.NumberOfBeds);
-            Assert.Equal('L',icuModel.Layout);
-        
+            Console.WriteLine(icuModel.id);
+            Console.WriteLine(icuModel.NumberOfBeds);
+            Console.WriteLine(icuModel.Layout);
 
         }
     }
