@@ -1744,19 +1744,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\320104085\\.nuget\\packages\\": {}
+    "C:\\Users\\320088465\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\320104085\\OneDrive - Philips\\Bootcamp\\FreshApiAlertToCare\\alert-to-care-s22b8\\Alert-to-Care\\Alert-to-Care.csproj",
+      "projectUniqueName": "C:\\Exe_to_run\\new\\alert-to-care-s22b8\\Alert-to-Care\\Alert-to-Care.csproj",
       "projectName": "Alert-to-Care",
-      "projectPath": "C:\\Users\\320104085\\OneDrive - Philips\\Bootcamp\\FreshApiAlertToCare\\alert-to-care-s22b8\\Alert-to-Care\\Alert-to-Care.csproj",
-      "packagesPath": "C:\\Users\\320104085\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\320104085\\OneDrive - Philips\\Bootcamp\\FreshApiAlertToCare\\alert-to-care-s22b8\\Alert-to-Care\\obj\\",
+      "projectPath": "C:\\Exe_to_run\\new\\alert-to-care-s22b8\\Alert-to-Care\\Alert-to-Care.csproj",
+      "packagesPath": "C:\\Users\\320088465\\.nuget\\packages\\",
+      "outputPath": "C:\\Exe_to_run\\new\\alert-to-care-s22b8\\Alert-to-Care\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\320104085\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\320088465\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -1769,8 +1769,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\Users\\320104085\\OneDrive - Philips\\Bootcamp\\FreshApiAlertToCare\\alert-to-care-s22b8\\Models\\Models.csproj": {
-              "projectPath": "C:\\Users\\320104085\\OneDrive - Philips\\Bootcamp\\FreshApiAlertToCare\\alert-to-care-s22b8\\Models\\Models.csproj"
+            "C:\\Exe_to_run\\new\\alert-to-care-s22b8\\Models\\Models.csproj": {
+              "projectPath": "C:\\Exe_to_run\\new\\alert-to-care-s22b8\\Models\\Models.csproj"
             }
           }
         }
@@ -1821,7 +1821,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
       }
     }
   }
