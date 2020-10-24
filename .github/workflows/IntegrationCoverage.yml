@@ -20,4 +20,4 @@ jobs:
         run: dotnet test --collect:"XPlat Code Coverage"
       
       - name: Check Coverage
-        run: powershell ./coverage2.ps1 -linerate 0.7 -project Alert_To_Care.Integration.Tests
+        run: powershell ./coverage2.ps1 -linerate 0.72 -project Alert_To_Care.Integration.Tests
