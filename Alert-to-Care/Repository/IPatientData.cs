@@ -5,16 +5,16 @@ namespace Alert_to_Care.Repository
 {
     public interface IPatientData
     {
-        public List<PatientModel> GetAllPatientsInTheICU(int id);
+        public List<PatientModel> GetAllPatientsInTheIcu(int id);
 
-        public bool AddNewPatient(int icuID, PatientDetailsInput patient);
+        public bool AddNewPatient(int icuId, PatientDetailsInput patient);
 
 
         public PatientModel GetPatient(int id);
 
 
-        public bool DischargePatient(int patientID);
+        public bool DischargePatient(int patientId);
 
-        public bool RegisterNewPatinetWithGivenId(int id, PatientModel value);
+        public void RegisterNewPatinetWithGivenId(int id, PatientModel value);
     }
 }

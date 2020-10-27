@@ -9,20 +9,20 @@ namespace Alert_to_Care.Controller
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ICUConfigController : ControllerBase
+    public class IcuConfigController : ControllerBase
     {
-        public IICUData icuDataRep;
+        private readonly IIcuData _icuDataRep;
 
-        public ICUConfigController(IICUData iCUData)
+        public IcuConfigController(IIcuData iCuData)
         {
-            icuDataRep = iCUData;
+            _icuDataRep = iCuData;
         }
 
         // GET: api/<ICUConfigController>
         [HttpGet]
         public IActionResult Get()
         {
-            var allIcu = icuDataRep.GetAllICU();
+            var allIcu = _icuDataRep.GetAllIcu();
             return Ok(allIcu);
         }
 
@@ -30,14 +30,13 @@ namespace Alert_to_Care.Controller
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            ICUModel icu;
-            icu = icuDataRep.ViewICU(id);
+            var icu = _icuDataRep.ViewIcu(id);
             if (icu != null)
             {
                 return Ok(icu);
             }
 
-            icu = new ICUModel();
+            icu = new IcuModel();
             return Ok(icu);
         }
 
@@ -45,9 +44,8 @@ namespace Alert_to_Care.Controller
         [HttpPost("register")]
         public IActionResult Post([FromBody] UserInput value)
         {
-            icuDataRep.RegisterNewICU(value);
-            var message = new Message();
-            message.Messages = "Registered Sucessfully!";
+            _icuDataRep.RegisterNewIcu(value);
+            var message = new Message {Messages = "Registered Sucessfully!"};
             return Ok(message);
         }
 
@@ -55,17 +53,15 @@ namespace Alert_to_Care.Controller
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            var isPresent = icuDataRep.DeleteICU(id);
+            var isPresent = _icuDataRep.DeleteIcu(id);
             if (isPresent)
             {
-                var message = new Message();
-                message.Messages = "ICU ID : " + id + " deleted!";
+                var message = new Message {Messages = "ICU ID : " + id + " deleted!"};
                 return Ok(message);
             }
             else
             {
-                var message = new Message();
-                message.Messages = "ICU ID : " + id + " not registered!";
+                var message = new Message {Messages = "ICU ID : " + id + " not registered!"};
                 return Ok(message);
             }
         }
@@ -74,18 +70,16 @@ namespace Alert_to_Care.Controller
         [HttpPut("{id}")]
         public IActionResult Update(int id, [FromBody] UserInput value)
         {
-            var isPresent = icuDataRep.DeleteICU(id);
+            var isPresent = _icuDataRep.DeleteIcu(id);
             if (isPresent)
             {
-                icuDataRep.RegisterNewICUWithGivenId(id, value);
-                var message = new Message();
-                message.Messages = "ICU ID : " + id + " Updated!";
+                _icuDataRep.RegisterNewIcuWithGivenId(id, value);
+                var message = new Message {Messages = "ICU ID : " + id + " Updated!"};
                 return Ok(message);
             }
             else
             {
-                var message = new Message();
-                message.Messages = "ICU ID : " + id + " not registered!";
+                var message = new Message {Messages = "ICU ID : " + id + " not registered!"};
                 return Ok(message);
             }
         }

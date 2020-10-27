@@ -3,7 +3,6 @@ using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using AssistAPurchase.Integration.Tests;
 using FluentAssertions;
 using Models;
 using Newtonsoft.Json;
@@ -26,10 +25,7 @@ namespace Alert_To_Care.Integration.Tests
         public async Task WhenNeedSendAnAlert()
         {
             var vitalsList = new List<PatientVitals>();
-            var vitals = new List<int>();
-            vitals.Add(200);
-            vitals.Add(1000);
-            vitals.Add(30);
+            var vitals = new List<int> {200, 1000, 30};
             var patientVital = new PatientVitals
             {
                 Id = 24,

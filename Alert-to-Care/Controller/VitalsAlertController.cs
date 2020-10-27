@@ -11,11 +11,11 @@ namespace Alert_to_Care.Controller
     [ApiController]
     public class VitalsAlertController : ControllerBase
     {
-        private readonly IVitalsCheckerRepository vitalsChecker;
+        private readonly IVitalsCheckerRepository _vitalsChecker;
 
-        public VitalsAlertController(IVitalsCheckerRepository _vitalsChecker)
+        public VitalsAlertController(IVitalsCheckerRepository vitalsChecker)
         {
-            vitalsChecker = _vitalsChecker;
+            this._vitalsChecker = vitalsChecker;
         }
 
 
@@ -23,9 +23,8 @@ namespace Alert_to_Care.Controller
         [HttpPost]
         public IActionResult Post([FromBody] List<PatientVitals> allPatientVitals)
         {
-            vitalsChecker.CheckVitals(allPatientVitals);
-            var message = new Message();
-            message.Messages = "Alert Sent!!";
+            _vitalsChecker.CheckVitals(allPatientVitals);
+            var message = new Message {Messages = "Alert Sent!!"};
             return Ok(message);
         }
     }

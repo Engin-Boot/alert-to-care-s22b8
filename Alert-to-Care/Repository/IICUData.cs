@@ -3,19 +3,19 @@ using Models;
 
 namespace Alert_to_Care.Repository
 {
-    public interface IICUData
+    public interface IIcuData
     {
         //public List<ICUModel> GetAllICU();
         //public void RegisterNewICU(UserInput newICU);
         //public ICUModel ViewICU(int id);
 
-        public List<ICUModel> GetAllICU();
-        public bool RegisterNewICU(UserInput newICU);
+        public List<IcuModel> GetAllIcu();
+        public void RegisterNewIcu(UserInput newIcu);
 
-        public ICUModel ViewICU(int id);
+        public IcuModel ViewIcu(int id);
 
-        public bool DeleteICU(int id);
+        public bool DeleteIcu(int id);
 
-        public bool RegisterNewICUWithGivenId(int id, UserInput value);
+        public void RegisterNewIcuWithGivenId(int id, UserInput value);
     }
 }

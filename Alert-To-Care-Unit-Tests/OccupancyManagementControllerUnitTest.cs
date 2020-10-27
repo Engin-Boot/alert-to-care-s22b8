@@ -1,20 +1,22 @@
-﻿using System;
-using Alert_to_Care.Controller;
+﻿using Alert_to_Care.Controller;
 using Alert_to_Care.Repository;
 using Microsoft.AspNetCore.Mvc;
 using Models;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace Alert_To_Care_Unit_Tests
 {
     public class OccupancyManagementControllerUnitTest
     {
-        private readonly OccupancyManagementController controller;
+        private readonly ITestOutputHelper _testOutputHelper;
+        private readonly OccupancyManagementController _controller;
 
-        public OccupancyManagementControllerUnitTest()
+        public OccupancyManagementControllerUnitTest(ITestOutputHelper testOutputHelper)
         {
+            _testOutputHelper = testOutputHelper;
             IPatientData service = new PatientDataRepository();
-            controller = new OccupancyManagementController(service);
+            _controller = new OccupancyManagementController(service);
         }
 
         [Fact]
@@ -23,7 +25,7 @@ namespace Alert_To_Care_Unit_Tests
             //make sure this ICU id should be in database
             var icuId = 27;
             // Act
-            var result = controller.Get(icuId);
+            var result = _controller.Get(icuId);
             // Assert
             Assert.IsType<OkObjectResult>(result);
         }
@@ -34,7 +36,7 @@ namespace Alert_To_Care_Unit_Tests
             //make sure this ICU id should not be in database
             var icuId = 999999;
             // Act
-            var result = controller.Get(icuId);
+            var result = _controller.Get(icuId);
             // Assert
             Assert.IsType<OkObjectResult>(result);
         }
@@ -44,7 +46,7 @@ namespace Alert_To_Care_Unit_Tests
         {
             //make sure this patient id is in database
             var patientId = 10003;
-            var result = controller.GetPatientById(patientId);
+            var result = _controller.GetPatientById(patientId);
             Assert.IsType<OkObjectResult>(result);
         }
 
@@ -53,7 +55,7 @@ namespace Alert_To_Care_Unit_Tests
         {
             //this patient id shold not be in db
             var patientId = 99999;
-            var result = controller.GetPatientById(patientId);
+            var result = _controller.GetPatientById(patientId);
             Assert.IsType<OkObjectResult>(result);
         }
 
@@ -64,12 +66,12 @@ namespace Alert_To_Care_Unit_Tests
             var icuId = 27;
             var body = new PatientDetailsInput
             {
-                name = "Tom",
-                age = 22,
-                bloodGroup = "AB+",
-                address = "Jaipur"
+                Name = "Tom",
+                Age = 22,
+                BloodGroup = "AB+",
+                Address = "Jaipur"
             };
-            var result = controller.Post(icuId, body);
+            var result = _controller.Post(icuId, body);
             Assert.IsType<OkObjectResult>(result);
             //var okObjectResult = result as OkObjectResult;
             //var model = okObjectResult.Value as Message;
@@ -84,19 +86,23 @@ namespace Alert_To_Care_Unit_Tests
             var icuId = 999999;
             var body = new PatientDetailsInput
             {
-                name = "Jerry",
-                age = 20,
-                bloodGroup = "A+",
-                address = "UP"
+                Name = "Jerry",
+                Age = 20,
+                BloodGroup = "A+",
+                Address = "UP"
             };
-            var result = controller.Post(icuId, body);
+            var result = _controller.Post(icuId, body);
             Assert.IsType<OkObjectResult>(result);
-            var okObjectResult = result as OkObjectResult;
             //Assert.NotNull(okObjectResult);
-            var model = okObjectResult.Value as Message;
-            //Assert.NotNull(model);
-            var actual = model.Messages;
-            Assert.Equal("Registration UnSucessfull - Bed not Available!", actual);
+            if (result is OkObjectResult okObjectResult)
+            {
+                //Assert.NotNull(model);
+                if (okObjectResult.Value is Message model)
+                {
+                    var actual = model.Messages;
+                    Assert.Equal("Registration UnSucessfull - Bed not Available!", actual);
+                }
+            }
         }
 
         [Fact]
@@ -104,7 +110,7 @@ namespace Alert_To_Care_Unit_Tests
         {
             //make sure this patient id is in db
             var patientId = 102;
-            var result = controller.Delete(patientId);
+            var result = _controller.Delete(patientId);
             Assert.IsType<OkObjectResult>(result);
         }
 
@@ -113,13 +119,15 @@ namespace Alert_To_Care_Unit_Tests
         {
             //make sure this patient id is not i db
             var patientId = 99999;
-            var result = controller.Delete(patientId);
+            var result = _controller.Delete(patientId);
             var okObjectResult = result as OkObjectResult;
             Assert.NotNull(okObjectResult);
-            var model = okObjectResult.Value as Message;
             //Assert.NotNull(model);
-            var actual = model.Messages;
-            Assert.Equal("Patient ID : " + patientId + " not registered!", actual);
+            if (okObjectResult.Value is Message model)
+            {
+                var actual = model.Messages;
+                Assert.Equal("Patient ID : " + patientId + " not registered!", actual);
+            }
         }
 
         [Fact]
@@ -127,17 +135,19 @@ namespace Alert_To_Care_Unit_Tests
         {
             //make sure this patient id is there in db
             var patientId = 10003;
-            var body = new PatientModel();
-            body.Id = 10003;
-            body.Name = "Salini";
-            body.Age = 22;
-            body.BloodGroup = "AB+";
-            body.Address = "UP";
-            body.IcuId = 27;
-            body.BedNumber = 3;
+            var body = new PatientModel
+            {
+                Id = 10003,
+                Name = "Salini",
+                Age = 22,
+                BloodGroup = "AB+",
+                Address = "UP",
+                IcuId = 27,
+                BedNumber = 3
+            };
             //Assert
-            var result = controller.Update(patientId, body);
-            ;
+            var result = _controller.Update(patientId, body);
+            
             //Assert
             Assert.IsType<OkObjectResult>(result);
         }
@@ -147,42 +157,44 @@ namespace Alert_To_Care_Unit_Tests
         {
             //make sure this patient id is not there in db
             var patientId = 999999;
-            var body = new PatientModel();
-            body.Id = 999999;
-            body.Name = "Shivani";
-            body.Age = 23;
-            body.BloodGroup = "A+";
-            body.Address = "Bihar";
-            body.IcuId = 27;
-            body.BedNumber = 2;
+            var body = new PatientModel
+            {
+                Id = 999999,
+                Name = "Shivani",
+                Age = 23,
+                BloodGroup = "A+",
+                Address = "Bihar",
+                IcuId = 27,
+                BedNumber = 2
+            };
             //Assert
-            var result = controller.Update(patientId, body);
-            ;
+            var result = _controller.Update(patientId, body);
+            
             //Assert
             Assert.IsType<OkObjectResult>(result);
-            var okObjectResult = result as OkObjectResult;
             // Assert.NotNull(okObjectResult);
-            var model = okObjectResult.Value as Message;
-            // Assert.NotNull(model);
-            var actual = model.Messages;
-            Assert.Equal("Id Not Present - Update Unsuccessfull!", actual);
+            if (result is OkObjectResult okObjectResult)
+            {
+                // Assert.NotNull(model);
+                if (okObjectResult.Value is Message model)
+                {
+                    var actual = model.Messages;
+                    Assert.Equal("Id Not Present - Update Unsuccessfull!", actual);
+                }
+            }
         }
 
 
         [Fact]
         private void ModelTest()
         {
-            var patient = new PatientDetailsInput();
-            patient.name = "Twinkal";
-            patient.age = 22;
-            patient.bloodGroup = "AB+";
-            patient.address = "Jaipur";
-            Assert.Equal("Twinkal", patient.name);
+            var patient = new PatientDetailsInput {Name = "Twinkal", Age = 22, BloodGroup = "AB+", Address = "Jaipur"};
+            Assert.Equal("Twinkal", patient.Name);
             var patientModel = new PatientModel();
-            Console.WriteLine(patient.name);
-            Console.WriteLine(patient.age);
-            Console.WriteLine(patient.bloodGroup);
-            Console.WriteLine(patient.address);
+            _testOutputHelper.WriteLine(patient.Name);
+            _testOutputHelper.WriteLine(patient.Age.ToString());
+            _testOutputHelper.WriteLine(patient.BloodGroup);
+            _testOutputHelper.WriteLine(patient.Address);
             patientModel.Id = 1;
             patientModel.Name = "Shivani";
             patientModel.Age = 22;
@@ -191,12 +203,12 @@ namespace Alert_To_Care_Unit_Tests
             patientModel.IcuId = 27;
             patientModel.BedNumber = 3;
             Assert.Equal(1, patientModel.Id);
-            Console.WriteLine(patientModel.Name);
-            Console.WriteLine(patientModel.Age);
-            Console.WriteLine(patientModel.BloodGroup);
-            Console.WriteLine(patientModel.Address);
-            Console.WriteLine(patientModel.IcuId);
-            Console.WriteLine(patientModel.BedNumber);
+            _testOutputHelper.WriteLine(patientModel.Name);
+            _testOutputHelper.WriteLine(patientModel.Age.ToString());
+            _testOutputHelper.WriteLine(patientModel.BloodGroup);
+            _testOutputHelper.WriteLine(patientModel.Address);
+            _testOutputHelper.WriteLine(patientModel.IcuId.ToString());
+            _testOutputHelper.WriteLine(patientModel.BedNumber.ToString());
         }
     }
 }

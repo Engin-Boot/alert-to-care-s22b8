@@ -2,7 +2,7 @@
 {
     public class Bed
     {
-        public string id { get; set; }
-        public bool isOccupied { get; set; }
+        public string Id { get; set; }
+        public bool IsOccupied { get; set; }
     }
 }

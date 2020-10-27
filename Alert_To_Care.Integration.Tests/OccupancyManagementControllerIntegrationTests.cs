@@ -2,7 +2,6 @@
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using AssistAPurchase.Integration.Tests;
 using FluentAssertions;
 using Models;
 using Newtonsoft.Json;
@@ -43,7 +42,7 @@ namespace Alert_To_Care.Integration.Tests
         public async Task WhenDischargePatientRequestIsSentThenResponsePresent()
         {
             var response = await _sut.Client.DeleteAsync(url + "/1");
-            var responseString = await response.Content.ReadAsStringAsync();
+            await response.Content.ReadAsStringAsync();
             response.StatusCode.Should().Be(HttpStatusCode.OK);
             //   Assert.Contains("Patient ID : 1 deleted!", responseString);
         }
@@ -62,7 +61,7 @@ namespace Alert_To_Care.Integration.Tests
             var response = await _sut.Client.PostAsync(url + "/100",
                 new StringContent(JsonConvert.SerializeObject(createIcu), Encoding.UTF8, "application/json"));
             response.StatusCode.Should().Be(HttpStatusCode.OK);
-            var responseString = await response.Content.ReadAsStringAsync();
+            await response.Content.ReadAsStringAsync();
             //  Assert.Contains("Registered Sucessfully!", responseString);
         }
 
@@ -98,7 +97,7 @@ namespace Alert_To_Care.Integration.Tests
             var response = await _sut.Client.PutAsync(url + "/1",
                 new StringContent(JsonConvert.SerializeObject(updatePatient), Encoding.UTF8, "application/json"));
             Assert.True(response.StatusCode == HttpStatusCode.OK);
-            var responseString = await response.Content.ReadAsStringAsync();
+            await response.Content.ReadAsStringAsync();
             //  Assert.Contains("Updated Successfully!", responseString);
             //  Assert.Contains("Id Not Present - Update Unsuccessfull!", responseString);
         }
@@ -117,7 +116,7 @@ namespace Alert_To_Care.Integration.Tests
             var response = await _sut.Client.PutAsync(url + "/2",
                 new StringContent(JsonConvert.SerializeObject(updatePatient), Encoding.UTF8, "application/json"));
             Assert.True(response.StatusCode == HttpStatusCode.OK);
-            var responseString = await response.Content.ReadAsStringAsync();
+            await response.Content.ReadAsStringAsync();
             //  Assert.Contains("Updated Successfully!", responseString);
             //     Assert.Contains("Updated Successfully!", responseString);
         }
@@ -127,15 +126,15 @@ namespace Alert_To_Care.Integration.Tests
         {
             var updatePatient = new PatientDetailsInput
             {
-                name = "Amulya Alur",
-                address = "UP",
-                age = 21,
-                bloodGroup = "B+"
+                Name = "Amulya Alur",
+                Address = "UP",
+                Age = 21,
+                BloodGroup = "B+"
             };
             var response = await _sut.Client.PutAsync(url + "/22",
                 new StringContent(JsonConvert.SerializeObject(updatePatient), Encoding.UTF8, "application/json"));
             Assert.True(response.StatusCode == HttpStatusCode.OK);
-            var responseString = await response.Content.ReadAsStringAsync();
+            await response.Content.ReadAsStringAsync();
             //  Assert.Contains("Updated Successfully!", responseString);
             //     Assert.Contains("Updated Successfully!", responseString);
         }

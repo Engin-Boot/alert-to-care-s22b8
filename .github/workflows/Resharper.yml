@@ -18,9 +18,18 @@ jobs:
           
       - name: Install resharper
         run: dotnet tool install -g JetBrains.ReSharper.GlobalTools
+        
+      - name: Add package
+        run: dotnet add Alert-To-Care-Unit-Tests/Alert-To-Care-Unit-Tests.csproj package xunit --version 2.4.1
+        
+      - name: Add package
+        run: dotnet add Alert_To_Care.Integration.Tests/Alert_To_Care.Integration.Tests.csproj package xunit --version 2.4.1
        
       - name: Run resharper duplicate code check
         run: jb dupfinder Alert-to-Care.sln /output=dupreport.xml
+        
+      - name: Run resharper InspectCode code check
+        run: jb inspectcode Alert-to-Care.sln /output=insreport.xml
        
       - name: Check Reports
         run: powershell ./resharper.ps1

@@ -3,14 +3,14 @@ using System.Net.Mail;
 
 namespace Alert_to_Care.Repository
 {
-    public interface Alerter
+    public interface IAlerter
     {
-        bool Alert(string message);
+        void Alert(string message);
     }
 
-    public class EmailAlert : Alerter
+    public class EmailAlert : IAlerter
     {
-        public bool Alert(string message)
+        public void Alert(string message)
         {
             var smtpClient = new SmtpClient("smtp.gmail.com")
             {
@@ -19,7 +19,7 @@ namespace Alert_to_Care.Repository
                 EnableSsl = true
             };
             smtpClient.Send("toofy136gotit@gmail.com", "toofyrece@gmail.com", "ALERT", message);
-            return true;
+            
         }
     }
 }

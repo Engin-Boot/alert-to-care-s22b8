@@ -9,22 +9,19 @@ namespace Alert_To_Care_Unit_Tests
 {
     public class VitalsAlertControllerUnitTest
     {
-        private readonly VitalsAlertController controller;
+        private readonly VitalsAlertController _controller;
 
         public VitalsAlertControllerUnitTest()
         {
             IVitalsCheckerRepository service = new VitalsCheckerRepository();
-            controller = new VitalsAlertController(service);
+            _controller = new VitalsAlertController(service);
         }
 
         [Fact]
         private void ReturnOkWhenPostIsCalled()
         {
             var vitalsListWithId = new List<PatientVitals>();
-            var vitalList = new List<int>();
-            vitalList.Add(22);
-            vitalList.Add(22);
-            vitalList.Add(22);
+            var vitalList = new List<int> {22, 22, 22};
             var patientOneVital = new PatientVitals
             {
                 Id = 102,
@@ -32,15 +29,19 @@ namespace Alert_To_Care_Unit_Tests
             };
             vitalsListWithId.Add(patientOneVital);
             // Act
-            var result = controller.Post(vitalsListWithId);
+            var result = _controller.Post(vitalsListWithId);
             // Assert
             Assert.IsType<OkObjectResult>(result);
-            var okObjectResult = result as OkObjectResult;
             //Assert.NotNull(okObjectResult);
-            var model = okObjectResult.Value as Message;
-            //Assert.NotNull(model);
-            var actual = model.Messages;
-            Assert.Equal("Alert Sent!!", actual);
+            if (result is OkObjectResult okObjectResult)
+            {
+                //Assert.NotNull(model);
+                if (okObjectResult.Value is Message model)
+                {
+                    var actual = model.Messages;
+                    Assert.Equal("Alert Sent!!", actual);
+                }
+            }
         }
     }
 }

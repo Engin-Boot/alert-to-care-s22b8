@@ -2,9 +2,9 @@
 {
     public class PatientDetailsInput
     {
-        public string name { get; set; }
-        public int age { get; set; }
-        public string bloodGroup { get; set; }
-        public string address { get; set; }
+        public string Name { get; set; }
+        public int Age { get; set; }
+        public string BloodGroup { get; set; }
+        public string Address { get; set; }
     }
 }

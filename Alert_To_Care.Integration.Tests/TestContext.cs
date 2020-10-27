@@ -3,7 +3,7 @@ using Alert_to_Care;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.TestHost;
 
-namespace AssistAPurchase.Integration.Tests
+namespace Alert_To_Care.Integration.Tests
 {
     internal class TestContext
     {

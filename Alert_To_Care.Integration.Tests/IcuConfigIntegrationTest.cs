@@ -1,25 +1,25 @@
-﻿using System;
-using System.Net;
+﻿using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using AssistAPurchase.Integration.Tests;
 using FluentAssertions;
 using Models;
 using Newtonsoft.Json;
 using Xunit;
-using System.IO;
+using Xunit.Abstractions;
 
 namespace Alert_To_Care.Integration.Tests
 {
     public class IcuConfigIntegrationTest
     {
+        private readonly ITestOutputHelper _testOutputHelper;
         private static readonly string url = "https://localhost:5000/api/ICUConfig";
         private readonly TestContext _sut;
 
 
-        public IcuConfigIntegrationTest()
+        public IcuConfigIntegrationTest(ITestOutputHelper testOutputHelper)
         {
+            _testOutputHelper = testOutputHelper;
             _sut = new TestContext();
         }
 
@@ -56,7 +56,7 @@ namespace Alert_To_Care.Integration.Tests
         [Fact]
         public async Task WhenNewDataToBeCreatedThenCheckResponse()
         {
-            var createIcu = new ICUModel
+            var createIcu = new IcuModel
             {
                 NumberOfBeds = 3,
                 Layout = 'C'
@@ -70,7 +70,7 @@ namespace Alert_To_Care.Integration.Tests
         [Fact]
         public async Task WhenNewDataIsUpdatedThenCheckTheResponseNoContent()
         {
-            var updateIcu = new ICUModel
+            var updateIcu = new IcuModel
             {
                 NumberOfBeds = 3,
                 Layout = 'C'
@@ -85,13 +85,13 @@ namespace Alert_To_Care.Integration.Tests
         {
             var updateIcu = new Bed
             {
-                id = "3",
-                isOccupied = true
+                Id = "3",
+                IsOccupied = true
             };
             /*var response = await _sut.Client.PutAsync(url + "/22",
                 new StringContent(JsonConvert.SerializeObject(updateIcu), Encoding.UTF8, "application/json"));
             Assert.True(response.StatusCode == HttpStatusCode.OK);*/
-            Console.WriteLine(updateIcu);
+            _testOutputHelper.WriteLine(updateIcu.ToString());
 
         }
     }

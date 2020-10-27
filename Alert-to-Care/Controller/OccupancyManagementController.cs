@@ -11,17 +11,17 @@ namespace Alert_to_Care.Controller
     [ApiController]
     public class OccupancyManagementController : ControllerBase
     {
-        public IPatientData patientRepo;
+        private readonly IPatientData _patientRepo;
 
         public OccupancyManagementController(IPatientData patientData)
         {
-            patientRepo = patientData;
+            _patientRepo = patientData;
         }
 
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            var allPatients = patientRepo.GetAllPatientsInTheICU(id);
+            var allPatients = _patientRepo.GetAllPatientsInTheIcu(id);
             if (allPatients.Count != 0)
                 return Ok(allPatients);
             return Ok(allPatients);
@@ -32,7 +32,7 @@ namespace Alert_to_Care.Controller
         [HttpGet]
         public IActionResult GetPatientById(int id)
         {
-            var patient = patientRepo.GetPatient(id);
+            var patient = _patientRepo.GetPatient(id);
             if (patient != null)
                 return Ok(patient);
             patient = new PatientModel();
@@ -43,17 +43,15 @@ namespace Alert_to_Care.Controller
         [HttpPost("{id}")]
         public IActionResult Post(int id, [FromBody] PatientDetailsInput patient)
         {
-            var result = patientRepo.AddNewPatient(id, patient);
+            var result = _patientRepo.AddNewPatient(id, patient);
             if (result)
             {
-                var message = new Message();
-                message.Messages = "Registered Sucessfully!";
+                var message = new Message {Messages = "Registered Sucessfully!"};
                 return Ok(message);
             }
             else
             {
-                var message = new Message();
-                message.Messages = "Registration UnSucessfull - Bed not Available!";
+                var message = new Message {Messages = "Registration UnSucessfull - Bed not Available!"};
                 return Ok(message);
             }
         }
@@ -63,17 +61,15 @@ namespace Alert_to_Care.Controller
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            var present = patientRepo.DischargePatient(id);
+            var present = _patientRepo.DischargePatient(id);
             if (present)
             {
-                var message = new Message();
-                message.Messages = "Patient ID : " + id + " deleted!";
+                var message = new Message {Messages = "Patient ID : " + id + " deleted!"};
                 return Ok(message);
             }
             else
             {
-                var message = new Message();
-                message.Messages = "Patient ID : " + id + " not registered!";
+                var message = new Message {Messages = "Patient ID : " + id + " not registered!"};
                 return Ok(message);
             }
         }
@@ -82,19 +78,17 @@ namespace Alert_to_Care.Controller
         [HttpPut("{id}")]
         public IActionResult Update(int id, [FromBody] PatientModel value)
         {
-            var present = patientRepo.DischargePatient(id);
+            var present = _patientRepo.DischargePatient(id);
             if (present)
             {
-                patientRepo.RegisterNewPatinetWithGivenId(id, value);
+                _patientRepo.RegisterNewPatinetWithGivenId(id, value);
 
-                var message = new Message();
-                message.Messages = "Updated Successfully!";
+                var message = new Message {Messages = "Updated Successfully!"};
                 return Ok(message);
             }
             else
             {
-                var message = new Message();
-                message.Messages = "Id Not Present - Update Unsuccessfull!";
+                var message = new Message {Messages = "Id Not Present - Update Unsuccessfull!"};
                 return Ok(message);
             }
         }

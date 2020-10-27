@@ -6,7 +6,7 @@ namespace Alert_to_Care.Repository
 {
     public class CommonFunctionality
     {
-        public SQLiteConnection OpenFile(string cs1)
+        protected SQLiteConnection OpenFile(string cs1)
         {
             var con1 = new SQLiteConnection(cs1, true);
 
@@ -28,7 +28,7 @@ namespace Alert_to_Care.Repository
             return con1;
         }
 
-        public int CheckIfICUExists(string com, SQLiteConnection con)
+        protected void CheckIfIcuExists(string com, SQLiteConnection con)
         {
             using var check = new SQLiteCommand(com, con);
             using var sQLiteDataReader = check.ExecuteReader();
@@ -36,7 +36,7 @@ namespace Alert_to_Care.Repository
             if (sQLiteDataReader.Read())
                 countOfIcu = (int) Convert.ToInt64(sQLiteDataReader["Count"]);
             if (countOfIcu == 0) throw new Exception();
-            return countOfIcu;
+            // return countOfIcu;
         }
     }
 }
