@@ -97,3 +97,12 @@ C:\Users\320104085\OneDrive - Philips\Bootcamp\27OctAPI\alert-to-care-s22b8\Mode
 C:\Users\320104085\OneDrive - Philips\Bootcamp\27OctAPI\alert-to-care-s22b8\Models\obj\Debug\netstandard2.0\Models.dll
 C:\Users\320104085\OneDrive - Philips\Bootcamp\27OctAPI\alert-to-care-s22b8\Models\obj\Debug\netstandard2.0\Models.pdb
 C:\Users\320104085\OneDrive - Philips\Bootcamp\27OctAPI\alert-to-care-s22b8\Models\obj\Debug\netstandard2.0\Models.csprojAssemblyReference.cache
+C:\data\alert-to-care-s22b8\Models\bin\Debug\netstandard2.0\Models.deps.json
+C:\data\alert-to-care-s22b8\Models\bin\Debug\netstandard2.0\Models.dll
+C:\data\alert-to-care-s22b8\Models\bin\Debug\netstandard2.0\Models.pdb
+C:\data\alert-to-care-s22b8\Models\obj\Debug\netstandard2.0\Models.csprojAssemblyReference.cache
+C:\data\alert-to-care-s22b8\Models\obj\Debug\netstandard2.0\Models.AssemblyInfoInputs.cache
+C:\data\alert-to-care-s22b8\Models\obj\Debug\netstandard2.0\Models.AssemblyInfo.cs
+C:\data\alert-to-care-s22b8\Models\obj\Debug\netstandard2.0\Models.csproj.CoreCompileInputs.cache
+C:\data\alert-to-care-s22b8\Models\obj\Debug\netstandard2.0\Models.dll
+C:\data\alert-to-care-s22b8\Models\obj\Debug\netstandard2.0\Models.pdb

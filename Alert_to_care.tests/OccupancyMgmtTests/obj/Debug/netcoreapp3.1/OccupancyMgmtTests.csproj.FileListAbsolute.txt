@@ -1,4 +1,0 @@
-C:\Users\320105541\source\repos\Alert_to_care.tests\OccupancyMgmtTests\obj\Debug\netcoreapp3.1\OccupancyMgmtTests.csprojAssemblyReference.cache
-C:\Users\320105541\source\repos\Alert_to_care.tests\OccupancyMgmtTests\obj\Debug\netcoreapp3.1\OccupancyMgmtTests.AssemblyInfoInputs.cache
-C:\Users\320105541\source\repos\Alert_to_care.tests\OccupancyMgmtTests\obj\Debug\netcoreapp3.1\OccupancyMgmtTests.AssemblyInfo.cs
-C:\Users\320105541\source\repos\Alert_to_care.tests\OccupancyMgmtTests\obj\Debug\netcoreapp3.1\OccupancyMgmtTests.csproj.CoreCompileInputs.cache
